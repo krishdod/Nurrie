@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nurrie-first-light.info326385.chatgpt.site/sitemap.xml
