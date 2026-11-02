@@ -1,13 +1,13 @@
 "use client";
 
 import { Component, Suspense, useEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Center, ContactShadows, Environment, Lightformer, Text3D } from "@react-three/drei";
-import { BufferGeometry, CatmullRomCurve3, Color, Float32BufferAttribute, Group, LatheGeometry, MathUtils, Vector2, Vector3 } from "three";
+import { BackSide, BufferGeometry, CatmullRomCurve3, Color, Float32BufferAttribute, Group, LatheGeometry, MathUtils, Vector2, Vector3 } from "three";
 
 const FONT = "/fonts/optimer-regular.json";
 
-type SceneProps = { paused?: boolean; onReady?: () => void };
+type SceneProps = { paused?: boolean; onReady?: () => void; className?: string; variant?: "centered" | "editorial" };
 
 class SceneBoundary extends Component<{ children: ReactNode; fallback: ReactNode }, { failed: boolean }> {
   state = { failed: false };
@@ -21,8 +21,8 @@ export function ProductFallback() {
     <img
       src="/images/product-duo-1024.webp"
       alt="Two views of NURRIE's pearl ivory and rose gold double-ended foundation stick: white foundation and blending brush"
-      width={1536}
-      height={1024}
+      width={1024}
+      height={683}
       style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center" }}
     />
   );
@@ -43,20 +43,21 @@ function useReducedMotion() {
 function Lettering({ paused, scrollProgress }: { paused: boolean; scrollProgress: RefObject<number> }) {
   const group = useRef<Group>(null);
   const elapsed = useRef(0);
+  const narrow = useThree((state) => state.size.width / state.size.height < 1);
   useFrame((state, delta) => {
     if (!group.current || paused) return;
     elapsed.current += Math.min(delta, 0.05);
     const scroll = scrollProgress.current;
-    group.current.rotation.y = MathUtils.damp(group.current.rotation.y, state.pointer.x * 0.08, 2.5, delta);
-    group.current.rotation.z = MathUtils.damp(group.current.rotation.z, -0.1 + scroll * 0.12, 2, delta);
-    group.current.position.y = 0.25 + Math.sin(elapsed.current * 0.35) * 0.05;
+    group.current.rotation.y = MathUtils.damp(group.current.rotation.y, -0.12 + state.pointer.x * 0.16, 2.5, delta);
+    group.current.rotation.z = MathUtils.damp(group.current.rotation.z, -0.15 + scroll * 0.22, 2, delta);
+    group.current.position.y = MathUtils.damp(group.current.position.y, 0.35 + (scroll - 0.5) * 0.3 + Math.sin(elapsed.current * 0.35) * 0.035, 2.5, delta);
   });
   return (
-    <group ref={group} position={[0, 0.25, -1.35]} rotation={[0.04, -0.08, -0.1]}>
+    <group ref={group} position={[0.05, 0.35, -1.1]} rotation={[0.06, -0.12, -0.1]} scale={narrow ? 0.78 : 1}>
       <Center>
-        <Text3D font={FONT} size={1.02} height={0.16} curveSegments={10} bevelEnabled bevelThickness={0.012} bevelSize={0.014} bevelSegments={3} letterSpacing={-0.035}>
+        <Text3D font={FONT} size={1.12} height={0.24} curveSegments={12} bevelEnabled bevelThickness={0.02} bevelSize={0.018} bevelSegments={4} letterSpacing={-0.035}>
           NURRIE
-          <meshPhysicalMaterial color="#d9c8b9" metalness={0.45} roughness={0.3} clearcoat={0.22} />
+          <meshPhysicalMaterial color="#785544" metalness={0.38} roughness={0.24} clearcoat={0.6} clearcoatRoughness={0.22} />
         </Text3D>
       </Center>
     </group>
@@ -64,11 +65,11 @@ function Lettering({ paused, scrollProgress }: { paused: boolean; scrollProgress
 }
 
 function RoseGold() {
-  return <meshPhysicalMaterial color="#c98f79" metalness={0.94} roughness={0.16} clearcoat={0.65} clearcoatRoughness={0.18} />;
+  return <meshPhysicalMaterial color="#d4a18c" metalness={0.96} roughness={0.14} clearcoat={0.7} clearcoatRoughness={0.16} />;
 }
 
 function Pearl() {
-  return <meshPhysicalMaterial color="#f1e8db" metalness={0.08} roughness={0.34} clearcoat={0.45} clearcoatRoughness={0.3} />;
+  return <meshPhysicalMaterial color="#f5eee3" metalness={0.06} roughness={0.3} clearcoat={0.52} clearcoatRoughness={0.27} />;
 }
 
 function Brush() {
@@ -76,22 +77,23 @@ function Brush() {
     const positions: number[] = [];
     const colors: number[] = [];
     const root = new Color("#35271f");
-    const tip = new Color("#d9c4ac");
+    const tip = new Color("#e0cbb3");
     const color = new Color();
-    const count = 1800;
+    const count = 2800;
     // A golden-angle disk makes the bristle field dense and deterministic.
     for (let i = 0; i < count; i++) {
       const radius = Math.sqrt((i + 0.5) / count);
       const theta = i * 2.399963229728653;
-      const variance = Math.sin(i * 11.731) * 0.012;
+      const variance = Math.sin(i * 11.731) * 0.018 + Math.cos(i * 3.14159) * 0.006;
       const point = (t: number) => {
-        const spread = radius * (0.29 + 0.21 * Math.sin(t * Math.PI / 2));
-        return [Math.cos(theta) * spread, 1.02 + t * (0.74 - 0.09 * radius * radius + variance), Math.sin(theta) * spread];
+        const spread = radius * (0.29 + 0.27 * Math.sin(t * Math.PI / 2));
+        const bend = Math.sin(t * Math.PI) * 0.014 * Math.sin(i * 0.8);
+        return [Math.cos(theta) * spread + bend, 1.02 + t * (0.89 - 0.29 * Math.pow(radius, 2.7) + variance), Math.sin(theta) * spread + bend * 0.5];
       };
       for (let segment = 0; segment < 5; segment++) {
         for (const t of [segment / 5, (segment + 1) / 5]) {
           positions.push(...point(t));
-          color.copy(root).lerp(tip, Math.pow(t, 2.4));
+          color.copy(root).lerp(tip, Math.pow(t, 2.1));
           colors.push(color.r, color.g, color.b);
         }
       }
@@ -100,15 +102,15 @@ function Brush() {
     bristles.setAttribute("position", new Float32BufferAttribute(positions, 3));
     bristles.setAttribute("color", new Float32BufferAttribute(colors, 3));
     const core = new LatheGeometry([
-      new Vector2(0, 1.01), new Vector2(0.29, 1.01), new Vector2(0.35, 1.2),
-      new Vector2(0.44, 1.45), new Vector2(0.48, 1.62), new Vector2(0.38, 1.7),
-      new Vector2(0.2, 1.74), new Vector2(0, 1.75),
-    ], 56);
+      new Vector2(0, 1.01), new Vector2(0.29, 1.01), new Vector2(0.37, 1.2),
+      new Vector2(0.47, 1.43), new Vector2(0.53, 1.6), new Vector2(0.49, 1.7),
+      new Vector2(0.4, 1.79), new Vector2(0.26, 1.86), new Vector2(0.12, 1.89), new Vector2(0, 1.9),
+    ], 64);
     const vertexColors = [];
     const vertices = core.getAttribute("position");
     for (let i = 0; i < vertices.count; i++) {
-      const t = MathUtils.clamp((vertices.getY(i) - 1.01) / 0.74, 0, 1);
-      color.copy(root).lerp(tip, Math.pow(t, 2.7));
+      const t = MathUtils.clamp((vertices.getY(i) - 1.01) / 0.89, 0, 1);
+      color.copy(root).lerp(tip, Math.pow(t, 2.2));
       vertexColors.push(color.r, color.g, color.b);
     }
     core.setAttribute("color", new Float32BufferAttribute(vertexColors, 3));
@@ -118,7 +120,7 @@ function Brush() {
   return (
     <group>
       <mesh geometry={core}><meshStandardMaterial vertexColors roughness={1} /></mesh>
-      <lineSegments geometry={bristles}><lineBasicMaterial vertexColors transparent opacity={0.92} /></lineSegments>
+      <lineSegments geometry={bristles}><lineBasicMaterial vertexColors transparent opacity={0.88} /></lineSegments>
     </group>
   );
 }
@@ -186,27 +188,47 @@ function ProductBody({ brush = false }: { brush?: boolean }) {
   );
 }
 
-function FoundationStick({ paused, onReady }: { paused: boolean; onReady?: () => void }) {
+function FoundationStick({ paused, onReady, scrollProgress }: { paused: boolean; onReady?: () => void; scrollProgress: RefObject<number> }) {
   const duo = useRef<Group>(null);
+  const foundation = useRef<Group>(null);
+  const brush = useRef<Group>(null);
   const elapsed = useRef(0);
   useEffect(() => { onReady?.(); }, [onReady]);
   useFrame((state, delta) => {
     if (!duo.current || paused) return;
     elapsed.current += Math.min(delta, 0.05);
     const time = elapsed.current;
-    duo.current.rotation.x = MathUtils.damp(duo.current.rotation.x, 0.04 + state.pointer.y * 0.045, 2.5, delta);
-    duo.current.rotation.y = MathUtils.damp(duo.current.rotation.y, -0.1 + state.pointer.x * 0.18, 2.5, delta);
-    duo.current.position.y = Math.sin(time * 0.55) * 0.035;
+    const scroll = scrollProgress.current - 0.5;
+    duo.current.rotation.x = MathUtils.damp(duo.current.rotation.x, 0.025 + state.pointer.y * 0.075, 2.5, delta);
+    duo.current.rotation.y = MathUtils.damp(duo.current.rotation.y, -0.08 + state.pointer.x * 0.28 + scroll * 0.2, 2.5, delta);
+    duo.current.position.y = Math.sin(time * 0.55) * 0.035 + scroll * 0.12;
+    if (foundation.current) foundation.current.rotation.z = MathUtils.damp(foundation.current.rotation.z, -0.12 - scroll * 0.055 + Math.sin(time * 0.36) * 0.012, 2.5, delta);
+    if (brush.current) brush.current.rotation.z = MathUtils.damp(brush.current.rotation.z, 0.1 + scroll * 0.055 + Math.sin(time * 0.36 + 1.5) * 0.012, 2.5, delta);
   });
   return (
-    <group ref={duo} rotation={[0.04, -0.1, 0]}>
-      <group position={[-0.68, 0.06, 0.35]} rotation={[0, 0.06, -0.035]}><ProductBody /></group>
-      <group position={[0.68, 0.01, 0.15]} rotation={[0, -0.04, 0.04]}><ProductBody brush /></group>
+    <group ref={duo} rotation={[0.025, -0.08, 0]}>
+      <group ref={foundation} position={[-0.63, 0.11, 0.45]} rotation={[0.025, 0.12, -0.12]}><ProductBody /></group>
+      <group ref={brush} position={[0.68, -0.02, -0.08]} rotation={[-0.02, -0.14, 0.1]}><ProductBody brush /></group>
     </group>
   );
 }
 
-export default function KineticScene({ paused = false, onReady }: SceneProps) {
+function EditorialStage({ paused, onReady, scrollProgress, variant }: { paused: boolean; onReady?: () => void; scrollProgress: RefObject<number>; variant: "centered" | "editorial" }) {
+  const { viewport, size } = useThree();
+  const wide = variant === "editorial" && size.width / size.height > 1.6;
+  const offset = wide ? viewport.width * 0.23 : 0;
+  return (
+    <group position={[offset, 0, 0]}>
+      <SceneBoundary fallback={null}>
+        <Suspense fallback={null}><Lettering paused={paused} scrollProgress={scrollProgress} /></Suspense>
+      </SceneBoundary>
+      <FoundationStick paused={paused} onReady={onReady} scrollProgress={scrollProgress} />
+      <ContactShadows position={[0.05, -2.13, 0]} opacity={0.24} scale={6} blur={2.6} far={4} resolution={256} frames={1} color="#685046" />
+    </group>
+  );
+}
+
+export default function KineticScene({ paused = false, onReady, className, variant = "editorial" }: SceneProps) {
   const reducedMotion = useReducedMotion();
   const [visible, setVisible] = useState(true);
   const [supported, setSupported] = useState<boolean | null>(null);
@@ -267,11 +289,11 @@ export default function KineticScene({ paused = false, onReady }: SceneProps) {
 
   const still = paused || reducedMotion || !visible || !inViewport;
   return (
-    <div ref={container} style={{ width: "100%", height: "100%" }} role="img" aria-label="Two three-dimensional views of NURRIE's pearl ivory and rose gold double-ended stick, showing the white foundation and the soft blending brush">
+    <div ref={container} className={className} style={{ width: "100%", height: "100%" }} role="img" aria-label="Two three-dimensional views of NURRIE's pearl ivory and rose gold double-ended stick, showing the white foundation and the soft blending brush">
       {supported === false ? <ProductFallback /> : supported === true ? (
         <SceneBoundary fallback={<ProductFallback />}>
           <Canvas
-            camera={{ position: [0, 0.15, 8.7], fov: 35 }}
+            camera={{ position: [0, 0.07, 7.5], fov: 35 }}
             dpr={[1, 1.5]}
             frameloop={still ? "demand" : "always"}
             gl={{ alpha: true, antialias: true, powerPreference: "low-power" }}
@@ -284,23 +306,22 @@ export default function KineticScene({ paused = false, onReady }: SceneProps) {
             fallback={<ProductFallback />}
             style={{ touchAction: "pan-y" }}
           >
-            <ambientLight intensity={0.8} />
-            <directionalLight position={[-3, 5, 5]} intensity={2.5} color="#fffaf4" />
-            <directionalLight position={[4, 1, -3]} intensity={1.8} color="#fff1e3" />
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[-3, 5, 5]} intensity={2.8} color="#fffaf4" />
+            <directionalLight position={[4, 1, -3]} intensity={2.2} color="#ffe4d1" />
             <Environment resolution={256} frames={1}>
-              <Lightformer intensity={4} position={[-3, 2, 4]} scale={[1.4, 6, 1]} rotation={[0, 0.4, 0]} />
-              <Lightformer intensity={2} position={[4, 1, 1]} scale={[1.2, 5, 1]} rotation={[0, -Math.PI / 2, 0]} />
-              <Lightformer intensity={2.5} position={[0, 5, -2]} scale={[5, 3, 1]} rotation={[Math.PI / 2, 0, 0]} />
-              <Lightformer intensity={1} position={[0, 0, 6]} scale={[5, 5, 1]} />
+              <mesh scale={40}><sphereGeometry args={[1, 24, 24]} /><meshBasicMaterial color="#a99b90" side={BackSide} /></mesh>
+              <Lightformer intensity={5} position={[-3, 2, 4]} scale={[0.9, 6, 1]} rotation={[0, 0.4, 0]} />
+              <Lightformer intensity={3} position={[4, 1, 1]} scale={[0.7, 5, 1]} rotation={[0, -Math.PI / 2, 0]} />
+              <Lightformer intensity={3} position={[0, 5, -2]} scale={[5, 3, 1]} rotation={[Math.PI / 2, 0, 0]} />
+              <Lightformer intensity={1.4} position={[0, 0, 6]} scale={[5, 5, 1]} />
+              <Lightformer intensity={0.02} position={[-1.4, 0, 3]} scale={[0.24, 6, 1]} />
             </Environment>
-            <SceneBoundary fallback={null}>
-              <Suspense fallback={null}><Lettering paused={still} scrollProgress={scrollProgress} /></Suspense>
-            </SceneBoundary>
-            <FoundationStick paused={still} onReady={onReady} />
-            <ContactShadows position={[0, -2.15, 0]} opacity={0.22} scale={8} blur={3} far={4} resolution={128} frames={1} color="#624a36" />
+            <EditorialStage paused={still} onReady={onReady} scrollProgress={scrollProgress} variant={variant} />
           </Canvas>
         </SceneBoundary>
       ) : null}
     </div>
   );
 }
+

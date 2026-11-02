@@ -1,234 +1,204 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-02T16:17:51.052Z",
+  "generatedAt": "2026-11-02T19:52:37.760Z",
   "title": "Design System: NURRIE",
   "extensions": {
     "colorMeta": {
-      "cocoa": {
-        "role": "primary",
-        "displayName": "Cocoa",
-        "tonalRamp": [
-          "oklch(15.0% 0.0114 43.3)",
-          "oklch(26.4% 0.0206 43.3)",
-          "oklch(37.9% 0.0268 43.3)",
-          "oklch(49.3% 0.0291 43.3)",
-          "oklch(60.7% 0.0273 43.3)",
-          "oklch(72.1% 0.0215 43.3)",
-          "oklch(83.6% 0.0126 43.3)",
-          "oklch(95.0% 0.0019 43.3)"
-        ]
-      },
       "ivory": {
         "role": "neutral",
-        "displayName": "Ivory",
+        "displayName": "ivory",
         "tonalRamp": [
-          "oklch(15.0% 0.0040 81.8)",
-          "oklch(26.4% 0.0073 81.8)",
-          "oklch(37.9% 0.0094 81.8)",
+          "oklch(15.0% 0.0047 81.8)",
+          "oklch(26.4% 0.0076 81.8)",
+          "oklch(37.9% 0.0095 81.8)",
           "oklch(49.3% 0.0103 81.8)",
-          "oklch(60.7% 0.0096 81.8)",
-          "oklch(72.1% 0.0076 81.8)",
-          "oklch(83.6% 0.0045 81.8)",
-          "oklch(95.0% 0.0007 81.8)"
+          "oklch(60.7% 0.0097 81.8)",
+          "oklch(72.1% 0.0079 81.8)",
+          "oklch(83.6% 0.0051 81.8)",
+          "oklch(95.0% 0.0016 81.8)"
         ]
       },
-      "paper": {
-        "role": "neutral",
-        "displayName": "Paper",
+      "cocoa": {
+        "role": "primary",
+        "displayName": "cocoa",
         "tonalRamp": [
-          "oklch(15.0% 0.0063 73.7)",
-          "oklch(26.4% 0.0113 73.7)",
-          "oklch(37.9% 0.0148 73.7)",
-          "oklch(49.3% 0.0161 73.7)",
-          "oklch(60.7% 0.0150 73.7)",
-          "oklch(72.1% 0.0119 73.7)",
-          "oklch(83.6% 0.0070 73.7)",
-          "oklch(95.0% 0.0011 73.7)"
+          "oklch(15.0% 0.0132 43.3)",
+          "oklch(26.4% 0.0215 43.3)",
+          "oklch(37.9% 0.0270 43.3)",
+          "oklch(49.3% 0.0291 43.3)",
+          "oklch(60.7% 0.0275 43.3)",
+          "oklch(72.1% 0.0224 43.3)",
+          "oklch(83.6% 0.0144 43.3)",
+          "oklch(95.0% 0.0046 43.3)"
+        ]
+      },
+      "rose": {
+        "role": "secondary",
+        "displayName": "rose",
+        "tonalRamp": [
+          "oklch(15.0% 0.0243 53.6)",
+          "oklch(26.4% 0.0396 53.6)",
+          "oklch(37.9% 0.0497 53.6)",
+          "oklch(49.3% 0.0536 53.6)",
+          "oklch(60.7% 0.0506 53.6)",
+          "oklch(72.1% 0.0411 53.6)",
+          "oklch(83.6% 0.0264 53.6)",
+          "oklch(95.0% 0.0084 53.6)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "ink",
+        "tonalRamp": [
+          "oklch(15.0% 0.0124 38.1)",
+          "oklch(26.4% 0.0201 38.1)",
+          "oklch(37.9% 0.0253 38.1)",
+          "oklch(49.3% 0.0272 38.1)",
+          "oklch(60.7% 0.0257 38.1)",
+          "oklch(72.1% 0.0209 38.1)",
+          "oklch(83.6% 0.0134 38.1)",
+          "oklch(95.0% 0.0043 38.1)"
+        ]
+      },
+      "soft": {
+        "role": "neutral",
+        "displayName": "soft",
+        "tonalRamp": [
+          "oklch(15.0% 0.0086 75.3)",
+          "oklch(26.4% 0.0140 75.3)",
+          "oklch(37.9% 0.0176 75.3)",
+          "oklch(49.3% 0.0189 75.3)",
+          "oklch(60.7% 0.0179 75.3)",
+          "oklch(72.1% 0.0145 75.3)",
+          "oklch(83.6% 0.0093 75.3)",
+          "oklch(95.0% 0.0030 75.3)"
         ]
       },
       "muted": {
         "role": "neutral",
-        "displayName": "Muted cocoa",
+        "displayName": "muted",
         "tonalRamp": [
-          "oklch(15.0% 0.0126 49.2)",
-          "oklch(26.4% 0.0227 49.2)",
-          "oklch(37.9% 0.0295 49.2)",
+          "oklch(15.0% 0.0146 49.2)",
+          "oklch(26.4% 0.0237 49.2)",
+          "oklch(37.9% 0.0298 49.2)",
           "oklch(49.3% 0.0321 49.2)",
-          "oklch(60.7% 0.0301 49.2)",
-          "oklch(72.1% 0.0237 49.2)",
-          "oklch(83.6% 0.0139 49.2)",
-          "oklch(95.0% 0.0021 49.2)"
-        ]
-      },
-      "sand": {
-        "role": "neutral",
-        "displayName": "Sand",
-        "tonalRamp": [
-          "oklch(15.0% 0.0112 76.2)",
-          "oklch(26.4% 0.0202 76.2)",
-          "oklch(37.9% 0.0264 76.2)",
-          "oklch(49.3% 0.0287 76.2)",
-          "oklch(60.7% 0.0269 76.2)",
-          "oklch(72.1% 0.0212 76.2)",
-          "oklch(83.6% 0.0125 76.2)",
-          "oklch(95.0% 0.0019 76.2)"
-        ]
-      },
-      "signup-sand": {
-        "role": "neutral",
-        "displayName": "Signup sand",
-        "tonalRamp": [
-          "oklch(15.0% 0.0113 74.3)",
-          "oklch(26.4% 0.0205 74.3)",
-          "oklch(37.9% 0.0267 74.3)",
-          "oklch(49.3% 0.0290 74.3)",
-          "oklch(60.7% 0.0272 74.3)",
-          "oklch(72.1% 0.0214 74.3)",
-          "oklch(83.6% 0.0126 74.3)",
-          "oklch(95.0% 0.0019 74.3)"
-        ]
-      },
-      "button-hover": {
-        "role": "primary",
-        "displayName": "Button hover",
-        "tonalRamp": [
-          "oklch(15.0% 0.0168 44.9)",
-          "oklch(26.4% 0.0304 44.9)",
-          "oklch(37.9% 0.0396 44.9)",
-          "oklch(49.3% 0.0431 44.9)",
-          "oklch(60.7% 0.0404 44.9)",
-          "oklch(72.1% 0.0318 44.9)",
-          "oklch(83.6% 0.0187 44.9)",
-          "oklch(95.0% 0.0029 44.9)"
-        ]
-      },
-      "submit-hover": {
-        "role": "primary",
-        "displayName": "Submit hover",
-        "tonalRamp": [
-          "oklch(15.0% 0.0175 48.3)",
-          "oklch(26.4% 0.0316 48.3)",
-          "oklch(37.9% 0.0412 48.3)",
-          "oklch(49.3% 0.0448 48.3)",
-          "oklch(60.7% 0.0420 48.3)",
-          "oklch(72.1% 0.0331 48.3)",
-          "oklch(83.6% 0.0195 48.3)",
-          "oklch(95.0% 0.0030 48.3)"
-        ]
-      },
-      "field-placeholder": {
-        "role": "neutral",
-        "displayName": "Field placeholder",
-        "tonalRamp": [
-          "oklch(15.0% 0.0137 55.4)",
-          "oklch(26.4% 0.0248 55.4)",
-          "oklch(37.9% 0.0323 55.4)",
-          "oklch(49.3% 0.0351 55.4)",
-          "oklch(60.7% 0.0329 55.4)",
-          "oklch(72.1% 0.0259 55.4)",
-          "oklch(83.6% 0.0152 55.4)",
-          "oklch(95.0% 0.0023 55.4)"
-        ]
-      },
-      "helper": {
-        "role": "neutral",
-        "displayName": "Helper text",
-        "tonalRamp": [
-          "oklch(15.0% 0.0145 57.1)",
-          "oklch(26.4% 0.0262 57.1)",
-          "oklch(37.9% 0.0341 57.1)",
-          "oklch(49.3% 0.0371 57.1)",
-          "oklch(60.7% 0.0348 57.1)",
-          "oklch(72.1% 0.0274 57.1)",
-          "oklch(83.6% 0.0161 57.1)",
-          "oklch(95.0% 0.0025 57.1)"
-        ]
-      },
-      "error": {
-        "role": "semantic",
-        "displayName": "Error",
-        "tonalRamp": [
-          "oklch(15.0% 0.0493 29.1)",
-          "oklch(26.4% 0.0892 29.1)",
-          "oklch(37.9% 0.1161 29.1)",
-          "oklch(49.3% 0.1264 29.1)",
-          "oklch(60.7% 0.1184 29.1)",
-          "oklch(72.1% 0.0933 29.1)",
-          "oklch(83.6% 0.0548 29.1)",
-          "oklch(95.0% 0.0084 29.1)"
-        ]
-      },
-      "inactive-tab": {
-        "role": "neutral",
-        "displayName": "Inactive ritual",
-        "tonalRamp": [
-          "oklch(15.0% 0.0135 54.3)",
-          "oklch(26.4% 0.0244 54.3)",
-          "oklch(37.9% 0.0318 54.3)",
-          "oklch(49.3% 0.0346 54.3)",
-          "oklch(60.7% 0.0324 54.3)",
-          "oklch(72.1% 0.0256 54.3)",
-          "oklch(83.6% 0.0150 54.3)",
-          "oklch(95.0% 0.0023 54.3)"
-        ]
-      },
-      "inverse-secondary": {
-        "role": "neutral",
-        "displayName": "Inverse supporting copy"
-      },
-      "inverse-caption": {
-        "role": "neutral",
-        "displayName": "Reveal supporting caption"
-      },
-      "footer-secondary": {
-        "role": "neutral",
-        "displayName": "Footer secondary",
-        "tonalRamp": [
-          "oklch(15.0% 0.0097 59.3)",
-          "oklch(26.4% 0.0174 59.3)",
-          "oklch(37.9% 0.0227 59.3)",
-          "oklch(49.3% 0.0247 59.3)",
-          "oklch(60.7% 0.0232 59.3)",
-          "oklch(72.1% 0.0183 59.3)",
-          "oklch(83.6% 0.0107 59.3)",
-          "oklch(95.0% 0.0017 59.3)"
+          "oklch(60.7% 0.0303 49.2)",
+          "oklch(72.1% 0.0247 49.2)",
+          "oklch(83.6% 0.0159 49.2)",
+          "oklch(95.0% 0.0050 49.2)"
         ]
       },
       "pearl": {
         "role": "neutral",
-        "displayName": "Product pearl ivory"
+        "displayName": "pearl",
+        "tonalRamp": [
+          "oklch(15.0% 0.0075 79.4)",
+          "oklch(26.4% 0.0122 79.4)",
+          "oklch(37.9% 0.0153 79.4)",
+          "oklch(49.3% 0.0165 79.4)",
+          "oklch(60.7% 0.0155 79.4)",
+          "oklch(72.1% 0.0126 79.4)",
+          "oklch(83.6% 0.0081 79.4)",
+          "oklch(95.0% 0.0026 79.4)"
+        ]
       },
       "rose-gold": {
         "role": "secondary",
-        "displayName": "Product rose gold"
+        "displayName": "rose gold",
+        "tonalRamp": [
+          "oklch(15.0% 0.0308 43.4)",
+          "oklch(26.4% 0.0500 43.4)",
+          "oklch(37.9% 0.0629 43.4)",
+          "oklch(49.3% 0.0678 43.4)",
+          "oklch(60.7% 0.0640 43.4)",
+          "oklch(72.1% 0.0520 43.4)",
+          "oklch(83.6% 0.0335 43.4)",
+          "oklch(95.0% 0.0106 43.4)"
+        ]
       },
       "formula-white": {
         "role": "neutral",
-        "displayName": "White foundation"
+        "displayName": "formula white",
+        "tonalRamp": [
+          "oklch(15.0% 0.0037 91.5)",
+          "oklch(26.4% 0.0060 91.5)",
+          "oklch(37.9% 0.0076 91.5)",
+          "oklch(49.3% 0.0082 91.5)",
+          "oklch(60.7% 0.0077 91.5)",
+          "oklch(72.1% 0.0063 91.5)",
+          "oklch(83.6% 0.0040 91.5)",
+          "oklch(95.0% 0.0013 91.5)"
+        ]
       },
-      "design-surface": {
+      "inverse-secondary": {
         "role": "neutral",
-        "displayName": "Sculpture stage"
+        "displayName": "inverse secondary",
+        "tonalRamp": [
+          "oklch(15.0% 0.0092 70.0)",
+          "oklch(26.4% 0.0149 70.0)",
+          "oklch(37.9% 0.0188 70.0)",
+          "oklch(49.3% 0.0202 70.0)",
+          "oklch(60.7% 0.0191 70.0)",
+          "oklch(72.1% 0.0155 70.0)",
+          "oklch(83.6% 0.0100 70.0)",
+          "oklch(95.0% 0.0032 70.0)"
+        ]
       },
-      "lettering": {
+      "inverse-caption": {
         "role": "neutral",
-        "displayName": "Sculptural lettering"
+        "displayName": "inverse caption",
+        "tonalRamp": [
+          "oklch(15.0% 0.0111 63.4)",
+          "oklch(26.4% 0.0181 63.4)",
+          "oklch(37.9% 0.0227 63.4)",
+          "oklch(49.3% 0.0245 63.4)",
+          "oklch(60.7% 0.0231 63.4)",
+          "oklch(72.1% 0.0188 63.4)",
+          "oklch(83.6% 0.0121 63.4)",
+          "oklch(95.0% 0.0038 63.4)"
+        ]
       },
-      "reveal-surface": {
+      "field-placeholder": {
         "role": "neutral",
-        "displayName": "Illustrative reveal surface"
+        "displayName": "field placeholder",
+        "tonalRamp": [
+          "oklch(15.0% 0.0146 49.2)",
+          "oklch(26.4% 0.0237 49.2)",
+          "oklch(37.9% 0.0298 49.2)",
+          "oklch(49.3% 0.0321 49.2)",
+          "oklch(60.7% 0.0303 49.2)",
+          "oklch(72.1% 0.0247 49.2)",
+          "oklch(83.6% 0.0159 49.2)",
+          "oklch(95.0% 0.0050 49.2)"
+        ]
       },
-      "reveal-white": {
-        "role": "neutral",
-        "displayName": "Illustrative starting white"
+      "error": {
+        "role": "semantic",
+        "displayName": "error",
+        "tonalRamp": [
+          "oklch(15.0% 0.0690 29.5)",
+          "oklch(26.4% 0.1121 29.5)",
+          "oklch(37.9% 0.1410 29.5)",
+          "oklch(49.3% 0.1519 29.5)",
+          "oklch(60.7% 0.1434 29.5)",
+          "oklch(72.1% 0.1166 29.5)",
+          "oklch(83.6% 0.0750 29.5)",
+          "oklch(95.0% 0.0238 29.5)"
+        ]
       },
-      "reveal-blended": {
+      "track": {
         "role": "neutral",
-        "displayName": "Illustrative blended colour"
-      },
-      "reveal-highlight": {
-        "role": "neutral",
-        "displayName": "Cream-study surface highlight"
+        "displayName": "track",
+        "tonalRamp": [
+          "oklch(15.0% 0.0180 57.8)",
+          "oklch(26.4% 0.0292 57.8)",
+          "oklch(37.9% 0.0367 57.8)",
+          "oklch(49.3% 0.0395 57.8)",
+          "oklch(60.7% 0.0373 57.8)",
+          "oklch(72.1% 0.0304 57.8)",
+          "oklch(83.6% 0.0195 57.8)",
+          "oklch(95.0% 0.0062 57.8)"
+        ]
       }
     },
     "typographyMeta": {
@@ -267,43 +237,33 @@
     ],
     "motion": [
       {
-        "name": "control-feedback",
-        "value": "0.25s",
-        "purpose": "Primary control background, movement, navigation underline, and ritual selection."
+        "name": "standard-ease",
+        "value": "cubic-bezier(.2,.7,.2,1)",
+        "purpose": "Button and link state transitions."
       },
       {
-        "name": "small-feedback",
-        "value": "0.2s",
-        "purpose": "Arrow shifts, motion-control hover, and submit hover."
+        "name": "monument-entry",
+        "value": "1.15s; stagger 0.045s; power3.out",
+        "purpose": "Single visible-default masthead entrance; disabled for reduced motion."
       },
       {
-        "name": "ritual-enter",
-        "value": "0.4s ease-out",
-        "purpose": "Description changes from opacity 0.6 and translateY(7px) to rest."
-      },
-      {
-        "name": "reduced-motion",
-        "value": "none",
-        "purpose": "CSS transitions and keyframes stop. Scene honors the OS setting and displays Motion reduced instead of playback control."
-      },
-      {
-        "name": "formula-reveal",
-        "value": "0.12s ease-out",
-        "purpose": "User-controlled colour, spread, and diminishing ridges/shadow on an authored textured SVG cream smear. Progress is not measured product performance."
+        "name": "scroll-story",
+        "value": "scrub 0.6",
+        "purpose": "Subtle product and portrait motion; manual slider overrides scroll progress."
       }
     ],
     "breakpoints": [
       {
-        "name": "wide-min",
-        "value": "1500px"
+        "name": "phone",
+        "value": "700px"
       },
       {
-        "name": "tablet-max",
-        "value": "1000px"
+        "name": "tablet",
+        "value": "899px"
       },
       {
-        "name": "phone-max",
-        "value": "680px"
+        "name": "compact-desktop",
+        "value": "1100px"
       }
     ],
     "productAuthority": {
@@ -368,118 +328,91 @@
   },
   "components": [
     {
-      "name": "Primary invitation",
+      "name": "Rose invitation",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Square cocoa invitation with a trailing arrow.",
-      "html": "<button class=\"ds-primary\">Be first to meet NURRIE <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></button>",
-      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:space-between;gap:36px;min-height:57px;padding:17px 26px;border:0;border-radius:0;background:var(--cocoa,#34231c);color:var(--ivory,#f2eee7);font:400 14px var(--body,'General Sans',Arial,sans-serif);cursor:pointer;transition:background .25s,transform .25s}.ds-primary:hover{background:#583d31;transform:translateY(-2px)}.ds-primary:active{transform:translateY(1px)}.ds-primary svg{transition:transform .2s}.ds-primary:hover svg{transform:translate(3px,-3px)}.ds-primary:focus-visible{outline:2px solid currentColor;outline-offset:6px}@media(prefers-reduced-motion:reduce){.ds-primary,.ds-primary svg{transition:none}.ds-primary:hover{transform:none}}"
+      "description": "Warm rose action with cocoa ink and an arrow.",
+      "html": "<button class=\"ds-button\">Get first access <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></button>",
+      "css": ".ds-button{font-family:var(--body,\"General Sans\",Arial,sans-serif);display:inline-flex;align-items:center;gap:36px;min-height:56px;padding:16px 23px;border:0;border-radius:2px;background:var(--rose,#d6b19a);color:var(--ink,#2c1c17);font-size:14px;cursor:pointer;transition:background .2s,transform .3s}.ds-button:hover{background:var(--cocoa,#34231c);color:var(--ivory,#f2eee7);transform:translateY(-3px)}.ds-button:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
     },
     {
-      "name": "Submit button",
+      "name": "Cocoa action",
       "kind": "button",
-      "refersTo": "submit",
-      "description": "Compact control integrated with the email input row.",
-      "html": "<button class=\"ds-submit\">Join the list <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></button>",
-      "css": ".ds-submit{display:inline-flex;align-items:center;gap:18px;background:var(--cocoa,#34231c);color:var(--ivory,#f2eee7);border:0;border-radius:0;padding:12px 18px;font:400 14px var(--body,'General Sans',Arial,sans-serif);white-space:nowrap;cursor:pointer;transition:background .2s}.ds-submit:hover{background:#553a2c}.ds-submit:disabled{opacity:.65;cursor:wait}.ds-submit:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
+      "refersTo": "button-dark",
+      "description": "Primary form and privacy actions.",
+      "html": "<button class=\"ds-dark\">Join the list</button>",
+      "css": ".ds-dark{font-family:var(--body,\"General Sans\",Arial,sans-serif);padding:17px 22px;border:0;border-radius:2px;background:var(--cocoa,#34231c);color:var(--ivory,#f2eee7);font-size:14px;cursor:pointer;transition:background .2s}.ds-dark:hover{background:var(--ink,#2c1c17)}.ds-dark:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
     },
     {
       "name": "Email field",
       "kind": "input",
       "refersTo": "email-field",
-      "description": "Transparent email input over the warm signup surface.",
-      "html": "<div class=\"ds-field\"><label for=\"ds-email\">Your email address</label><input id=\"ds-email\" type=\"email\" placeholder=\"you@example.com\" autocomplete=\"email\" required></div>",
-      "css": ".ds-field{background:#d9cbb9;color:var(--cocoa,#34231c);padding:24px;font-family:var(--body,'General Sans',Arial,sans-serif)}.ds-field label{display:block;font-size:13px;margin-bottom:15px}.ds-field input{display:block;width:100%;min-width:0;padding:12px 0;border:0;border-bottom:1px solid var(--cocoa,#34231c);border-radius:0;background:transparent;font:400 18px var(--body,'General Sans',Arial,sans-serif);color:var(--cocoa,#34231c);caret-color:var(--cocoa,#34231c)}.ds-field input::placeholder{color:#705b4d}.ds-field input:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
+      "description": "Transparent field with an understated cocoa rule.",
+      "html": "<label class=\"ds-label\" for=\"ds-email\">Your email address</label><input class=\"ds-email\" id=\"ds-email\" type=\"email\" placeholder=\"you@example.com\">",
+      "css": ".ds-label{font-family:var(--body,\"General Sans\",Arial,sans-serif);display:block;font-size:13px;margin-bottom:15px}.ds-email{font-family:var(--body,\"General Sans\",Arial,sans-serif);width:100%;padding:11px 0 17px;background:transparent;color:var(--cocoa,#34231c);border:0;border-bottom:1px solid #ad9584;font-size:24px;border-radius:0}.ds-email::placeholder{color:var(--muted,#776257)}.ds-email:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
     },
     {
-      "name": "Navigation",
+      "name": "Editorial navigation",
       "kind": "nav",
-      "description": "Serif wordmark, colour-change and stick links, and first-access invitation. Phone layout retains wordmark and invitation.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"NURRIE example navigation\"><a class=\"ds-wordmark\" href=\"#main\">NURRIE</a><a class=\"ds-navlink\" href=\"#the-change\">The colour change</a><a class=\"ds-navlink\" href=\"#the-stick\">The stick</a><a class=\"ds-navlink ds-invitation\" href=\"#first-access\">Get first access <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a></nav>",
-      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--ivory,#f2eee7);color:var(--cocoa,#34231c);padding:24px}.ds-nav a{color:inherit;text-decoration:none}.ds-wordmark{font:400 41px/1 var(--display,Gambarino,Georgia,serif);letter-spacing:-.04em}.ds-navlink{position:relative;padding:8px 0;font:400 14px var(--body,'General Sans',Arial,sans-serif)}.ds-invitation{display:flex;gap:20px;align-items:center}.ds-navlink::after{content:'';height:1px;position:absolute;left:0;bottom:3px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s}.ds-navlink:hover::after{transform:scaleX(1)}.ds-nav a:focus-visible{outline:2px solid currentColor;outline-offset:6px}@media(max-width:680px){.ds-navlink:not(.ds-invitation){display:none}.ds-wordmark{font-size:32px}.ds-invitation{font-size:12px;gap:10px}}"
+      "description": "Quiet links around a prominent typographic campaign.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Beauty, becoming.</a><a href=\"#the-stick\">The stick</a><a href=\"#first-access\">Join the first drop</a></nav>",
+      "css": ".ds-nav{font-family:var(--body,\"General Sans\",Arial,sans-serif);display:flex;align-items:center;justify-content:space-between;gap:26px;padding:20px;color:var(--cocoa,#34231c);background:var(--ivory,#f2eee7);font-size:13px}.ds-nav a{color:inherit;text-decoration:none;padding:12px 0}.ds-nav a:hover{text-decoration:underline;text-underline-offset:6px}.ds-nav a:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
     },
     {
       "name": "Ritual selector",
       "kind": "custom",
-      "description": "Swipe the WHITE formula, blend with the built-in brush, complete the ritual. Large serif tabs have roving focus and Left/Right/Home/End handling in NurrieHome.tsx.",
-      "html": "<div class=\"ds-ritual\"><button class=\"ds-step ds-selected\" type=\"button\" aria-pressed=\"true\">Swipe.</button><button class=\"ds-step\" type=\"button\" aria-pressed=\"false\">Blend.</button><button class=\"ds-step\" type=\"button\" aria-pressed=\"false\">Be.</button></div>",
-      "css": ".ds-ritual{display:flex;gap:22px;padding:16px;background:var(--ivory,#f2eee7)}.ds-step{border:0;background:transparent;font:400 clamp(30px,3.7vw,57px) var(--display,Gambarino,Georgia,serif);color:#8c7668;padding:0 0 8px;cursor:pointer;transition:color .25s,transform .25s}.ds-step.ds-selected{color:var(--cocoa,#34231c);transform:translateY(-4px)}.ds-step.ds-selected::after{content:'';display:block;height:4px;width:20px;border-radius:2px;background:var(--cocoa,#34231c);margin-top:8px}.ds-step:hover{color:var(--cocoa,#34231c)}.ds-step:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
+      "description": "Three keyboard-navigable steps with a persistent underline on the selected step.",
+      "html": "<div class=\"ds-tabs\"><button class=\"ds-active\">Swipe</button><button>Blend</button><button>Be</button></div>",
+      "css": ".ds-tabs{display:flex;gap:28px}.ds-tabs button{padding:0 0 11px;border:0;border-bottom:3px solid transparent;background:transparent;color:var(--cocoa,#34231c);font:400 32px var(--display,Gambarino,Georgia,serif);cursor:pointer}.ds-tabs .ds-active,.ds-tabs button:hover{border-bottom-color:currentColor}.ds-tabs button:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
+    },
+    {
+      "name": "Colour study",
+      "kind": "custom",
+      "description": "Transparent cream photograph, tinted by an SVG colour matrix in the live interactive component. The caption is always adjacent.",
+      "html": "<div class=\"ds-reveal\"><img src=\"/images/cream-swipe.webp\" alt=\"Illustrative white cream swipe\"><label for=\"ds-range\">Slide to see the change</label><input id=\"ds-range\" type=\"range\" min=\"0\" max=\"100\" value=\"0\"><p>Illustration only. This is not a shade match or a product result.</p></div>",
+      "css": ".ds-reveal{font-family:var(--body,\"General Sans\",Arial,sans-serif);padding:24px;background:var(--cocoa,#34231c);color:var(--ivory,#f2eee7)}.ds-reveal img{width:100%;height:280px;object-fit:contain}.ds-reveal label{display:block;font-size:14px}.ds-reveal input{width:100%;height:44px;accent-color:var(--rose,#d6b19a)}.ds-reveal input:focus-visible{outline:2px solid currentColor;outline-offset:6px}.ds-reveal p{font-size:13px;color:#d9cabd;line-height:1.5}"
     },
     {
       "name": "Motion control",
       "kind": "button",
       "refersTo": "motion-control",
-      "description": "Circular 44px pause control; replaced by Motion reduced when the OS preference is active.",
-      "html": "<button class=\"ds-motion\" type=\"button\" aria-label=\"Pause product animation\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M8 5v14M16 5v14\"/></svg></button>",
-      "css": ".ds-motion{border:1px solid #b9aa9d;border-radius:50%;background:transparent;color:var(--cocoa,#34231c);width:44px;height:44px;display:grid;place-items:center;cursor:pointer;transition:background .2s}.ds-motion:hover{background:var(--paper,#e8e0d6)}.ds-motion:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
-    },
-    {
-      "name": "Question disclosure",
-      "kind": "custom",
-      "description": "Native details and summary with a plus/minus indicator.",
-      "html": "<details class=\"ds-question\"><summary>When will the foundation stick launch?<span class=\"ds-plus\" aria-hidden=\"true\">+</span><span class=\"ds-minus\" aria-hidden=\"true\">−</span></summary><p>We’re still preparing our first release. Join the list and we’ll share the launch date when it’s ready.</p></details>",
-      "css": ".ds-question{padding:15px 0;background:var(--ivory,#f2eee7);color:var(--cocoa,#34231c);font-family:var(--body,'General Sans',Arial,sans-serif)}.ds-question summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:16px;line-height:1.5}.ds-question summary::-webkit-details-marker{display:none}.ds-question .ds-minus,.ds-question[open] .ds-plus{display:none}.ds-question[open] .ds-minus{display:block}.ds-question p{font-size:14px;line-height:1.75;max-width:420px;margin-top:20px;color:#665144}.ds-question summary:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
-    },
-    {
-      "name": "Supplied product hero",
-      "kind": "custom",
-      "description": "The exact supplied product image leads the first viewport. It shows pearl ivory and rose gold with WHITE foundation and brush ends. Uses responsive WebP derivatives; the supplied PNG is retained as source.",
-      "html": "<figure class=\"ds-product\"><img src=\"/images/product-duo-1536.webp\" srcset=\"/images/product-duo-640.webp 640w, /images/product-duo-1024.webp 1024w, /images/product-duo-1536.webp 1536w\" sizes=\"(max-width: 680px) 615px, 1035px\" alt=\"NURRIE pearl ivory and rose gold double-ended stick: white foundation and built-in blending brush\" width=\"1536\" height=\"1024\"><figcaption>One stick. Both sides of your ritual.</figcaption></figure>",
-      "css": ".ds-product{position:relative;margin:0;background:var(--ivory,#f2eee7);color:var(--cocoa,#34231c);height:540px;overflow:hidden}.ds-product img{display:block;width:100%;height:100%;object-fit:cover;object-position:51% center}.ds-product figcaption{position:absolute;bottom:26px;left:27px;right:27px;font:400 12px var(--body,'General Sans',Arial,sans-serif)}@media(max-width:680px){.ds-product{height:410px}}"
-    },
-    {
-      "name": "Illustrative colour reveal",
-      "kind": "custom",
-      "refersTo": "colour-reveal",
-      "description": "Native 0–100 range with reset, stage labels, and accessible value text. Authored textured SVG cream smear with highlights and ridges replaces the initial CSS oval. The static sample shows the white starting state; ColourReveal.tsx owns live behavior. Not a shade match or product result.",
-      "html": "<div class=\"ds-reveal\"><div class=\"ds-reveal-surface\" style=\"--formula-colour:#faf7f0;--blend:0\"><svg class=\"formula-art\" viewBox=\"0 0 420 300\" aria-hidden=\"true\">\n          <defs>\n            <linearGradient id=\"cream-light\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\".8\">\n              <stop offset=\"0\" stop-color=\"#fff\" stop-opacity=\".65\" />\n              <stop offset=\".38\" stop-color=\"#fff\" stop-opacity=\"0\" />\n              <stop offset=\"1\" stop-color=\"#633b25\" stop-opacity=\".17\" />\n            </linearGradient>\n            <filter id=\"cream-grain\" x=\"-10%\" y=\"-10%\" width=\"120%\" height=\"120%\">\n              <feTurbulence type=\"fractalNoise\" baseFrequency=\".65\" numOctaves=\"3\" seed=\"8\" result=\"grain\" />\n              <feColorMatrix in=\"grain\" type=\"saturate\" values=\"0\" />\n              <feComposite in2=\"SourceGraphic\" operator=\"in\" />\n              <feBlend in=\"SourceGraphic\" mode=\"soft-light\" />\n            </filter>\n            <path id=\"cream-shape\" d=\"M114 203 C100 185 109 159 132 137 C158 110 204 78 253 62 C275 54 300 56 305 72 C312 94 289 114 269 130 C246 149 207 180 174 207 C158 221 133 222 121 215 L141 196 L115 211 L133 189 Z\" />\n          </defs>\n          <g class=\"cream-body\">\n            <use href=\"#cream-shape\" fill=\"var(--formula-colour)\" />\n            <use href=\"#cream-shape\" fill=\"url(#cream-light)\" />\n            <use class=\"cream-grain\" href=\"#cream-shape\" fill=\"var(--formula-colour)\" filter=\"url(#cream-grain)\" opacity=\".14\" />\n            <g class=\"cream-ridges\" fill=\"none\" stroke-linecap=\"round\">\n              <path d=\"M132 185 C170 144 237 91 280 76\" stroke=\"#fff\" stroke-opacity=\".45\" stroke-width=\"3\" />\n              <path d=\"M127 177 C169 133 224 93 269 72\" stroke=\"#fff\" stroke-opacity=\".28\" stroke-width=\"1\" />\n              <path d=\"M148 197 C176 168 246 113 281 93\" stroke=\"#fff\" stroke-opacity=\".36\" stroke-width=\"2\" />\n              <path d=\"M158 195 C196 163 238 131 265 108\" stroke=\"#976d52\" stroke-opacity=\".16\" stroke-width=\"1.5\" />\n              <path d=\"M140 179 C181 139 225 111 260 89\" stroke=\"#976d52\" stroke-opacity=\".12\" stroke-width=\"2\" />\n              <path d=\"M175 187 C209 158 244 132 262 115\" stroke=\"#fff\" stroke-opacity=\".28\" stroke-width=\"1\" />\n            </g>\n          </g>\n        </svg><span>White</span></div><label for=\"ds-blend\">Slide to blend</label><input id=\"ds-blend\" type=\"range\" min=\"0\" max=\"100\" value=\"0\" aria-valuetext=\"0% blended. Starts white.\"><p>An illustration of the colour change, not a shade match or a product result.</p></div>",
-      "css": ".ds-reveal{background:var(--cocoa,#34231c);color:var(--ivory,#f2eee7);padding:24px;font-family:var(--body,'General Sans',Arial,sans-serif)}.ds-reveal-surface{position:relative;height:315px;background:radial-gradient(ellipse at 20% 0%,#d8b79d 0%,#b89279 75%);display:grid;place-items:center}.ds-reveal .formula-art{width:100%;height:100%;overflow:visible}.ds-reveal .cream-body{transform-origin:50% 50%;filter:drop-shadow(2px 4px 3px rgb(73 41 23 / .15))}.ds-reveal-surface>span{position:absolute;left:22px;bottom:20px;color:#34231c;font:400 28px var(--display,Gambarino,Georgia,serif)}.ds-reveal label{display:block;margin-top:23px;font-size:14px}.ds-reveal input{width:100%;height:36px;accent-color:#e4c5ae}.ds-reveal p{font-size:13px;line-height:1.6;color:#d4c2b2}"
-    },
-    {
-      "name": "Sculptural double-ended pair",
-      "kind": "custom",
-      "refersTo": "product-stage",
-      "description": "Secondary R3F scene: two upright views show the white foundation and brush ends, pearl shells, rose-gold hardware, extruded NURRIE, studio light planes, and contact shadows. Pause, reduced-motion, visibility suspension, and supplied-image fallback are preserved.",
-      "html": "<div class=\"ds-scene-fallback\"><img src=\"/images/product-duo-1024.webp\" alt=\"Supplied product fallback for the interactive pearl and rose-gold double-ended NURRIE design\" width=\"1536\" height=\"1024\"></div>",
-      "css": ".ds-scene-fallback{height:430px;background:#e9ddd1}.ds-scene-fallback img{display:block;width:100%;height:100%;object-fit:contain}"
+      "description": "Persistent control for the R3F scene; respects reduced motion.",
+      "html": "<button class=\"ds-motion\" aria-label=\"Pause product animation\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M7 4h3v16H7zM14 4h3v16h-3z\"/></svg></button>",
+      "css": ".ds-motion{width:46px;height:46px;border:1px solid #ad9584;background:transparent;color:var(--cocoa,#34231c);border-radius:50%;display:grid;place-items:center;cursor:pointer}.ds-motion:hover{background:var(--soft,#e7ded2)}.ds-motion:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
     }
   ],
   "narrative": {
     "northStar": "Starts white. Becomes you.",
-    "overview": "The user-selected ivory-and-cocoa editorial world now follows the supplied product: a pearl ivory, rose-gold double-ended foundation stick with WHITE formula and a built-in blending brush. The user states that the formula changes colour as it is applied and blended, adapting to skin tone. This is the supplied product proposition, not independent clinical evidence or a promise of universal tone suitability.\n\n`public/images/product-duo.png` is retained as the authoritative source image; `source-assets/brand-board.jpeg` is the supplied identity reference. The first viewport serves responsive `product-duo-640.webp`, `product-duo-1024.webp`, and `product-duo-1536.webp` derivatives. The 3D fallback uses `product-duo-1024.webp`. The initial invented cocoa packaging and generated campaign are superseded. Cocoa interface styling must not become brown product casing.\n\nThis refresh records current `app/globals.css`, `components/NurrieHome.tsx`, `components/ColourReveal.tsx`, `components/KineticScene.tsx`, and the signup/privacy flow. Product truth belongs to `PRODUCT.md` and page strategy to `SURFACE.md`. This source-derived documentation does not certify browser review or publication status.\n\nThe owning task reports a passing scoped review of the saved `tablet-hero.jpg`, `tablet-colour.jpg`, and `mobile-colour.jpg` captures in `.impeccable/review`, successful keyboard slider checks, and no observed console errors. This evidence does not itself establish publication status.",
+    "overview": "Updated 3 November 2026 following the user’s return to the original ivory, cocoa and rose-gold palette.\n\n**Creative North Star: “Starts white. Becomes you.”**\n\nThe current implementation is an ivory, deep cocoa, and rose editorial campaign for the supplied pearl-ivory and rose-gold double-ended foundation stick. The formula starts white and changes colour as it is applied and blended, adapting to skin tone. That is the supplied product proposition, not independent clinical evidence or a promise of universal tone suitability.\n\n`public/images/product-duo.png` is the authoritative product image; `source-assets/brand-board.jpeg` is the supplied identity reference. The first viewport serves `product-duo-640.webp`, `product-duo-1024.webp`, and `product-duo-1536.webp`. The 3D fallback uses `product-duo-1024.webp`. The rejected brown product packaging must not return. The new cocoa-background editorial portrait is atmosphere, not product-result evidence. Cocoa belongs to the interface; the supplied product casing remains pearl ivory.\n\nThis file records `app/globals.css`, `components/NurrieHome.tsx`, `components/ColourReveal.tsx`, `components/KineticScene.tsx`, and the signup/privacy flow. Product truth belongs to `PRODUCT.md` and page strategy to `SURFACE.md`.",
     "keyCharacteristics": [
-      "Warm ivory and paper interface surfaces with cocoa ink and inverse fields.",
-      "Exact supplied pearl-and-rose-gold product image leads; the foundation starts WHITE.",
-      "Large Gambarino statements, General Sans copy, square controls, and open compositions.",
-      "Dark cocoa section explains colour change through a keyboard-tested native slider and an authored textured SVG cream smear.",
-      "Secondary studio-lit 3D pair with white foundation and brush, kinetic lettering, motion alternatives, and supplied-image fallback.",
-      "Explicit consent, durable D1 signup, and private token-based removal."
+      "Ivory ground, cocoa ink, rose as the single action accent.",
+      "Oversized Gambarino name as architecture, with short serif headlines and small sans-serif labels.",
+      "Rectangular controls, circular motion and discover marks, open compositions.",
+      "Studio-lit 3D material depth with pause, reduced-motion, and image fallback.",
+      "Supplied product photography owns the opening; the 3D pair sits in a secondary chapter.",
+      "An explicitly illustrative cream-swipe study explains white-to-skin-toned change."
     ],
     "rules": [
       {
-        "name": "Interface and product are distinct",
-        "body": "Cocoa belongs to interface ink and fields. The supplied product remains pearl ivory with rose gold and WHITE formula.",
+        "name": "The Cocoa Ground Rule",
+        "body": "Stay inside ivory, cocoa, rose, and the packaging metals. Preserve the restored cocoa interface and warm rose accents. Use the error colour only for a real error.",
         "section": "colors"
-      },
-      {
-        "name": "Illustration is not evidence",
-        "body": "Keep the colour slider qualifier visible. Its endpoints and percentage are not a shade match, universal suitability claim, or measured product result.",
-        "section": "components"
       }
     ],
     "dos": [
-      "**Do** preserve the supplied product-duo hero and fallback, white formula, and pearl/rose-gold packaging.",
-      "**Do** retain the illustrative qualifier beside the slider.",
-      "**Do** preserve editorial typography, warm surfaces, clear focus, keyboard controls, and motion alternatives.",
-      "**Do** keep explicit consent, durable registration, and private removal working.",
-      "**Do** verify rendered viewports and interactions before announcing visual approval."
+      "**Do** keep ivory, cocoa, and rose, with square controls and Gambarino/General Sans.",
+      "**Do** lead with the supplied product-duo image and white formula in pearl/rose-gold packaging.",
+      "**Do** keep the illustrative qualifier beside the colour slider.",
+      "**Do** preserve clear headings, direct registration language, visible focus, and readable measures.",
+      "**Do** provide a static path for motion-sensitive visitors and unsupported graphics."
     ],
     "donts": [
-      "**Don’t** restore the rejected cocoa product or generated cocoa campaign.",
-      "**Don’t** add origin or Korean-manufacture claims, clinical results, universal tone suitability, mechanism, ingredients, SPF, wear duration, or certifications without support.",
-      "**Don’t** present the slider as a shade chart, personalised recommendation, or measured result.",
-      "**Don’t** make registration or product explanation depend on animation loading.",
-      "**Don’t** treat source documentation as visual-test or publication evidence."
+      "**Don't** add cosmetic claims, launch details, or certifications the brand has not supplied.",
+      "**Don't** restore the rejected teal/coral interface or invented brown product casing.",
+      "**Don't** turn the slider into a shade chart or a measured result.",
+      "**Don't** replace the monument composition with generic feature cards.",
+      "**Don't** make registration depend on the product animation loading.",
+      "**Don't** treat this source-derived document as screenshot evidence."
     ]
   }
 }

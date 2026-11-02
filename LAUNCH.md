@@ -10,10 +10,11 @@ Publish with the Sites source workflow: refresh the source credential, pass it t
 
 ## Included
 
-- Editorial ivory/cocoa homepage centred on the supplied pearl-ivory and rose-gold double-ended product.
+- Monumental editorial homepage in the restored ivory, cocoa and rose-gold palette, centred on the supplied double-ended product.
 - White colour-changing formula proposition: “Starts white. Becomes you.”
 - Responsive WebP exports of the supplied image, local fonts, social metadata, favicon, sitemap and robots file.
-- Accessible blend slider with an authored cream illustration, clearly identified as illustrative rather than a shade match or product result.
+- Accessible blend slider using a transparent photographic cream study and SVG colour matrix, clearly identified as illustrative rather than a shade match or product result.
+- Warm cocoa editorial portrait, letter-by-letter masthead entrance, and restrained GSAP scroll motion with reduced-motion support.
 - Lazy-loaded R3F/Three.js product views and extruded typography, procedural studio lighting, pointer and section-relative scroll response, pause, reduced-motion handling, offscreen suspension and image fallback.
 - Durable interest registration with explicit consent, bounded validated requests, duplicate protection and a honeypot.
 - Private 256-bit removal links with only hashes stored in D1, and a privacy page supporting removal.
@@ -42,9 +43,9 @@ The integration test creates disposable `example.invalid` addresses and removes 
 
 ## Verification
 
-TypeScript, the production build and all eight validation tests passed. Final production API integration passed on 2 November 2026: pages/assets, consent, origin rejection, signup persistence, duplicate protection, token ownership, removal, repeated removal and re-registration. Synthetic records were removed.
+TypeScript, the production build and all eight validation tests passed. Production API integration passed on 3 November 2026: pages/assets, consent, origin rejection, signup persistence, duplicate protection, token ownership, removal, repeated removal and re-registration. Synthetic records were removed.
 
-Desktop, 768px tablet and 390px phone captures were reviewed. Browser checks covered the keyboard blend slider and reset, ritual tabs, animation pause, signup success and removal. No console errors were observed during the final interaction review. Evidence is in `.impeccable/review/`. This is not exhaustive cross-browser, physical-device or text-zoom certification.
+The restored palette was reviewed at 1440px desktop, 768px tablet and 390px phone widths. The tablet hero was corrected to separate text and product photography. Browser checks covered the keyboard blend slider and reset, keyboard ritual tabs, signup success and removal. Scene pause was checked during the preceding layout review; its behavior is unchanged by the palette update. No console errors were observed. Current evidence is prefixed `v3-` in `.impeccable/review/`; older captures document superseded designs. The finishing review was performed inline because the independent agent was unavailable. This is not exhaustive cross-browser, physical-device or text-zoom certification.
 
 ## Before the consumer launch
 
