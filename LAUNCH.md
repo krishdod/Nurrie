@@ -4,18 +4,18 @@ NURRIE is a React/Vinext website with a Cloudflare Worker and D1 database. Its f
 
 ## Site identity and publication
 
-Reuse project `appgprj_6ae3bda9ec2481918c04e7886c20d597` from `.openai/hosting.json`; never create a duplicate. Project access was verified on 2 November 2026. The Sites deployment record is the authority for the live URL and saved version. The origin in social metadata is the reserved site address, not an assertion of successful deployment.
+Reuse project `appgprj_6ae3bda9ec2481918c04e7886c20d597` from `.openai/hosting.json`; never create a duplicate. Owner-only access was verified on 3 November 2026. The Sites deployment record is the authority for the live URL and saved version. The origin in social metadata is the reserved site address, not an assertion of successful deployment.
 
 Publish with the Sites source workflow: refresh the source credential, pass it through hidden stdin, commit and push this checkout, package its build, then save and deploy that exact commit and archive. Keep tokens out of files, shell arguments and logs. Preserve current owner-only access until the brand requests public sharing.
 
 ## Included
 
-- Monumental editorial homepage in the restored ivory, cocoa and rose-gold palette, centred on the supplied double-ended product.
+- Interactive White / Blend / You opening in ivory, cocoa and rose gold, centred on the supplied double-ended product.
 - White colour-changing formula proposition: “Starts white. Becomes you.”
 - Responsive WebP exports of the supplied image, local fonts, social metadata, favicon, sitemap and robots file.
 - Accessible blend slider using a transparent photographic cream study and SVG colour matrix, clearly identified as illustrative rather than a shade match or product result.
-- Warm cocoa editorial portrait, letter-by-letter masthead entrance, and restrained GSAP scroll motion with reduced-motion support.
-- Lazy-loaded R3F/Three.js product views and extruded typography, procedural studio lighting, pointer and section-relative scroll response, pause, reduced-motion handling, offscreen suspension and image fallback.
+- Warm cocoa editorial portrait and restrained GSAP scroll motion with reduced-motion support.
+- Lazy-loaded R3F/Three.js single stick with extruded chapter typography, horizontal dragging, rotate button, animated brush reveal, studio lighting, native-scroll chapter navigation, pause, reduced-motion handling, offscreen suspension and image fallback.
 - Durable interest registration with explicit consent, bounded validated requests, duplicate protection and a honeypot.
 - Private 256-bit removal links with only hashes stored in D1, and a privacy page supporting removal.
 
@@ -41,11 +41,13 @@ node tests/waitlist.integration.mjs
 
 The integration test creates disposable `example.invalid` addresses and removes its records. Use a local preview, not a live subscriber database.
 
+For the current local-network preview, Wrangler runs on `http://192.168.1.2:4173`, bound to the private Ethernet address. The targeted Windows Firewall rule allows only this application's TCP port on the private local subnet. Keep the computer on and the phone on the same network. This address can change if DHCP assigns a different IP. The parent `nurrie-network-preview.json` records the active process; keep subscriber state in `.wrangler/state` when restarting.
+
 ## Verification
 
-TypeScript, the production build and all eight validation tests passed. Production API integration passed on 3 November 2026: pages/assets, consent, origin rejection, signup persistence, duplicate protection, token ownership, removal, repeated removal and re-registration. Synthetic records were removed.
+TypeScript, the production build and all eight validation tests passed. Production API integration passed on 3 November 2026 at the network preview: pages/assets, consent, origin rejection, signup persistence, duplicate protection, token ownership, removal, repeated removal and re-registration. Browser registration reached “You’re in the first chapter.” and its removal action reached “Your email has been removed from our interest list.” Synthetic records were removed.
 
-The restored palette was reviewed at 1440px desktop, 768px tablet and 390px phone widths. The tablet hero was corrected to separate text and product photography. Browser checks covered the keyboard blend slider and reset, keyboard ritual tabs, signup success and removal. Scene pause was checked during the preceding layout review; its behavior is unchanged by the palette update. No console errors were observed. Current evidence is prefixed `v3-` in `.impeccable/review/`; older captures document superseded designs. The finishing review was performed inline because the independent agent was unavailable. This is not exhaustive cross-browser, physical-device or text-zoom certification.
+The interactive opening was reviewed at 1280px desktop, 768px tablet, 390px phone and 375×667 small-phone sizes. Tablet object scale and mobile word/cap placement were corrected during review. Checks covered native scrolling, chapter selection, direct rotation, pause and the first-access link. Earlier keyboard slider, ritual-tab and privacy-flow checks remain in the v3 record. Current evidence is prefixed `v4-` in `.impeccable/review/`; older captures document superseded designs. The finishing review was performed inline because the independent agent was unavailable. Reduced-motion logic was reviewed in source; physical-phone and exhaustive cross-browser/text-zoom certification were not performed.
 
 ## Before the consumer launch
 

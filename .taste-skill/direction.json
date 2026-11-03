@@ -4,7 +4,7 @@
   "seed": 1309195580,
   "redraws": 0,
   "input": {
-    "brief": "NURRIE white to skin tone adapting foundation with double ended ivory rose gold stick, cinematic editorial launch in teal ivory coral",
+    "brief": "NURRIE colour-changing white foundation in pearl ivory and rose gold. Full-screen interactive White / Blend / You story with draggable sculptural product, brush reveal and clear first-access registration; original ivory, cocoa and rose palette.",
     "sector": "fashion",
     "tone": "luxury",
     "have": [
@@ -529,5 +529,18 @@
     }
   ],
   "scenes": [],
-  "brief": "NURRIE white-to-skin-tone foundation with double-ended pearl ivory and rose-gold stick. Monumental editorial typography, original ivory/cocoa/rose palette restored at user request, tactile colour study, and interactive sculptural product scene."
+  "brief": "NURRIE colour-changing white foundation in pearl ivory and rose gold. Full-screen interactive White / Blend / You story with draggable sculptural product, brush reveal and clear first-access registration; original ivory, cocoa and rose palette.",
+  "implementation": {
+    "updatedAt": "2026-11-03T14:25:58.714Z",
+    "direction": "Interactive product theatre",
+    "reason": "User requested a more distinctive opening after the photo-led monumental layout.",
+    "hero": "Live studio-lit WebGL single stick and kinetic chapter typography",
+    "palette": [
+      "#f2eee7",
+      "#34231c",
+      "#d6b19a"
+    ],
+    "fallback": "Supplied product photograph",
+    "referenceRole": "Earlier direction and inspiration retained as research, not the current page specification."
+  }
 }

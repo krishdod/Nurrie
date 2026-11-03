@@ -60,8 +60,9 @@ export default function PrivacyControls() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token }),
       });
-      const result = await response.json();
-      if (!response.ok || !result || typeof result !== "object" || !("ok" in result) || result.ok !== true) {
+      let result: { ok?: boolean } = {};
+      try { result = await response.json(); } catch { result = {}; }
+      if (!response.ok || result.ok !== true) {
         throw new Error("We couldn't remove your email yet. Please try again in a moment.");
       }
       try {

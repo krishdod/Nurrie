@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <main className="privacy-page">
+      <a className="skip-link" href="#removal-heading">Skip to leave the list</a>
       <a href="/">Back to NURRIE</a>
       <h1>Your email.<br />Your choice.</h1>
       <p>

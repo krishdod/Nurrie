@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-02T19:52:37.760Z",
+  "generatedAt": "2026-11-03T14:25:58.711Z",
   "title": "Design System: NURRIE",
   "extensions": {
     "colorMeta": {
@@ -223,33 +223,22 @@
         "purpose": "Consent, helper, launch note, design caption, footer, and reveal note/scale/reset labels use 13px."
       }
     },
-    "shadows": [
-      {
-        "name": "product-contact",
-        "value": "opacity 0.22; blur 3; resolution 128; frames 1",
-        "purpose": "ContactShadows beneath the secondary three-dimensional product pair."
-      },
-      {
-        "name": "cream-smear",
-        "value": "drop-shadow(2px 4px 3px rgb(73 41 23 / calc(.15 - var(--blend) * .13)))",
-        "purpose": "Shallow material shadow under the authored textured SVG cream smear, diminishing as the illustrative blend progresses."
-      }
-    ],
+    "shadows": [],
     "motion": [
       {
         "name": "standard-ease",
         "value": "cubic-bezier(.2,.7,.2,1)",
-        "purpose": "Button and link state transitions."
+        "purpose": "Button and link transitions."
       },
       {
-        "name": "monument-entry",
-        "value": "1.15s; stagger 0.045s; power3.out",
-        "purpose": "Single visible-default masthead entrance; disabled for reduced motion."
+        "name": "product-story",
+        "value": "265svh desktop; 235svh phone; MathUtils.damp smoothing",
+        "purpose": "Native scroll drives WHITE / BLEND / YOU typography, product tilt and brush reveal. Chapter buttons navigate the same progress. Reduced motion uses direct selection."
       },
       {
-        "name": "scroll-story",
-        "value": "scrub 0.6",
-        "purpose": "Subtle product and portrait motion; manual slider overrides scroll progress."
+        "name": "manual-rotation",
+        "value": "0.009 radians per horizontal pixel; quarter-turn button",
+        "purpose": "Drag the single stick or use the keyboard-accessible rotate control."
       }
     ],
     "breakpoints": [
@@ -272,7 +261,7 @@
       "heroAsset": "public/images/product-duo-1536.webp",
       "identityReference": "source-assets/brand-board.jpeg",
       "fallbackAsset": "public/images/product-duo-1024.webp",
-      "illustrationQualifier": "An illustration of the colour change, not a shade match or a product result.",
+      "illustrationQualifier": "Illustration only. This is not a shade match or a product result.",
       "rejectedDirection": "Invented cocoa casing, beige bullet, floating cocoa cap, and generated cocoa campaign.",
       "claimBoundary": "No country-of-origin or Korean-manufacture claims, clinical results, universal tone compatibility, mechanism, ingredients, SPF, wear duration, certifications, or unannounced pricing/date.",
       "sourceAsset": "public/images/product-duo.png",
@@ -280,27 +269,24 @@
         "public/images/product-duo-640.webp",
         "public/images/product-duo-1024.webp",
         "public/images/product-duo-1536.webp"
-      ]
+      ],
+      "heroRole": "3D artistic representation; supplied photograph immediately follows and serves as the graphics fallback."
     },
     "layout": {
-      "heroColumns": ".92fr 1.08fr",
-      "heroGap": "35px",
-      "heroHeight": "clamp bounds: min-height 690px; height calc(100svh - 108px); max-height 850px",
-      "mobileHeroImageHeight": "410px",
-      "designSceneHeight": "570px",
-      "mobileDesignSceneHeight": "430px",
+      "heroHeight": "100svh; minimum 700px desktop, 620px phone",
+      "scrollHeight": "265svh desktop; 235svh phone; auto for reduced motion",
+      "mobileBreakpoint": "700px",
+      "narrowObjectBreakpoint": "900px",
+      "compactPhone": "max-height 759px",
       "sequence": [
-        "Supplied product hero",
-        "Cocoa colour-change explanation and illustrative slider",
-        "Two-ended design with secondary 3D pair",
+        "Interactive White / Blend / You story",
+        "Supplied double-ended product photograph",
+        "Illustrative colour-change study",
         "Swipe / Blend / Be ritual",
-        "Consent-based signup",
         "Questions",
+        "Consent-based signup",
         "Oversized wordmark"
-      ],
-      "tabletHeroColumns": "1fr 1fr",
-      "tabletHeroFontSize": "6.3vw",
-      "tabletHeroImageMinHeight": "510px"
+      ]
     },
     "registration": {
       "storage": "D1: normalized unique email, consent timestamp, SHA-256 removal-token hash.",
@@ -317,13 +303,8 @@
       ]
     },
     "verification": {
-      "scope": "Owning-task report: saved tablet hero, tablet colour, and mobile colour captures passed scoped review; keyboard slider checks passed; no console errors observed.",
-      "screenshots": [
-        ".impeccable/review/tablet-hero.jpg",
-        ".impeccable/review/tablet-colour.jpg",
-        ".impeccable/review/mobile-colour.jpg"
-      ],
-      "publicationStatus": "Tracked separately by the owning task."
+      "scope": "V4 review is recorded in .impeccable/review/v4-review.md; source documentation alone is not screenshot evidence.",
+      "publicationStatus": "Tracked by LAUNCH.md and the parent nurrie-publication.json."
     }
   },
   "components": [
@@ -378,18 +359,18 @@
       "refersTo": "motion-control",
       "description": "Persistent control for the R3F scene; respects reduced motion.",
       "html": "<button class=\"ds-motion\" aria-label=\"Pause product animation\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M7 4h3v16H7zM14 4h3v16h-3z\"/></svg></button>",
-      "css": ".ds-motion{width:46px;height:46px;border:1px solid #ad9584;background:transparent;color:var(--cocoa,#34231c);border-radius:50%;display:grid;place-items:center;cursor:pointer}.ds-motion:hover{background:var(--soft,#e7ded2)}.ds-motion:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
+      "css": ".ds-motion{width:44px;height:44px;border:1px solid #ad9584;background:transparent;color:var(--cocoa,#34231c);border-radius:50%;display:grid;place-items:center;cursor:pointer}.ds-motion:hover{background:var(--soft,#e7ded2)}.ds-motion:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
     }
   ],
   "narrative": {
     "northStar": "Starts white. Becomes you.",
-    "overview": "Updated 3 November 2026 following the user’s return to the original ivory, cocoa and rose-gold palette.\n\n**Creative North Star: “Starts white. Becomes you.”**\n\nThe current implementation is an ivory, deep cocoa, and rose editorial campaign for the supplied pearl-ivory and rose-gold double-ended foundation stick. The formula starts white and changes colour as it is applied and blended, adapting to skin tone. That is the supplied product proposition, not independent clinical evidence or a promise of universal tone suitability.\n\n`public/images/product-duo.png` is the authoritative product image; `source-assets/brand-board.jpeg` is the supplied identity reference. The first viewport serves `product-duo-640.webp`, `product-duo-1024.webp`, and `product-duo-1536.webp`. The 3D fallback uses `product-duo-1024.webp`. The rejected brown product packaging must not return. The new cocoa-background editorial portrait is atmosphere, not product-result evidence. Cocoa belongs to the interface; the supplied product casing remains pearl ivory.\n\nThis file records `app/globals.css`, `components/NurrieHome.tsx`, `components/ColourReveal.tsx`, `components/KineticScene.tsx`, and the signup/privacy flow. Product truth belongs to `PRODUCT.md` and page strategy to `SURFACE.md`.",
+    "overview": "Updated 3 November 2026 following the user’s return to the original ivory, cocoa and rose-gold palette.\n\n**Creative North Star: “Starts white. Becomes you.”**\n\nThe current implementation is an ivory, deep cocoa, and rose editorial campaign for the supplied pearl-ivory and rose-gold double-ended foundation stick. The formula starts white and changes colour as it is applied and blended, adapting to skin tone. That is the supplied product proposition, not independent clinical evidence or a promise of universal tone suitability.\n\n`public/images/product-duo.png` is the authoritative product image; `source-assets/brand-board.jpeg` is the supplied identity reference. Responsive WebP versions appear immediately after the interactive opening. Its graphics fallback uses `product-duo-1024.webp`. The rejected brown product packaging must not return. The cocoa-background editorial portrait is atmosphere, not product-result evidence. Cocoa belongs to the interface; the supplied product casing remains pearl ivory.\n\nThis file records `app/globals.css`, `app/immersive.css`, `components/ImmersiveHero.tsx`, `components/ImmersiveScene.tsx`, `components/NurrieHome.tsx`, `components/ColourReveal.tsx`, `components/KineticScene.tsx`, and the signup/privacy flow. Product truth belongs to `PRODUCT.md` and page strategy to `SURFACE.md`.",
     "keyCharacteristics": [
       "Ivory ground, cocoa ink, rose as the single action accent.",
-      "Oversized Gambarino name as architecture, with short serif headlines and small sans-serif labels.",
+      "Extruded WHITE / BLEND / YOU lettering, short Gambarino statements and small sans-serif labels.",
       "Rectangular controls, circular motion and discover marks, open compositions.",
       "Studio-lit 3D material depth with pause, reduced-motion, and image fallback.",
-      "Supplied product photography owns the opening; the 3D pair sits in a secondary chapter.",
+      "A draggable single stick owns the opening; the authoritative product photograph follows immediately.",
       "An explicitly illustrative cream-swipe study explains white-to-skin-toned change."
     ],
     "rules": [
@@ -401,7 +382,7 @@
     ],
     "dos": [
       "**Do** keep ivory, cocoa, and rose, with square controls and Gambarino/General Sans.",
-      "**Do** lead with the supplied product-duo image and white formula in pearl/rose-gold packaging.",
+      "**Do** preserve white formula and pearl/rose-gold packaging in the interactive opening and keep the supplied product photograph directly after it.",
       "**Do** keep the illustrative qualifier beside the colour slider.",
       "**Do** preserve clear headings, direct registration language, visible focus, and readable measures.",
       "**Do** provide a static path for motion-sensitive visitors and unsupported graphics."

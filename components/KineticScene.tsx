@@ -125,7 +125,16 @@ function Brush() {
   );
 }
 
-function ProductBody({ brush = false }: { brush?: boolean }) {
+export function ProductBody({ brush = false, opening }: { brush?: boolean; opening?: RefObject<number> }) {
+  const cap = useRef<Group>(null);
+  const lowerBrush = useRef<Group>(null);
+  useFrame(() => {
+    if (!opening || !cap.current) return;
+    const amount = MathUtils.smoothstep(opening.current, 0.12, 0.58);
+    cap.current.position.set(amount * (0.35 + opening.current * 0.35), -1.54 + amount * 0.8, amount * 0.5);
+    cap.current.rotation.z = amount * 0.55;
+    if (lowerBrush.current) lowerBrush.current.visible = amount > 0.02;
+  });
   const { shell, upperTrim, lowerTrim, capProfile, bulletProfile } = useMemo(() => {
     const positions: number[] = [];
     const indices: number[] = [];
@@ -165,7 +174,11 @@ function ProductBody({ brush = false }: { brush?: boolean }) {
       <mesh geometry={shell}><Pearl /></mesh>
       <mesh><tubeGeometry args={[upperTrim, 96, 0.012, 6, true]} /><RoseGold /></mesh>
       <mesh><tubeGeometry args={[lowerTrim, 96, 0.009, 6, true]} /><RoseGold /></mesh>
-      <mesh><latheGeometry args={[capProfile, 80]} /><Pearl /></mesh>
+      <group ref={cap} position={[0, -1.54, 0]}><mesh position={[0, 1.54, 0]}><latheGeometry args={[capProfile, 80]} /><Pearl /></mesh></group>
+      {opening && <group ref={lowerBrush} visible={false}>
+        <mesh position={[0, -1.16, 0]}><cylinderGeometry args={[0.34, 0.34, 0.2, 64]} /><RoseGold /></mesh>
+        <group position={[0, -0.17, 0]} rotation={[0, 0, Math.PI]}><Brush /></group>
+      </group>}
       <mesh position={[0, -1.114, 0]}><cylinderGeometry args={[0.434, 0.434, 0.012, 80]} /><RoseGold /></mesh>
       <mesh position={[0, 0.76, 0]}><cylinderGeometry args={[0.396, 0.414, 0.16, 80]} /><RoseGold /></mesh>
       <mesh position={[0, 0.98, 0]}><cylinderGeometry args={[0.346, 0.346, 0.35, 80]} /><RoseGold /></mesh>
@@ -290,7 +303,7 @@ export default function KineticScene({ paused = false, onReady, className, varia
   const still = paused || reducedMotion || !visible || !inViewport;
   return (
     <div ref={container} className={className} style={{ width: "100%", height: "100%" }} role="img" aria-label="Two three-dimensional views of NURRIE's pearl ivory and rose gold double-ended stick, showing the white foundation and the soft blending brush">
-      {supported === false ? <ProductFallback /> : supported === true ? (
+      {supported !== true ? <ProductFallback /> : (
         <SceneBoundary fallback={<ProductFallback />}>
           <Canvas
             camera={{ position: [0, 0.07, 7.5], fov: 35 }}
@@ -320,7 +333,7 @@ export default function KineticScene({ paused = false, onReady, className, varia
             <EditorialStage paused={still} onReady={onReady} scrollProgress={scrollProgress} variant={variant} />
           </Canvas>
         </SceneBoundary>
-      ) : null}
+      )}
     </div>
   );
 }
