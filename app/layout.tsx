@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SITE_ORIGIN } from "@/lib/site";
 import "./globals.css";
 import "./immersive.css";
+import "./campaign.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),

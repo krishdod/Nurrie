@@ -1,20 +1,25 @@
-# First chapter — homepage
+# NURRIE campaign — v5
 
-## Direction contract
-THESIS: “Starts white. Becomes you.” NURRIE's supplied proposition is a white foundation formula that changes colour on application and blending, in a double-ended stick with a built-in brush. The first page moves from the actual product to an illustrative explanation, sculptural exploration, and a clear launch-interest form.
+## THESIS
 
-PRODUCT AUTHORITY: PRODUCT.md, retained source public/images/product-duo.png, and source-assets/brand-board.jpeg supersede the initial invented cocoa packaging. The hero serves responsive product-duo-640.webp, product-duo-1024.webp, and product-duo-1536.webp; the 3D fallback uses product-duo-1024.webp. The product is pearl ivory with rose-gold hardware; the visible foundation is WHITE. The paired views show the foundation end and brush end of the same double-ended design. The rejected brown tube and beige bullet must not return.
+Starts white. Becomes you. The page introduces the user's colour-changing white foundation stick through a human beauty campaign, tactile product discovery, and a clear invitation to register interest.
 
-OWN-WORLD: ivory ground, deep cocoa ink, rose as the single action accent. Gambarino supplies the monument name and short statements; General Sans supplies direct supporting copy. Pearl and rose gold belong to the packaging and its 3D representation. Cocoa is interface ink and the colour-change field, not the product casing. Controls are rectangular; compositions stay open.
+## OWN-WORLD
 
-FIRST VIEWPORT: a full-height, studio-lit 3D stick floats in front of extruded WHITE lettering. A compact NURRIE header, “White. / Until you.”, a direct product explanation, and First access remain readable HTML. The user can drag the stick, rotate it by button, pause idle animation, or move through White / Blend / You chapters. Phones show the product, proposition, access link and chapter controls in the first viewport. Unsupported graphics show the supplied product photograph.
+Original cocoa and ivory, soft skin light and silk, monumental Gambarino lettering, General Sans support and rose-gold product details. Physical imagery and deliberate scale carry the identity. Keep square photographic fields and restrained controls.
 
-STORY: interactive White / Blend / You opening → “One object. Two sides of you.” with the exact product photograph → cocoa colour-change explanation and cream-swipe slider → Swipe / Blend / Be ritual with editorial portrait → four native question disclosures → consent-based registration → full-width NURRIE wordmark. The slider tints a transparent cream-swipe photograph toward one illustrative skin-toned colour. Keep its visible note: “Illustration only. This is not a shade match or a product result.” The percentage describes interaction progress, not measured performance.
+## FIRST VIEWPORT
 
-3D ROLE: one pearl-and-rose-gold stick rotates with horizontal dragging. Its lower cap moves aside to reveal the brush in the Blend chapter; the foundation remains white throughout. Extruded WHITE / BLEND / YOU lettering moves with native scroll progress. Chapter buttons navigate that same scroll position, avoiding state jumps when scrolling resumes. The You chapter changes the field to cocoa. Preserve pause, reduced-motion, offscreen/hidden-page suspension, and supplied-product image fallback. This is an artistic representation, not an engineering model or demonstrated shade result.
+Full-height campaign portrait with negative space at left, Beauty, becoming., the explicit white-first proposition and an ivory discovery action. NURRIE spans the lower photograph. The first-access control remains visible in the header. Phone copy moves into its own cocoa panel. The portrait is atmospheric, not evidence of a foundation result.
 
-REGISTRATION: required email and explicit consent submit to the D1-backed waitlist. Preserve saving, error, success, removing, and removed states. New registrations receive a private removal link using a URL fragment; duplicate signup does not replace an existing credential. /privacy explains storage and supports token-based deletion. Registration is not a purchase or reservation, sends no automatic email, and adds no marketing analytics.
+## STORY
 
-CLAIM BOUNDARY: the user-supplied colour-change/adaptation statement is the product proposition, not independent clinical evidence. Do not add origin or Korean-manufacture claims, clinical results, universal tone compatibility, a scientific mechanism, ingredients, SPF, wear duration, certifications, invented testimonials, or unannounced price/date. Tone suitability and full details remain pending. The slider never proves a personal result.
+Campaign → Starts white. Becomes you. introduction → cream-coated canvas revealing the exact supplied product photo → embedded White / Blend / You 3D story → Swipe / Blend / Be ritual → four disclosures → consent-based interest form → oversized footer. The reveal supports horizontal brushing and a complete reveal/reset button; vertical scrolling remains native. Its visible qualifier excludes shade matching or demonstrated results. The former colour slider is no longer mounted.
 
-FINISH: this contract follows the live cocoa/ivory/rose source and the supplied product. Keep publication status in LAUNCH.md and nurrie-publication.json.
+## FINISH
+
+Preserve mobile readability, one H1, focus visibility, reduced motion, image fallbacks, 3D pause/rotation and native chapter navigation. Delay the 3D import until the section approaches the viewport. Keep the supplied white formula, pearl casing, rose-gold hardware and built-in brush. The paired product photograph shows the two ends of the same design. Product truth and claim boundaries are recorded in PRODUCT.md.
+
+The live-reference research and taste-skill direction draw are in source-assets/v5-art-direction.md and .taste-skill/v5/. No Impeccable concept seed was recorded before implementation; do not invent one retrospectively. That procedural review finding remains disclosed in the v5 review.
+
+Registration uses the existing D1-backed explicit-consent flow and private token-based removal. No automatic email or purchasing flow. Public launch access remains separate from owner-private publication.

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-03T14:25:58.711Z",
+  "generatedAt": "2026-11-04T16:40:50.637Z",
   "title": "Design System: NURRIE",
   "extensions": {
     "colorMeta": {
@@ -232,13 +232,18 @@
       },
       {
         "name": "product-story",
-        "value": "265svh desktop; 235svh phone; MathUtils.damp smoothing",
+        "value": "230svh desktop; 210svh phone; reduced motion uses direct selection",
         "purpose": "Native scroll drives WHITE / BLEND / YOU typography, product tilt and brush reveal. Chapter buttons navigate the same progress. Reduced motion uses direct selection."
       },
       {
         "name": "manual-rotation",
         "value": "0.009 radians per horizontal pixel; quarter-turn button",
         "purpose": "Drag the single stick or use the keyboard-accessible rotate control."
+      },
+      {
+        "name": "cream-reveal",
+        "value": "Textured destination-out canvas stamps; 800ms complete-reveal fade, no transition for reduced motion",
+        "purpose": "Uncover the supplied product image; horizontal brush gesture with native vertical scroll and button alternative."
       }
     ],
     "breakpoints": [
@@ -258,34 +263,33 @@
     "productAuthority": {
       "product": "Pearl ivory and rose-gold double-ended foundation stick; WHITE formula at one end and built-in blending brush at the other.",
       "proposition": "User-supplied colour-changing formula that adapts as it is applied and blended.",
-      "heroAsset": "public/images/product-duo-1536.webp",
+      "heroAsset": "public/images/campaign-portrait-wide-v5.webp",
       "identityReference": "source-assets/brand-board.jpeg",
       "fallbackAsset": "public/images/product-duo-1024.webp",
-      "illustrationQualifier": "Illustration only. This is not a shade match or a product result.",
+      "illustrationQualifier": "A visual story of transformation. Not a shade match or a product-result demonstration.",
       "rejectedDirection": "Invented cocoa casing, beige bullet, floating cocoa cap, and generated cocoa campaign.",
       "claimBoundary": "No country-of-origin or Korean-manufacture claims, clinical results, universal tone compatibility, mechanism, ingredients, SPF, wear duration, certifications, or unannounced pricing/date.",
       "sourceAsset": "public/images/product-duo.png",
       "heroResponsiveAssets": [
-        "public/images/product-duo-640.webp",
-        "public/images/product-duo-1024.webp",
-        "public/images/product-duo-1536.webp"
+        "public/images/campaign-portrait-wide-v5-1000.webp",
+        "public/images/campaign-portrait-wide-v5.webp"
       ],
-      "heroRole": "3D artistic representation; supplied photograph immediately follows and serves as the graphics fallback."
+      "heroRole": "Atmospheric generated beauty portrait; supplied product photograph is authoritative in the reveal and 3D fallback."
     },
     "layout": {
-      "heroHeight": "100svh; minimum 700px desktop, 620px phone",
-      "scrollHeight": "265svh desktop; 235svh phone; auto for reduced motion",
+      "heroHeight": "100svh; minimum 760px, 780px tablet/narrow desktop",
+      "scrollHeight": "Embedded 3D: 230svh desktop, 210svh phone; auto reduced motion",
       "mobileBreakpoint": "700px",
       "narrowObjectBreakpoint": "900px",
       "compactPhone": "max-height 759px",
       "sequence": [
+        "Photographic campaign and monumental NURRIE",
+        "White-first explanation and tactile product-photo reveal",
         "Interactive White / Blend / You story",
-        "Supplied double-ended product photograph",
-        "Illustrative colour-change study",
         "Swipe / Blend / Be ritual",
         "Questions",
         "Consent-based signup",
-        "Oversized wordmark"
+        "Oversized footer wordmark"
       ]
     },
     "registration": {
@@ -303,7 +307,7 @@
       ]
     },
     "verification": {
-      "scope": "V4 review is recorded in .impeccable/review/v4-review.md; source documentation alone is not screenshot evidence.",
+      "scope": "V5 hero independently reviewed with no material visual correction; missing Impeccable concept-seed record remains a procedural finding. Root tablet/reveal checks are recorded in .impeccable/review/v5-review.md.",
       "publicationStatus": "Tracked by LAUNCH.md and the parent nurrie-publication.json."
     }
   },
@@ -347,31 +351,28 @@
       "css": ".ds-tabs{display:flex;gap:28px}.ds-tabs button{padding:0 0 11px;border:0;border-bottom:3px solid transparent;background:transparent;color:var(--cocoa,#34231c);font:400 32px var(--display,Gambarino,Georgia,serif);cursor:pointer}.ds-tabs .ds-active,.ds-tabs button:hover{border-bottom-color:currentColor}.ds-tabs button:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
     },
     {
-      "name": "Colour study",
-      "kind": "custom",
-      "description": "Transparent cream photograph, tinted by an SVG colour matrix in the live interactive component. The caption is always adjacent.",
-      "html": "<div class=\"ds-reveal\"><img src=\"/images/cream-swipe.webp\" alt=\"Illustrative white cream swipe\"><label for=\"ds-range\">Slide to see the change</label><input id=\"ds-range\" type=\"range\" min=\"0\" max=\"100\" value=\"0\"><p>Illustration only. This is not a shade match or a product result.</p></div>",
-      "css": ".ds-reveal{font-family:var(--body,\"General Sans\",Arial,sans-serif);padding:24px;background:var(--cocoa,#34231c);color:var(--ivory,#f2eee7)}.ds-reveal img{width:100%;height:280px;object-fit:contain}.ds-reveal label{display:block;font-size:14px}.ds-reveal input{width:100%;height:44px;accent-color:var(--rose,#d6b19a)}.ds-reveal input:focus-visible{outline:2px solid currentColor;outline-offset:6px}.ds-reveal p{font-size:13px;color:#d9cabd;line-height:1.5}"
-    },
-    {
       "name": "Motion control",
       "kind": "button",
       "refersTo": "motion-control",
       "description": "Persistent control for the R3F scene; respects reduced motion.",
       "html": "<button class=\"ds-motion\" aria-label=\"Pause product animation\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M7 4h3v16H7zM14 4h3v16h-3z\"/></svg></button>",
       "css": ".ds-motion{width:44px;height:44px;border:1px solid #ad9584;background:transparent;color:var(--cocoa,#34231c);border-radius:50%;display:grid;place-items:center;cursor:pointer}.ds-motion:hover{background:var(--soft,#e7ded2)}.ds-motion:focus-visible{outline:2px solid currentColor;outline-offset:6px}"
+    },
+    {
+      "name": "Tactile product reveal",
+      "kind": "custom",
+      "description": "Cream-texture canvas erasure over the supplied product photo; Reveal the stick and Try the reveal again provide non-gesture access. See ProductReveal.tsx and campaign.css."
     }
   ],
   "narrative": {
     "northStar": "Starts white. Becomes you.",
-    "overview": "Updated 3 November 2026 following the user’s return to the original ivory, cocoa and rose-gold palette.\n\n**Creative North Star: “Starts white. Becomes you.”**\n\nThe current implementation is an ivory, deep cocoa, and rose editorial campaign for the supplied pearl-ivory and rose-gold double-ended foundation stick. The formula starts white and changes colour as it is applied and blended, adapting to skin tone. That is the supplied product proposition, not independent clinical evidence or a promise of universal tone suitability.\n\n`public/images/product-duo.png` is the authoritative product image; `source-assets/brand-board.jpeg` is the supplied identity reference. Responsive WebP versions appear immediately after the interactive opening. Its graphics fallback uses `product-duo-1024.webp`. The rejected brown product packaging must not return. The cocoa-background editorial portrait is atmosphere, not product-result evidence. Cocoa belongs to the interface; the supplied product casing remains pearl ivory.\n\nThis file records `app/globals.css`, `app/immersive.css`, `components/ImmersiveHero.tsx`, `components/ImmersiveScene.tsx`, `components/NurrieHome.tsx`, `components/ColourReveal.tsx`, `components/KineticScene.tsx`, and the signup/privacy flow. Product truth belongs to `PRODUCT.md` and page strategy to `SURFACE.md`.",
+    "overview": "Updated 4 November 2026. NURRIE opens with a human campaign photograph, a monumental ivory wordmark and the line \"Beauty, becoming.\" The white-first product proposition is explicit in the first viewport. The supplied pearl-ivory and rose-gold stick remains the product authority. The campaign portrait is atmosphere, never product-result evidence.",
     "keyCharacteristics": [
-      "Ivory ground, cocoa ink, rose as the single action accent.",
-      "Extruded WHITE / BLEND / YOU lettering, short Gambarino statements and small sans-serif labels.",
-      "Rectangular controls, circular motion and discover marks, open compositions.",
-      "Studio-lit 3D material depth with pause, reduced-motion, and image fallback.",
-      "A draggable single stick owns the opening; the authoritative product photograph follows immediately.",
-      "An explicitly illustrative cream-swipe study explains white-to-skin-toned change."
+      "Cocoa, ivory, soft neutral and restrained rose-gold packaging.",
+      "Full-bleed skin-and-silk photography with a monumental Gambarino wordmark.",
+      "Textured brush-to-reveal interaction uncovers the exact supplied product photograph.",
+      "Secondary WHITE / BLEND / YOU 3D story with manual rotation, pause and photo fallback.",
+      "Direct launch-interest registration with explicit consent and private removal."
     ],
     "rules": [
       {
@@ -381,19 +382,15 @@
       }
     ],
     "dos": [
-      "**Do** keep ivory, cocoa, and rose, with square controls and Gambarino/General Sans.",
-      "**Do** preserve white formula and pearl/rose-gold packaging in the interactive opening and keep the supplied product photograph directly after it.",
-      "**Do** keep the illustrative qualifier beside the colour slider.",
-      "**Do** preserve clear headings, direct registration language, visible focus, and readable measures.",
-      "**Do** provide a static path for motion-sensitive visitors and unsupported graphics."
+      "Preserve original colours, supplied pearl/rose-gold packaging and white formula.",
+      "Keep a non-gesture reveal button, adjacent illustration qualifier and direct registration.",
+      "Retain readable mobile copy, motion preferences and graphics fallback."
     ],
     "donts": [
-      "**Don't** add cosmetic claims, launch details, or certifications the brand has not supplied.",
-      "**Don't** restore the rejected teal/coral interface or invented brown product casing.",
-      "**Don't** turn the slider into a shade chart or a measured result.",
-      "**Don't** replace the monument composition with generic feature cards.",
-      "**Don't** make registration depend on the product animation loading.",
-      "**Don't** treat this source-derived document as screenshot evidence."
+      "Do not invent cosmetic claims or launch details.",
+      "Do not restore teal/coral or brown packaging.",
+      "Do not present the portrait or reveal as a measured product result.",
+      "Do not require animation to register interest."
     ]
   }
 }

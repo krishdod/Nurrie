@@ -19,7 +19,7 @@ colors:
 typography:
   display:
     fontFamily: "Gambarino, Georgia, serif"
-    fontSize: "clamp(38px, 3.35vw, 54px)"
+    fontSize: "clamp(70px, 7.5vw, 116px)"
     fontWeight: 400
     lineHeight: 0.99
     letterSpacing: "-0.035em"
@@ -81,11 +81,11 @@ components:
     rounded: "{rounded.round}"
     width: "44px"
     height: "44px"
-  colour-reveal:
+  product-reveal:
     backgroundColor: "{colors.cocoa}"
     textColor: "{colors.ivory}"
     rounded: "{rounded.sharp}"
-    height: "410px"
+    height: "600px on phones"
   product-stage:
     backgroundColor: "{colors.ivory}"
     textColor: "{colors.cocoa}"
@@ -94,134 +94,42 @@ components:
 
 ## Overview
 
-Updated 3 November 2026 following the user’s return to the original ivory, cocoa and rose-gold palette.
+Updated 4 November 2026. NURRIE opens with a human campaign photograph, a monumental ivory wordmark and the line "Beauty, becoming." The white-first product proposition is explicit in the first viewport. The supplied pearl-ivory and rose-gold stick remains the product authority. The campaign portrait is atmosphere, never product-result evidence.
 
-**Creative North Star: “Starts white. Becomes you.”**
+**Creative North Star: Starts white. Becomes you.**
 
-The current implementation is an ivory, deep cocoa, and rose editorial campaign for the supplied pearl-ivory and rose-gold double-ended foundation stick. The formula starts white and changes colour as it is applied and blended, adapting to skin tone. That is the supplied product proposition, not independent clinical evidence or a promise of universal tone suitability.
+- Cocoa, ivory, soft neutral and restrained rose-gold packaging.
+- Full-bleed skin-and-silk photography with a monumental Gambarino wordmark.
+- Textured brush-to-reveal interaction uncovers the exact supplied product photograph.
+- Secondary WHITE / BLEND / YOU 3D story with manual rotation, pause and photo fallback.
+- Direct launch-interest registration with explicit consent and private removal.
 
-`public/images/product-duo.png` is the authoritative product image; `source-assets/brand-board.jpeg` is the supplied identity reference. Responsive WebP versions appear immediately after the interactive opening. Its graphics fallback uses `product-duo-1024.webp`. The rejected brown product packaging must not return. The cocoa-background editorial portrait is atmosphere, not product-result evidence. Cocoa belongs to the interface; the supplied product casing remains pearl ivory.
+Product truth is in PRODUCT.md; the composition contract is in SURFACE.md. Source authority is app/globals.css, app/campaign.css, app/immersive.css and their React components. Publication status belongs to LAUNCH.md and the parent receipt.
 
-This file records `app/globals.css`, `app/immersive.css`, `components/ImmersiveHero.tsx`, `components/ImmersiveScene.tsx`, `components/NurrieHome.tsx`, `components/ColourReveal.tsx`, `components/KineticScene.tsx`, and the signup/privacy flow. Product truth belongs to `PRODUCT.md` and page strategy to `SURFACE.md`.
+## Materials and colour
 
-**Key Characteristics:**
+The original ivory #f2eee7, cocoa #34231c, rose #d6b19a and soft #e7ded2 remain. The opening photograph has cocoa negative space, skin and ivory fabric. The primary discovery action is ivory with cocoa type; first access uses a dark legibility background. The revealed photograph keeps the supplied pearl casing, rose-gold trim, white formula and brush. Signup sits on the soft ground. Never restore the rejected teal/coral interface or invented brown packaging.
 
-- Ivory ground, cocoa ink, rose as the single action accent.
-- Extruded WHITE / BLEND / YOU lettering, short Gambarino statements and small sans-serif labels.
-- Rectangular controls, circular motion and discover marks, open compositions.
-- Studio-lit 3D material depth with pause, reduced-motion, and image fallback.
-- A draggable single stick owns the opening; the authoritative product photograph follows immediately.
-- An explicitly illustrative cream-swipe study explains white-to-skin-toned change.
+## Type and layout
 
-## Colors
+Gambarino and General Sans are locally hosted. Desktop campaign title uses clamp(70px,7.5vw,116px), while the wordmark uses 24.8vw. The hero is 100svh, minimum 760px (780px at narrower desktop/tablet widths). Tablets retain the portrait-and-copy overlay. Below 700px, the copy moves into a 242px cocoa panel, the photograph occupies the remaining hero height, and the headline is 43px. The hero minimum is 760px on phones; short screens scroll naturally. Secondary navigation hides on phones; first access remains visible.
 
-Color values in the frontmatter are normative. Reveal tints are demonstration colours, not a shade catalogue.
+The sequence is campaign portrait → white-first introduction and tactile supplied-photo reveal → interactive 3D product story → Swipe / Blend / Be ritual → four questions → consent-based signup → cocoa footer. There is one H1. The embedded 3D section uses H2 and hides its duplicate header.
 
-### Primary
+## Motion and interaction
 
-- **Cocoa:** body ink, colour-change field, footer, dark buttons, and 3D lettering.
-- **Rose:** first-access invitation, signup field, slider thumb, and the underline on “you.”
-- **Ink:** denser cocoa for body explanation, hover on dark controls, and rose-button type.
+The hero uses restrained GSAP entrance and native-scroll parallax. Reduced motion disables automatic hero movement. The reveal paints a cream photograph on a canvas, then removes it with textured brush stamps while dragging. Vertical touch scrolling remains native. Reveal the stick and Try the reveal again are ordinary keyboard-accessible buttons. The adjacent note reads: A visual story of transformation. Not a shade match or a product-result demonstration. This is not a shade simulator. The old ColourReveal slider is not mounted.
 
-### Neutral
+The 3D story loads within 500px of the viewport, in a 230svh section (210svh phone). Scroll drives WHITE / BLEND / YOU and opens the lower brush cap. The white formula remains white. Manual rotation, pause, direct chapter controls, reduced-motion handling, hidden/offscreen suspension and supplied-image fallback remain. Reduced motion removes the tall scroll region. This model is an artistic representation, not engineering data.
 
-- **Ivory:** page ground, signup panel, and inverse text on cocoa.
-- **Soft:** ritual editorial ground and the privacy removal panel.
-- **Muted:** supporting labels on ivory.
-- **Inverse secondary / inverse caption:** quieter text on cocoa.
-- **Pearl / rose gold / formula white:** packaging and foundation materials in the 3D scene.
-- **Field placeholder:** signup placeholder and helper ink.
-- **Error:** inline form failures only.
-- **Track:** blend-slider rail.
+## Controls and forms
 
-**The Cocoa Ground Rule.** Stay inside ivory, cocoa, rose, and the packaging metals. Preserve the restored cocoa interface and warm rose accents. Use the error colour only for a real error.
+Controls use rectangular fills, small circles for motion, current-color focus outlines and familiar text labels. Ritual tabs support Left/Right/Home/End with roving focus. Questions use native details. Registration states remain idle, saving, error and success; privacy removal adds removing and removed.
 
-## Typography
+D1 stores normalized unique email, consent timestamp and a SHA-256 removal-token hash. Requests are same-origin JSON, capped at 4KB, with explicit consent and a honeypot. A new signup receives a 256-bit private removal token in a URL fragment; duplicates do not replace it. Deletion is idempotent. No automatic email, payment, reservation, public subscriber listing or marketing analytics is added.
 
-**Display Font:** locally hosted Gambarino, with Georgia and serif fallbacks.
-**Body Font:** locally hosted General Sans, with Arial and sans-serif fallbacks.
+## Evidence and boundaries
 
-Headings are regular weight, tracking `-0.035em`, short line heights. Body copy is 15–16px with an open line height and a modest measure, generally 260–365px. Navigation, consent, launch notes, and captions are 12–14px.
+The supplied product-duo.png and brand-board.jpeg remain authoritative. Generated campaign imagery and exact prompt provenance are documented in source-assets/v5-art-direction.md. Independent review found no material aesthetic correction in the desktop/phone hero captures, but recorded a missing Impeccable-specific concept-seed contract. Do not describe that review as an unconditional pass. Root verification additionally covered the tablet, reveal gesture/button/reset, 3D entry and mobile overflow; evidence is under .impeccable/review/v5-*. Physical phone and exhaustive cross-browser certification are not claimed.
 
-The header name is 42px on desktop and 33px on phones. The hero caption is `clamp(38px, 3.35vw, 54px)`, 41px below 1100px, 35px on phones, and 31px on short phones. The footer name stays monumental. These are component sizes, not a universal modular scale.
-
-The opening moves three-dimensional words and the product with native scroll progress. Its chapter buttons navigate the same position. Dragging and a rotate button control the stick. Reduced motion removes the scroll sequence and idle movement while retaining direct chapter selection and rotation. The editorial portrait uses restrained scroll movement, disabled for reduced motion, and serves `editorial-portrait-cocoa.webp` and its 640px derivative.
-
-3D lettering uses bundled Optimer JSON. HTML headings and navigation stay on Gambarino.
-
-## Layout
-
-A fluid gutter (`clamp(24px, 4.2vw, 72px)`, 23px on phones) holds open chapters. The opening is a sticky `100svh` stage inside a `265svh` scroll region, `235svh` on phones. Desktop minimum stage height is 700px; phone minimum is 620px. The product and extruded words occupy the centre, with caption at lower left, invitation at lower right, controls above, and chapter navigation along the bottom. The last chapter changes the ground to cocoa.
-
-Story order: interactive White / Blend / You opening → supplied-product photograph → cocoa colour-change study → Swipe / Blend / Be ritual with editorial portrait → four questions → rose signup → inverted cocoa wordmark.
-
-Below 1100px, type and gaps tighten. Below 900px the 3D object is scaled for narrower compositions and the colour chapter stops being sticky. Below 700px, secondary header links hide, the access invitation remains, captions sit below the product, the lower invitation hides, ritual becomes a column, and signup stacks. Short phone viewports use a smaller object and caption. Reduced motion removes the tall scroll region entirely.
-
-The privacy page is a reading column: 820px maximum width, 24px side padding.
-
-## Elevation & Depth
-
-HTML surfaces are flat and separated by colour. There is no general shadow scale. The colour study tints a transparent cream-swipe photograph with an SVG colour matrix as the slider moves, and slightly scales and rotates the swipe. This is illustration, not a measured result.
-
-The 3D stage supplies depth through pearl shells, rose-gold hardware, white foundation, bristles, extruded lettering and local studio light planes. Device pixel ratio is capped at 1–1.5 with a low-power context. Idle motion stops when paused or reduced motion is requested; manual actions still render on demand. Rendering stops while the page is hidden or the scene is offscreen. WebGL failure falls back to the product-duo image and disables unavailable graphics controls. Hero copy, navigation and signup never depend on WebGL.
-
-## Shapes
-
-Filled buttons are 2px-radius rectangles. Image crops and panels are square. Discover, motion, reset, and success marks are circles. The active ritual marker is a 3px underline. Product geometry follows the pearl-and-rose-gold reference.
-
-Borders are functional: input rules, motion-control outlines, the success ring, and the privacy field.
-
-## Components
-
-### Buttons and text links
-
-The rose invitation uses ink type, 56px minimum height, and a trailing arrow. Hover turns it cocoa on ivory and lifts it 3px. Dark privacy actions use cocoa on ivory and hover to ink. Arrows translate up and right on hover. Text links use arrow movement rather than fills.
-
-Focusable controls use a 2px current-color outline with a 6px offset. Disabled controls reduce opacity and show a waiting cursor. Reduced-motion CSS removes transitions while retaining focus and state.
-
-### Registration and removal forms
-
-The email field is transparent with a cocoa rule; submit is a full-width cocoa bar beneath it. Consent is explicit and required. States: idle, saving, error, success, removing, removed. Privacy removal uses the soft panel and an outlined field. Dark buttons on that page use `.button-dark`.
-
-D1 stores a unique normalized email, consent timestamp, and SHA-256 removal-token hash. Requests are same-origin, JSON, and capped at 4 KB. Honeypot submissions are acknowledged without insert. New signup returns a 256-bit token; duplicates do not rotate it.
-
-Private links use `/privacy#token`. Deletion is idempotent. There is no public listing, automatic email, payment, or added analytics.
-
-### Navigation
-
-The header shows NURRIE and “Beauty, becoming.” with The object, The ritual and First access. Phones retain the brand and First access. White / Blend / You chapter buttons show their selected state with a rule and full opacity. Header and footer home links point at `/` and `/#top`.
-
-### Colour reveal
-
-A native 0–100 range, stage labels, and a 44px reset control. The visible note is “Illustration only. This is not a shade match or a product result.” The percentage is interaction progress, not performance.
-
-### Ritual selector
-
-Swipe / Blend / Be keep tab semantics, roving focus, and Left/Right/Home/End. Unselected tabs use muted cocoa; the selected tab is cocoa with a full underline. Hover must not shrink the selected underline.
-
-### Questions
-
-Four native `details` rows with plus/minus indicators.
-
-### Sculptural product scene
-
-One stick with a cap that moves aside to reveal its lower brush. The white foundation remains white. Drag horizontally or use the 44px rotate button; idle animation has a 44px pause control. Reduced motion disables automatic motion and labels its control “Motion reduced.” Fallback is the supplied product image. The geometry is an artistic representation. Do not restore brown casing or a beige bullet.
-
-## Do's and Don'ts
-
-### Do:
-
-- **Do** keep ivory, cocoa, and rose, with square controls and Gambarino/General Sans.
-- **Do** preserve white formula and pearl/rose-gold packaging in the interactive opening and keep the supplied product photograph directly after it.
-- **Do** keep the illustrative qualifier beside the colour slider.
-- **Do** preserve clear headings, direct registration language, visible focus, and readable measures.
-- **Do** provide a static path for motion-sensitive visitors and unsupported graphics.
-
-### Don't:
-
-- **Don't** add cosmetic claims, launch details, or certifications the brand has not supplied.
-- **Don't** restore the rejected teal/coral interface or invented brown product casing.
-- **Don't** turn the slider into a shade chart or a measured result.
-- **Don't** replace the monument composition with generic feature cards.
-- **Don't** make registration depend on the product animation loading.
-- **Don't** treat this source-derived document as screenshot evidence.
+Do not invent origin, ingredients, SPF, scientific mechanism, universal tone compatibility, clinical performance, price, date or testimonials. Preserve clear proposition and registration even when graphics fail.

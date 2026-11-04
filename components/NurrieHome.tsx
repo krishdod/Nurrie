@@ -4,7 +4,8 @@ import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { ArrowUpRight, Minus, Plus } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ColourReveal from "./ColourReveal";
+import CampaignHero from "./CampaignHero";
+import ProductReveal from "./ProductReveal";
 import ImmersiveHero from "./ImmersiveHero";
 import WaitlistForm from "./WaitlistForm";
 
@@ -19,24 +20,6 @@ const questions = [
   ["When can I meet NURRIE?", "Our first release is on its way. Join the list for the launch date, pricing and availability when they’re ready. Registration is free and does not place an order or reserve stock."],
   ["What happens when I join?", "Your email and consent are saved for NURRIE product and launch updates. No automatic email is sent at this stage. You can leave the list using the private removal link shown after signup."],
 ];
-
-function ProductImage({ className = "", priority = false }: { className?: string; priority?: boolean }) {
-  return (
-    <img
-      className={className}
-      src="/images/product-duo-1536.webp"
-      srcSet="/images/product-duo-640.webp 640w, /images/product-duo-1024.webp 1024w, /images/product-duo-1536.webp 1536w"
-      sizes="(max-width: 700px) 750px, 90vw"
-      width={1536}
-      height={1024}
-      alt="NURRIE in pearl ivory and rose gold, showing the white foundation and built-in brush"
-      decoding="async"
-      fetchPriority={priority ? "high" : "auto"}
-      loading={priority ? "eager" : "lazy"}
-    />
-  );
-}
-
 
 export default function NurrieHome() {
   const root = useRef<HTMLDivElement>(null);
@@ -67,14 +50,11 @@ export default function NurrieHome() {
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
-      <div ref={root} id="top" className="nurrie-page">
+      <div ref={root} id="top" className="nurrie-page nurrie-campaign">
         <main id="main">
-      <ImmersiveHero />
-      <section className="object-proof" id="the-stick" aria-labelledby="stick-heading">
-        <div className="object-proof-heading"><h2 id="stick-heading">One object.<br/><em>Two sides of you.</em></h2><div><p>White colour-changing foundation at one end. A built-in blending brush at the other. Pearl ivory, wrapped in rose gold.</p><a className="text-link" href="#the-ritual">Explore the ritual <ArrowUpRight size={20}/></a></div></div>
-        <figure className="object-proof-image"><ProductImage/><figcaption>Foundation. Brush. All together.</figcaption><div className="object-proof-label foundation-label">The white formula<span/></div><div className="object-proof-label brush-label"><span/>The blending brush</div></figure>
-      </section>
-      <ColourReveal />
+      <CampaignHero />
+      <ProductReveal />
+      <ImmersiveHero embedded />
       <section className="ritual-editorial" id="the-ritual" aria-labelledby="ritual-heading">
             <div className="ritual-portrait">
               <img
