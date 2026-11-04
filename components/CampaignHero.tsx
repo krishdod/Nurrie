@@ -15,7 +15,7 @@ export default function CampaignHero() {
         gsap.from(".campaign-image", { scale: 1.045, duration: 1.8, ease: "power3.out" });
         gsap.from(".campaign-copy > *", { y: 26, opacity: .35, duration: 1.1, stagger: .12, ease: "power3.out" });
         gsap.from(".campaign-wordmark span", { yPercent: 100, duration: 1.5, stagger: .055, ease: "power4.out" });
-        gsap.to(".campaign-image", { yPercent: 11, ease: "none", scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: .6 } });
+        gsap.to(".campaign-image img", { yPercent: -7, ease: "none", scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: .6 } });
         gsap.to(".campaign-wordmark", { yPercent: -16, ease: "none", scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: .6 } });
       }, root);
       return () => context.revert();

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 
 const SESSION_KEY = "nurrie-interest-removal";
@@ -20,6 +20,11 @@ export default function WaitlistForm() {
   const [error, setError] = useState("");
   const [token, setToken] = useState<string | null>(null);
   const [removalUrl, setRemovalUrl] = useState("");
+  const resultHeading = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (status === "success" || status === "removed") resultHeading.current?.focus({ preventScroll: true });
+  }, [status]);
 
   useEffect(() => {
     try {
@@ -100,7 +105,7 @@ export default function WaitlistForm() {
     return (
       <div className="form-result" aria-live="polite">
         <div className="success-symbol"><Check size={25} strokeWidth={1.4} /></div>
-        <h3>{status === "removed" ? "As you wish." : "You’re in the first chapter."}</h3>
+        <h3 ref={resultHeading} tabIndex={-1}>{status === "removed" ? "As you wish." : "You’re in the first chapter."}</h3>
         <p>{status === "removed" ? "Your email has been removed from our interest list." : "Your interest is registered. We’ll share launch news when we’re ready."}</p>
         {token && (
           <>
@@ -122,13 +127,16 @@ export default function WaitlistForm() {
   }
 
   return (
-    <form className="waitlist-form" onSubmit={submit}>
+    <form className="waitlist-form" onSubmit={submit} aria-busy={status === "saving"}>
       <label htmlFor="email">Your email address</label>
       <div className="email-row">
         <input
           id="email"
           name="email"
           type="email"
+          inputMode="email"
+          autoCapitalize="none"
+          spellCheck={false}
           placeholder="you@example.com"
           autoComplete="email"
           maxLength={254}

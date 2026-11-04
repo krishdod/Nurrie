@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-04T16:40:50.637Z",
+  "generatedAt": "2026-11-04T21:56:01.202Z",
   "title": "Design System: NURRIE",
   "extensions": {
     "colorMeta": {
@@ -244,6 +244,11 @@
         "name": "cream-reveal",
         "value": "Textured destination-out canvas stamps; 800ms complete-reveal fade, no transition for reduced motion",
         "purpose": "Uncover the supplied product image; horizontal brush gesture with native vertical scroll and button alternative."
+      },
+      {
+        "name": "kinetic-letters",
+        "value": "Individual extruded characters turn and translate with native scroll phase",
+        "purpose": "White / Blend / You transitions behind the supplied-design artistic stick."
       }
     ],
     "breakpoints": [
@@ -277,7 +282,7 @@
       "heroRole": "Atmospheric generated beauty portrait; supplied product photograph is authoritative in the reveal and 3D fallback."
     },
     "layout": {
-      "heroHeight": "100svh; minimum 760px, 780px tablet/narrow desktop",
+      "heroHeight": "100svh; minimum 680px desktop, 780px tablet/narrow desktop, 760px phone",
       "scrollHeight": "Embedded 3D: 230svh desktop, 210svh phone; auto reduced motion",
       "mobileBreakpoint": "700px",
       "narrowObjectBreakpoint": "900px",
@@ -307,7 +312,7 @@
       ]
     },
     "verification": {
-      "scope": "V5 hero independently reviewed with no material visual correction; missing Impeccable concept-seed record remains a procedural finding. Root tablet/reveal checks are recorded in .impeccable/review/v5-review.md.",
+      "scope": "V6 root browser and production checks are recorded in .impeccable/review/v6-review.md. Prior v5 independent hero review remains scoped to its recorded captures.",
       "publicationStatus": "Tracked by LAUNCH.md and the parent nurrie-publication.json."
     }
   },
@@ -362,6 +367,11 @@
       "name": "Tactile product reveal",
       "kind": "custom",
       "description": "Cream-texture canvas erasure over the supplied product photo; Reveal the stick and Try the reveal again provide non-gesture access. See ProductReveal.tsx and campaign.css."
+    },
+    {
+      "name": "Product inspection",
+      "kind": "custom",
+      "description": "Inline close-up mode with direct chapter selection, rotation, paused idle motion and a return-to-story action. Not an engineering model."
     }
   ],
   "narrative": {

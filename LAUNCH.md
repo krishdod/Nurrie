@@ -56,3 +56,8 @@ The actual supplied packaging and white adapting-formula proposition are incorpo
 The form stores consent and email; it does not send automatic or campaign email. Before sending launch campaigns, configure a brand-owned delivery service, sender/contact details and unsubscribe handling. Review business privacy terms and make site access public when ready to invite visitors.
 
 Subscribers are in the D1 `waitlist` table. There is no public listing endpoint or admin dashboard. Use the hosting platform's authorized database tools for owner access, and keep subscriber exports outside public assets.
+
+
+## V6 update — 5 November 2026
+
+Retains the v5 photographic opening and adds individual kinetic letters, direct product inspection, synchronized photographic ritual steps and fine-pointer brush guidance. Short-desktop hero framing, phone ritual order, FAQ controls and form focus were refined. V6 screenshots are in .impeccable/review; no new claims or source assets were introduced. The underlying waitlist API and data schema are unchanged. Exact deployment and preview process remain in the parent JSON receipts.

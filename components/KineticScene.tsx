@@ -125,7 +125,7 @@ function Brush() {
   );
 }
 
-export function ProductBody({ brush = false, opening }: { brush?: boolean; opening?: RefObject<number> }) {
+export function ProductBody({ brush = false, opening, hideCap = false }: { brush?: boolean; opening?: RefObject<number>; hideCap?: boolean }) {
   const cap = useRef<Group>(null);
   const lowerBrush = useRef<Group>(null);
   useFrame(() => {
@@ -174,7 +174,7 @@ export function ProductBody({ brush = false, opening }: { brush?: boolean; openi
       <mesh geometry={shell}><Pearl /></mesh>
       <mesh><tubeGeometry args={[upperTrim, 96, 0.012, 6, true]} /><RoseGold /></mesh>
       <mesh><tubeGeometry args={[lowerTrim, 96, 0.009, 6, true]} /><RoseGold /></mesh>
-      <group ref={cap} position={[0, -1.54, 0]}><mesh position={[0, 1.54, 0]}><latheGeometry args={[capProfile, 80]} /><Pearl /></mesh></group>
+      <group ref={cap} position={[0, -1.54, 0]} visible={!hideCap}><mesh position={[0, 1.54, 0]}><latheGeometry args={[capProfile, 80]} /><Pearl /></mesh></group>
       {opening && <group ref={lowerBrush} visible={false}>
         <mesh position={[0, -1.16, 0]}><cylinderGeometry args={[0.34, 0.34, 0.2, 64]} /><RoseGold /></mesh>
         <group position={[0, -0.17, 0]} rotation={[0, 0, Math.PI]}><Brush /></group>

@@ -30,7 +30,7 @@ export default function NurrieHome() {
     const media = gsap.matchMedia();
     media.add("(prefers-reduced-motion: no-preference)", () => {
       const context = gsap.context(() => {
-        gsap.from(".ritual-portrait img", { scale: 1.08, ease: "none", scrollTrigger: { trigger: ".ritual-editorial", start: "top bottom", end: "bottom top", scrub: 0.6 } });
+        gsap.from(".ritual-life img", { scale: 1.08, ease: "none", scrollTrigger: { trigger: ".ritual-editorial", start: "top bottom", end: "bottom top", scrub: 0.6 } });
       }, root);
       return () => context.revert();
     });
@@ -56,7 +56,14 @@ export default function NurrieHome() {
       <ProductReveal />
       <ImmersiveHero embedded />
       <section className="ritual-editorial" id="the-ritual" aria-labelledby="ritual-heading">
-            <div className="ritual-portrait">
+            <div className="ritual-portrait" data-ritual={ritual}>
+              <div className={`ritual-frame ritual-macro ritual-formula ${ritual === 0 ? "is-current" : ""}`} aria-hidden={ritual !== 0}>
+                <img src="/images/product-duo-1536.webp" width={1536} height={1024} alt="Close-up of the white NURRIE foundation and rose-gold collar" loading="lazy" />
+              </div>
+              <div className={`ritual-frame ritual-macro ritual-brush ${ritual === 1 ? "is-current" : ""}`} aria-hidden={ritual !== 1}>
+                <img src="/images/product-duo-1536.webp" width={1536} height={1024} alt="Close-up of the built-in NURRIE blending brush" loading="lazy" />
+              </div>
+              <div className={`ritual-frame ritual-life ${ritual === 2 ? "is-current" : ""}`} aria-hidden={ritual !== 2}>
               <img
                 src="/images/editorial-portrait-cocoa.webp"
                 srcSet="/images/editorial-portrait-cocoa-640.webp 640w, /images/editorial-portrait-cocoa.webp 1122w"
@@ -67,7 +74,8 @@ export default function NurrieHome() {
                 decoding="async"
                 loading="lazy"
               />
-              <span>Beauty that adapts to you.</span>
+              </div>
+              <div className="ritual-image-caption"><span>{ritual === 0 ? "White at first." : ritual === 1 ? "The other half of the ritual." : "Beauty that adapts to you."}</span><span aria-hidden="true">{String(ritual + 1).padStart(2, "0")} / 03</span></div>
             </div>
             <div className="ritual-copy">
               <h2 id="ritual-heading">Less routine.<br /><em>More you.</em></h2>
@@ -91,7 +99,7 @@ export default function NurrieHome() {
                     </button>
                   ))}
                 </div>
-                <div className="ritual-description" role="tabpanel" id={`ritual-panel-${ritual}`} aria-labelledby={`ritual-tab-${ritual}`}>
+                <div key={ritual} className="ritual-description" role="tabpanel" id={`ritual-panel-${ritual}`} aria-labelledby={`ritual-tab-${ritual}`} tabIndex={0}>
                   <p>{rituals[ritual].description}</p>
                   <span>{rituals[ritual].note}</span>
                 </div>

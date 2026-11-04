@@ -23,3 +23,14 @@ Preserve mobile readability, one H1, focus visibility, reduced motion, image fal
 The live-reference research and taste-skill direction draw are in source-assets/v5-art-direction.md and .taste-skill/v5/. No Impeccable concept seed was recorded before implementation; do not invent one retrospectively. That procedural review finding remains disclosed in the v5 review.
 
 Registration uses the existing D1-backed explicit-consent flow and private token-based removal. No automatic email or purchasing flow. Public launch access remains separate from owner-private publication.
+
+
+## V6 interaction finish — 5 November 2026
+
+The accepted photographic campaign and original colours remain. On desktops taller than the minimum 680px but shorter than 800px, the title and spacing adapt so the monumental wordmark fits. Image parallax now moves inside an overflow-clipped image field rather than exposing the ground above it.
+
+The ritual pairs Swipe with a close crop of the supplied white foundation, Blend with the supplied brush, and Be with the atmospheric portrait. Keyboard tab behavior remains. On phones the heading and introduction precede the photograph, followed immediately by the tabs and explanation. No additional product photography or claims were invented.
+
+The secondary 3D words are now individual extruded characters, each turning and moving along the native scroll transition. Inspect the details opens a closer, static view in the same stage. Direct White / Blend / You controls select the inspection angle without scrolling, while rotation remains available. The cap is omitted from inspection to keep the detail visible; the scene is explicitly described as an artistic preview. Returning to the story restores the native-scroll phase. Automatic motion is paused during inspection; the exit remains available if graphics fail.
+
+The cream reveal has a pointer-following Hold & brush affordance on fine pointers, with a pressed state. Touch devices retain native scrolling and the existing reveal/reset button. Reduced motion retains a standard cursor. FAQ controls, form focus, submission state and footer separation are refined. Email requests the email keyboard and disables autocapitalization/spelling; success and removal focus the result heading without scrolling.
