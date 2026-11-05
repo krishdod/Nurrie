@@ -1,5 +1,7 @@
 "use client";
 
+import { PRODUCT } from "@/lib/product";
+
 import { Component, Suspense, useEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Center, ContactShadows, Environment, Lightformer, Text3D } from "@react-three/drei";
@@ -19,7 +21,7 @@ class SceneBoundary extends Component<{ children: ReactNode; fallback: ReactNode
 export function ProductFallback() {
   return (
     <img
-      src="/images/product-duo-1024.webp"
+      src={PRODUCT.fallback}
       alt="Two views of NURRIE's pearl ivory and rose gold double-ended foundation stick: white foundation and blending brush"
       width={1024}
       height={683}
@@ -69,7 +71,7 @@ function RoseGold() {
 }
 
 function Pearl() {
-  return <meshPhysicalMaterial color="#f5eee3" metalness={0.06} roughness={0.3} clearcoat={0.52} clearcoatRoughness={0.27} />;
+  return <meshPhysicalMaterial color={PRODUCT.pearlWhite} metalness={0.06} roughness={0.3} clearcoat={0.52} clearcoatRoughness={0.27} />;
 }
 
 function Brush() {
@@ -183,7 +185,7 @@ export function ProductBody({ brush = false, opening, hideCap = false }: { brush
       <mesh position={[0, 0.76, 0]}><cylinderGeometry args={[0.396, 0.414, 0.16, 80]} /><RoseGold /></mesh>
       <mesh position={[0, 0.98, 0]}><cylinderGeometry args={[0.346, 0.346, 0.35, 80]} /><RoseGold /></mesh>
       {brush ? <Brush /> : (
-        <mesh><latheGeometry args={[bulletProfile, 80]} /><meshPhysicalMaterial color="#fffdf7" roughness={0.37} clearcoat={0.28} metalness={0} /></mesh>
+        <mesh><latheGeometry args={[bulletProfile, 80]} /><meshPhysicalMaterial color={PRODUCT.formulaWhite} emissive={PRODUCT.formulaWhite} emissiveIntensity={0.16} envMapIntensity={0.08} roughness={0.48} clearcoat={0.12} metalness={0} /></mesh>
       )}
       <SceneBoundary fallback={null}>
         <Suspense fallback={null}>
@@ -320,8 +322,8 @@ export default function KineticScene({ paused = false, onReady, className, varia
             style={{ touchAction: "pan-y" }}
           >
             <ambientLight intensity={0.5} />
-            <directionalLight position={[-3, 5, 5]} intensity={2.8} color="#fffaf4" />
-            <directionalLight position={[4, 1, -3]} intensity={2.2} color="#ffe4d1" />
+            <directionalLight position={[-3, 5, 5]} intensity={2.8} color="#ffffff" />
+            <directionalLight position={[4, 1, -3]} intensity={2.2} color="#ffffff" />
             <Environment resolution={256} frames={1}>
               <mesh scale={40}><sphereGeometry args={[1, 24, 24]} /><meshBasicMaterial color="#a99b90" side={BackSide} /></mesh>
               <Lightformer intensity={5} position={[-3, 2, 4]} scale={[0.9, 6, 1]} rotation={[0, 0.4, 0]} />

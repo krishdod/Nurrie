@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PRODUCT } from "@/lib/product";
 import { SITE_ORIGIN } from "@/lib/site";
 import "./globals.css";
 import "./immersive.css";
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/product-duo.png",
+        url: PRODUCT.social,
         width: 1536,
         height: 1024,
         alt: "NURRIE white colour-changing foundation and built-in brush in ivory and rose gold",

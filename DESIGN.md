@@ -8,9 +8,9 @@ colors:
   ink: "#2c1c17"
   soft: "#e7ded2"
   muted: "#776257"
-  pearl: "#f5eee3"
+  pearl: "#fafafa"
   rose-gold: "#d4a18c"
-  formula-white: "#fffdf7"
+  formula-white: "#ffffff"
   inverse-secondary: "#e6dbcf"
   inverse-caption: "#d9cabd"
   field-placeholder: "#776257"
@@ -94,13 +94,13 @@ components:
 
 ## Overview
 
-Updated 4 November 2026. NURRIE opens with a human campaign photograph, a monumental ivory wordmark and the line "Beauty, becoming." The white-first product proposition is explicit in the first viewport. The supplied pearl-ivory and rose-gold stick remains the product authority. The campaign portrait is atmosphere, never product-result evidence.
+Updated 5 November 2026. NURRIE opens with the approved white stick against cocoa light, a monumental ivory wordmark and “White. Until you.” A manual scene switch reveals the human campaign portrait. The neutral-white formula is explicit in every product image, 3D view and share card. The supplied packaging remains authoritative; generated colour-corrected and campaign assets are documented in source-assets/v7-white-first.md. Campaign imagery is atmosphere, never product-result evidence.
 
 **Creative North Star: Starts white. Becomes you.**
 
 - Cocoa, ivory, soft neutral and restrained rose-gold packaging.
-- Full-bleed skin-and-silk photography with a monumental Gambarino wordmark.
-- Textured brush-to-reveal interaction uncovers the exact supplied product photograph.
+- Full-bleed white-product and skin-and-silk photography with a monumental Gambarino wordmark.
+- Textured brush-to-reveal interaction uncovers the approved white-corrected product photograph.
 - Secondary WHITE / BLEND / YOU 3D story with manual rotation, pause and photo fallback.
 - Direct launch-interest registration with explicit consent and private removal.
 
@@ -108,7 +108,7 @@ Product truth is in PRODUCT.md; the composition contract is in SURFACE.md. Sourc
 
 ## Materials and colour
 
-The original ivory #f2eee7, cocoa #34231c, rose #d6b19a and soft #e7ded2 remain. The opening photograph has cocoa negative space, skin and ivory fabric. The primary discovery action is ivory with cocoa type; first access uses a dark legibility background. The revealed photograph keeps the supplied pearl casing, rose-gold trim, white formula and brush. Signup sits on the soft ground. Never restore the rejected teal/coral interface or invented brown packaging.
+The original ivory #f2eee7, cocoa #34231c, rose #d6b19a and soft #e7ded2 remain. The opening photograph has cocoa negative space, skin and ivory fabric. The primary discovery action is ivory with cocoa type; first access uses a dark legibility background. The revealed photograph uses the approved neutral-white correction while preserving the supplied rose-gold trim and natural brush. Signup sits on the soft ground. Never restore the rejected teal/coral interface or invented brown packaging.
 
 ## Type and layout
 
@@ -118,7 +118,7 @@ The sequence is campaign portrait → white-first introduction and tactile suppl
 
 ## Motion and interaction
 
-The hero uses restrained GSAP entrance and native-scroll parallax. Reduced motion disables automatic hero movement. The reveal paints a cream photograph on a canvas, then removes it with textured brush stamps while dragging. Vertical touch scrolling remains native. Reveal the stick and Try the reveal again are ordinary keyboard-accessible buttons. The adjacent note reads: A visual story of transformation. Not a shade match or a product-result demonstration. This is not a shade simulator. The old ColourReveal slider is not mounted.
+The hero uses restrained GSAP entrance and native-scroll parallax. Reduced motion disables automatic hero movement. The reveal paints a cream photograph on a canvas, then removes it with textured brush stamps while dragging. Vertical touch scrolling remains native. Reveal the stick and Try the reveal again are ordinary keyboard-accessible buttons. The adjacent note reads: A visual story of transformation. Not a shade match or a product-result demonstration. This is not a shade simulator. The old ColourReveal slider component has been removed.
 
 The 3D story loads within 500px of the viewport, in a 230svh section (210svh phone). Scroll drives WHITE / BLEND / YOU and opens the lower brush cap. The white formula remains white. Manual rotation, pause, direct chapter controls, reduced-motion handling, hidden/offscreen suspension and supplied-image fallback remain. Reduced motion removes the tall scroll region. This model is an artistic representation, not engineering data.
 
@@ -130,7 +130,7 @@ D1 stores normalized unique email, consent timestamp and a SHA-256 removal-token
 
 ## Evidence and boundaries
 
-The supplied product-duo.png and brand-board.jpeg remain authoritative. Generated campaign imagery and exact prompt provenance are documented in source-assets/v5-art-direction.md. Independent review found no material aesthetic correction in the desktop/phone hero captures, but recorded a missing Impeccable-specific concept-seed contract. Do not describe that review as an unconditional pass. Root verification additionally covered the tablet, reveal gesture/button/reset, 3D entry and mobile overflow; evidence is under .impeccable/review/v5-*. Physical phone and exhaustive cross-browser certification are not claimed.
+The unchanged source-assets/product-duo-original.png and brand-board.jpeg remain authoritative for design. The approved white correction and new product campaign are documented in source-assets/v7-white-first.md; prior portrait provenance is in source-assets/v5-art-direction.md. The v5 independent review found no material aesthetic correction in its hero captures, but recorded a missing Impeccable-specific concept-seed contract. Do not describe that historical review as an unconditional pass. Current root verification is recorded separately under .impeccable/review/v7-*. Physical phone and exhaustive cross-browser certification are not claimed.
 
 Do not invent origin, ingredients, SPF, scientific mechanism, universal tone compatibility, clinical performance, price, date or testimonials. Preserve clear proposition and registration even when graphics fail.
 
@@ -144,3 +144,9 @@ The ritual pairs Swipe with a close crop of the supplied white foundation, Blend
 The secondary 3D words are now individual extruded characters, each turning and moving along the native scroll transition. Inspect the details opens a closer, static view in the same stage. Direct White / Blend / You controls select the inspection angle without scrolling, while rotation remains available. The cap is omitted from inspection to keep the detail visible; the scene is explicitly described as an artistic preview. Returning to the story restores the native-scroll phase. Automatic motion is paused during inspection; the exit remains available if graphics fail.
 
 The cream reveal has a pointer-following Hold & brush affordance on fine pointers, with a pressed state. Touch devices retain native scrolling and the existing reveal/reset button. Reduced motion retains a standard cursor. FAQ controls, form focus, submission state and footer separation are refined. Email requests the email keyboard and disables autocapitalization/spelling; success and removal focus the result heading without scrolling.
+
+## V7 white-first campaign — 5 November 2026
+
+The approved colour correction replaces the warm-cast product in the reveal, ritual, graphics fallbacks, privacy header and social metadata. lib/product.ts is the single delivery authority. The formula material uses neutral #ffffff, neutral lighting and low environmental tint; the casing uses #fafafa. Natural brush bristles and rose-gold hardware keep their own colours. No unused foundation changes colour in the 3D story.
+
+The white-product scene is the default hero. The white formula / The face buttons manually switch the photograph with a restrained wipe, an accessible pressed state and a solid cocoa control background. Reduced motion removes the wipe. Phones and portrait tablets through 1100px use a 242px cocoa copy panel; portrait tablets have a 900px minimum hero, phones 760px. Scene controls sit above that panel, with wordmark clearance. Landscape desktops retain the left copy overlay. The retired warm-cast product files are archived outside public assets, and the unused colour-tint slider component is deleted.

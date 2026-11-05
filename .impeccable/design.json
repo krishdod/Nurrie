@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-04T21:56:01.202Z",
+  "generatedAt": "2026-11-05T13:50:18.3610902Z",
   "title": "Design System: NURRIE",
   "extensions": {
     "colorMeta": {
@@ -266,23 +266,23 @@
       }
     ],
     "productAuthority": {
-      "product": "Pearl ivory and rose-gold double-ended foundation stick; WHITE formula at one end and built-in blending brush at the other.",
+      "product": "Pearl-white and rose-gold double-ended foundation stick; neutral WHITE formula and a natural-bristle blending brush.",
       "proposition": "User-supplied colour-changing formula that adapts as it is applied and blended.",
-      "heroAsset": "public/images/campaign-portrait-wide-v5.webp",
+      "heroAsset": "public/images/product-campaign-v7-1672.webp",
       "identityReference": "source-assets/brand-board.jpeg",
-      "fallbackAsset": "public/images/product-duo-1024.webp",
+      "fallbackAsset": "public/images/product-white-v7-1024.webp",
       "illustrationQualifier": "A visual story of transformation. Not a shade match or a product-result demonstration.",
       "rejectedDirection": "Invented cocoa casing, beige bullet, floating cocoa cap, and generated cocoa campaign.",
       "claimBoundary": "No country-of-origin or Korean-manufacture claims, clinical results, universal tone compatibility, mechanism, ingredients, SPF, wear duration, certifications, or unannounced pricing/date.",
-      "sourceAsset": "public/images/product-duo.png",
+      "sourceAsset": "source-assets/product-duo-original.png",
       "heroResponsiveAssets": [
-        "public/images/campaign-portrait-wide-v5-1000.webp",
-        "public/images/campaign-portrait-wide-v5.webp"
+        "public/images/product-campaign-v7-1000.webp",
+        "public/images/product-campaign-v7-1672.webp"
       ],
-      "heroRole": "Atmospheric generated beauty portrait; supplied product photograph is authoritative in the reveal and 3D fallback."
+      "heroRole": "Generated cocoa campaign based on the user-approved neutral-white product correction. Alternate atmospheric portrait; neither is product-result evidence."
     },
     "layout": {
-      "heroHeight": "100svh; minimum 680px desktop, 780px tablet/narrow desktop, 760px phone",
+      "heroHeight": "100svh; minimum 680px desktop, 780px narrow landscape, 900px portrait tablet, 760px phone",
       "scrollHeight": "Embedded 3D: 230svh desktop, 210svh phone; auto reduced motion",
       "mobileBreakpoint": "700px",
       "narrowObjectBreakpoint": "900px",
@@ -376,11 +376,11 @@
   ],
   "narrative": {
     "northStar": "Starts white. Becomes you.",
-    "overview": "Updated 4 November 2026. NURRIE opens with a human campaign photograph, a monumental ivory wordmark and the line \"Beauty, becoming.\" The white-first product proposition is explicit in the first viewport. The supplied pearl-ivory and rose-gold stick remains the product authority. The campaign portrait is atmosphere, never product-result evidence.",
+    "overview": "V7 opens on the approved white formula against cocoa light with White. Until you. A manual switch reveals the portrait. All active product imagery and 3D materials are centralized in lib/product.ts.",
     "keyCharacteristics": [
       "Cocoa, ivory, soft neutral and restrained rose-gold packaging.",
-      "Full-bleed skin-and-silk photography with a monumental Gambarino wordmark.",
-      "Textured brush-to-reveal interaction uncovers the exact supplied product photograph.",
+      "White-product and skin-and-silk campaign views with a monumental Gambarino wordmark.",
+      "Tactile reveal of the approved neutral-white product photograph.",
       "Secondary WHITE / BLEND / YOU 3D story with manual rotation, pause and photo fallback.",
       "Direct launch-interest registration with explicit consent and private removal."
     ],

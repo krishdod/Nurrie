@@ -1,5 +1,7 @@
 "use client";
 
+import { PRODUCT } from "@/lib/product";
+
 import { lazy, Suspense, useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { ArrowDown, ArrowUpRight, Maximize2, Minimize2, MoveHorizontal, Pause, Play, RotateCw } from 'lucide-react';
 import gsap from 'gsap';
@@ -66,7 +68,7 @@ export default function ImmersiveHero({embedded=false}:{embedded?:boolean}){
     <div className="immersive-stage">
       <header className="journey-header"><a href="/" className="journey-brand" aria-label="NURRIE home">NURRIE<span>Beauty, becoming.</span></a><nav aria-label="Main navigation"><a href="#the-stick">The object</a><a href="#the-ritual">The ritual</a></nav><a href="#first-access" className="journey-invitation">First access <ArrowUpRight size={18}/></a></header>
       <div className={`journey-object ${ready?'is-ready':''}`} onPointerDown={event=>{if(event.button!==0)return;pointer.current={id:event.pointerId,x:event.clientX,start:rotation.current};event.currentTarget.setPointerCapture(event.pointerId);}} onPointerMove={event=>{if(pointer.current?.id===event.pointerId){rotation.current=pointer.current.start+(event.clientX-pointer.current.x)*.009;setTurn(rotation.current);}}} onPointerUp={()=>{pointer.current=null;}} onPointerCancel={()=>{pointer.current=null;}}>
-        {mounted?<Suspense fallback={<div className="journey-fallback"><img src="/images/product-duo-1024.webp" alt="NURRIE white foundation and built-in brush in pearl ivory and rose gold"/></div>}><Scene progress={progress} rotation={rotation} paused={paused||reduced||inspecting} phase={value} turn={turn} inspecting={inspecting} onReady={readyCallback} onUnavailable={unavailableCallback}/></Suspense>:<div className="journey-fallback"><img src="/images/product-duo-1024.webp" alt="NURRIE white foundation and built-in brush in pearl ivory and rose gold"/></div>}
+        {mounted?<Suspense fallback={<div className="journey-fallback"><img src={PRODUCT.fallback} alt="NURRIE white foundation and built-in brush in pearl ivory and rose gold"/></div>}><Scene progress={progress} rotation={rotation} paused={paused||reduced||inspecting} phase={value} turn={turn} inspecting={inspecting} onReady={readyCallback} onUnavailable={unavailableCallback}/></Suspense>:<div className="journey-fallback"><img src={PRODUCT.fallback} alt="NURRIE white foundation and built-in brush in pearl ivory and rose gold"/></div>}
       </div>
       <div className="journey-caption" aria-live="polite"><Heading>{inspecting?['White foundation.','The built-in brush.','Pearl. Rose gold.'][current]:chapters[current].title}</Heading><p>{inspecting?'Drag to explore the details. An artistic preview of the NURRIE stick.':chapters[current].copy}</p></div>
       <button type="button" className="journey-inspect" disabled={!ready&&!inspecting} aria-pressed={inspecting} onClick={toggleInspection}>{inspecting?<Minimize2 size={16}/>:<Maximize2 size={16}/>}<span>{inspecting?'Back to the story':'Inspect the details'}</span></button>

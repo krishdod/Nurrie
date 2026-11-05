@@ -61,3 +61,9 @@ Subscribers are in the D1 `waitlist` table. There is no public listing endpoint 
 ## V6 update — 5 November 2026
 
 Retains the v5 photographic opening and adds individual kinetic letters, direct product inspection, synchronized photographic ritual steps and fine-pointer brush guidance. Short-desktop hero framing, phone ritual order, FAQ controls and form focus were refined. V6 screenshots are in .impeccable/review; no new claims or source assets were introduced. The underlying waitlist API and data schema are unchanged. Exact deployment and preview process remain in the parent JSON receipts.
+
+## V7 update — 5 November 2026
+
+Opens with the approved white-formula product against cocoa light and a manual switch to the atmospheric portrait. Every active product image, graphics fallback, privacy image and share card now uses the neutral-white correction. The 3D formula and lighting are neutral white; natural bristles and rose-gold hardware are preserved. Phones and portrait tablets separate the copy from the large product composition. The obsolete tint-slider component is removed and warm-cast product files are archived outside public delivery.
+
+Exact image-edit prompts and asset paths are in source-assets/v7-white-first.md. Current checks and screenshots are in .impeccable/review/v7-review.md. The backend and subscriber schema are unchanged; prior verified registration/removal behavior remains in place. The parent publication and network-preview receipts identify the exact built/deployed revision and active local process.

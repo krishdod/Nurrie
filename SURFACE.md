@@ -1,4 +1,4 @@
-# NURRIE campaign — v5
+# NURRIE campaign — v7
 
 ## THESIS
 
@@ -10,11 +10,11 @@ Original cocoa and ivory, soft skin light and silk, monumental Gambarino letteri
 
 ## FIRST VIEWPORT
 
-Full-height campaign portrait with negative space at left, Beauty, becoming., the explicit white-first proposition and an ivory discovery action. NURRIE spans the lower photograph. The first-access control remains visible in the header. Phone copy moves into its own cocoa panel. The portrait is atmospheric, not evidence of a foundation result.
+The default full-height scene shows the approved neutral-white stick against cocoa light, with “White. Until you.” and an ivory discovery action. The scene selector switches between The white formula and The face, with pressed state and keyboard support. NURRIE spans the lower photograph. First access stays visible in the header. Phones and portrait tablets use a separate cocoa copy panel to keep text clear of the products. The portrait is atmospheric, not evidence of a foundation result.
 
 ## STORY
 
-Campaign → Starts white. Becomes you. introduction → cream-coated canvas revealing the exact supplied product photo → embedded White / Blend / You 3D story → Swipe / Blend / Be ritual → four disclosures → consent-based interest form → oversized footer. The reveal supports horizontal brushing and a complete reveal/reset button; vertical scrolling remains native. Its visible qualifier excludes shade matching or demonstrated results. The former colour slider is no longer mounted.
+Campaign → Starts white. Becomes you. introduction → cream-coated canvas revealing the approved white-corrected product photo → embedded White / Blend / You 3D story → Swipe / Blend / Be ritual → four disclosures → consent-based interest form → oversized footer. The reveal supports horizontal brushing and a complete reveal/reset button; vertical scrolling remains native. Its visible qualifier excludes shade matching or demonstrated results. The unused colour slider component has been removed.
 
 ## FINISH
 

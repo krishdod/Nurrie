@@ -1,5 +1,7 @@
 "use client";
 
+import { PRODUCT } from "@/lib/product";
+
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { ArrowUpRight, Minus, Plus } from "lucide-react";
 import gsap from "gsap";
@@ -58,10 +60,10 @@ export default function NurrieHome() {
       <section className="ritual-editorial" id="the-ritual" aria-labelledby="ritual-heading">
             <div className="ritual-portrait" data-ritual={ritual}>
               <div className={`ritual-frame ritual-macro ritual-formula ${ritual === 0 ? "is-current" : ""}`} aria-hidden={ritual !== 0}>
-                <img src="/images/product-duo-1536.webp" width={1536} height={1024} alt="Close-up of the white NURRIE foundation and rose-gold collar" loading="lazy" />
+                <img src={PRODUCT.image} width={1536} height={1024} alt="Close-up of the white NURRIE foundation and rose-gold collar" loading="lazy" />
               </div>
               <div className={`ritual-frame ritual-macro ritual-brush ${ritual === 1 ? "is-current" : ""}`} aria-hidden={ritual !== 1}>
-                <img src="/images/product-duo-1536.webp" width={1536} height={1024} alt="Close-up of the built-in NURRIE blending brush" loading="lazy" />
+                <img src={PRODUCT.image} width={1536} height={1024} alt="Close-up of the built-in NURRIE blending brush" loading="lazy" />
               </div>
               <div className={`ritual-frame ritual-life ${ritual === 2 ? "is-current" : ""}`} aria-hidden={ritual !== 2}>
               <img

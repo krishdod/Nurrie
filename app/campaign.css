@@ -101,3 +101,43 @@
 @media(max-width:700px){.journey-inspect{top:24px;font-size:12px;gap:8px}.is-inspecting .journey-caption{padding:15px 0;max-width:none}.is-inspecting .journey-caption h2{font-size:30px}.is-inspecting .journey-caption p{font-size:12px;margin-top:8px}}
 
 @media(max-width:700px){.is-inspecting .journey-object{top:85px;bottom:240px}}
+
+/* V7: the white formula leads; the portrait remains an intentional second view. */
+.campaign-image{clip-path:inset(0 0 0 0);opacity:1;transition:clip-path .9s cubic-bezier(.22,1,.36,1),opacity .5s}
+.campaign-image.is-inactive{clip-path:inset(0 0 0 100%);opacity:0;pointer-events:none}
+.campaign-image--product img{object-position:80% 50%}
+.campaign-wordmark{bottom:72px}
+.campaign-edge{bottom:15px;min-height:44px}
+.campaign-scene-switch{display:flex;gap:10px;align-items:center;background:var(--cocoa);padding:0 4px}
+.campaign-scene-switch button{position:relative;min-height:44px;padding:10px 13px;border:0;background:transparent;color:inherit;font-size:12px;opacity:.8;transition:opacity .25s}
+.campaign-scene-switch button::after{content:'';position:absolute;bottom:2px;left:13px;right:13px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.campaign-scene-switch button[aria-pressed=true],.campaign-scene-switch button:hover{opacity:1}
+.campaign-scene-switch button[aria-pressed=true]::after{transform:scaleX(1)}
+.campaign-nav nav a:hover{text-decoration:none}
+.privacy-brand{display:flex;justify-content:space-between;align-items:center;gap:30px;padding-bottom:25px;border-bottom:1px solid #cabaaa}
+.privacy-brand>a{text-decoration:none!important;display:flex;flex-direction:column;gap:12px}
+.privacy-brand>a>span:first-child{font:46px/1 var(--display);letter-spacing:-.035em}
+.privacy-brand>a>span:last-child{font-size:13px}
+.privacy-brand img{width:190px;height:145px;object-fit:cover}
+@media(max-width:700px){
+  .campaign-wordmark{bottom:310px}
+  .campaign-edge{bottom:250px;font-size:11px}
+  .campaign-made{display:none}
+  .campaign-scene-switch{gap:2px}
+  .campaign-scene-switch button{font-size:11px;padding:10px}
+  .campaign-scene-switch button::after{left:10px;right:10px}
+  .campaign-image--product img{object-position:82% 50%}
+  .privacy-brand{gap:20px}.privacy-brand>a>span:first-child{font-size:34px}.privacy-brand>a>span:last-child{font-size:12px;max-width:150px}.privacy-brand img{width:120px;height:115px}
+}
+@media(prefers-reduced-motion:reduce){.campaign-image,.campaign-scene-switch button,.campaign-scene-switch button::after{transition:none}}
+@media(max-width:1100px){.campaign-edge>span{display:none}.campaign-edge{justify-content:flex-end}}
+@media(min-width:701px) and (max-width:1100px) and (max-aspect-ratio:1/1){
+  .campaign-cover{height:100svh;min-height:900px}
+  .campaign-image{height:calc(100% - 242px);bottom:auto}
+  .campaign-copy{top:auto;bottom:0;left:0;right:0;max-width:none;height:242px;padding:28px var(--gutter);background:var(--cocoa)}
+  .campaign-copy h1{font-size:54px;max-width:350px}
+  .campaign-copy p{position:absolute;top:36px;left:55%;right:var(--gutter);margin:0;font-size:15px}
+  .campaign-discover{margin-top:24px}
+  .campaign-wordmark{bottom:310px}
+  .campaign-edge{bottom:250px}
+}

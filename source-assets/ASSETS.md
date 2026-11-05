@@ -1,5 +1,11 @@
 # NURRIE asset provenance
 
+## Current shipping product — v7, 5 November 2026
+
+The user approved a neutral-white correction after finding the warm-lit product too beige. Every active product view now uses product-white-v7 or product-campaign-v7 assets through lib/product.ts. These are generated edits based on the supplied design, not unmodified original photographs. Full exact prompts, original tool outputs, saved masters and conversion settings are recorded in [v7-white-first.md](v7-white-first.md).
+
+The historical product-duo PNG/WebPs below are retained in source-assets/superseded-product-v6, outside public delivery. The untouched original is also retained as source-assets/product-duo-original.png. The v5 cocoa portrait remains the alternate hero and Be ritual view. The v3 teal portrait below is historical and is not mounted.
+
 ## Authoritative user-supplied product assets
 
 The user supplied the actual NURRIE double-ended foundation duo and brand board after reviewing the initial concept. These supersede the generated cocoa packaging and campaign imagery below.
@@ -22,7 +28,7 @@ Created on 2026-10-31 from the authoritative `public/images/product-duo.png` wit
 
 All derivatives were decoded successfully and checked for their expected dimensions. The full-size and smallest exports were visually checked against the supplied original. The original PNG and source copy remain unchanged; the original's SHA-256 after export is `26d0ea505137b761cdf022944b8bcb7a3a2d3b28aa3b4b40f7883e97fd3535fe`.
 
-## Generated editorial portrait — current campaign direction
+## Generated editorial portrait — superseded teal direction
 
 Created on 2026-11-03 with the built-in OpenAI `image_gen.imagegen` tool, using no reference images and `transparent_background: false`. This is generated editorial atmosphere for the user's new ivory `#f3eee8`, deep teal `#17645f`, and coral `#ff5845` direction. The adult portrait is not a customer, testimonial, product-use demonstration, or evidence of product performance. The authoritative supplied product image remains the product/hero reference. No packaging, product, lettering, or performance claims are depicted in the portrait.
 

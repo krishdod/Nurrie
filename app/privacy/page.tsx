@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PrivacyControls from "@/components/PrivacyControls";
+import { PRODUCT } from "@/lib/product";
 
 export const metadata: Metadata = {
   title: "Your privacy — NURRIE",
@@ -11,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <main className="privacy-page">
       <a className="skip-link" href="#removal-heading">Skip to leave the list</a>
-      <a href="/">Back to NURRIE</a>
+      <header className="privacy-brand"><a href="/" aria-label="Back to NURRIE"><span>NURRIE</span><span>White foundation. Made for you.</span></a><img src={PRODUCT.fallback} width={1024} height={683} alt={PRODUCT.alt}/></header>
       <h1>Your email.<br />Your choice.</h1>
       <p>
         Registering interest gives NURRIE permission to contact you with product
