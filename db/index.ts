@@ -1,13 +1,24 @@
-import { env } from "cloudflare:workers";
-import { drizzle } from "drizzle-orm/d1";
 import * as schema from "./schema";
 
 export function getDb() {
-  if (!env.DB) {
+  let env: { DB?: unknown } | undefined;
+  try {
+    // Dynamic access so Node.js/Vercel build doesn't crash on missing Cloudflare module
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const cf = require("cloudflare:workers");
+    env = cf?.env;
+  } catch {
+    // Running in Node.js, Vercel, or standard build environment
+  }
+
+  if (!env || !("DB" in env) || !env.DB) {
     throw new Error(
-      "Cloudflare D1 binding `DB` is unavailable. Set the `d1` field in .openai/hosting.json to `DB` or let your control plane inject the real binding values before using the database."
+      "Cloudflare D1 binding `DB` is unavailable. On Cloudflare Pages/Workers, ensure the D1 binding DB is configured."
     );
   }
 
-  return drizzle(env.DB, { schema });
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { drizzle } = require("drizzle-orm/d1");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return drizzle(env.DB as any, { schema });
 }

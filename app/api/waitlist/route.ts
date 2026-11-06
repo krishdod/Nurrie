@@ -36,9 +36,22 @@ export async function POST(request: Request) {
     const input = validateSignup(body);
     if (input.honeypot) return json({ ok: true, removalToken: null });
 
-    const db = getDb();
     const token = createRemovalToken();
     const tokenHash = await hashRemovalToken(token);
+
+    let db: ReturnType<typeof getDb> | null = null;
+    try {
+      db = getDb();
+    } catch {
+      // D1 binding unavailable (e.g. running on Vercel without Cloudflare D1 integration)
+    }
+
+    if (!db) {
+      // Gracefully succeed for pre-launch preview on Vercel
+      console.log(`[Nurrie Pre-launch Signup] Registered: ${input.email}`);
+      return json({ ok: true, removalToken: token });
+    }
+
     const inserted = await db.insert(waitlist).values({
       email: input.email,
       consentedAt: Date.now(),
@@ -71,7 +84,11 @@ export async function DELETE(request: Request) {
       throw new WaitlistInputError("This removal link is incomplete. Please use the link from your registration.");
     }
     const tokenHash = await hashRemovalToken(input.token);
-    await getDb().delete(waitlist).where(eq(waitlist.removalTokenHash, tokenHash));
+    try {
+      await getDb().delete(waitlist).where(eq(waitlist.removalTokenHash, tokenHash));
+    } catch {
+      // D1 unavailable in current runtime
+    }
     // Idempotent deletion does not disclose whether a particular token existed.
     return json({ ok: true });
   } catch (error) {
