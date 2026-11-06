@@ -10,6 +10,8 @@ import LivingCover from "./LivingCover";
 import MetamorphosisStudio from "./MetamorphosisStudio";
 import LuxuryCursor from "./LuxuryCursor";
 import WaitlistForm from "./WaitlistForm";
+import EditorialTicker from "./EditorialTicker";
+import StickyMobileBar from "./StickyMobileBar";
 import { sensoryAudio } from "./SensoryAudio";
 
 const rituals = [
@@ -73,6 +75,7 @@ export default function NurrieHome() {
       <div ref={root} id="top" className="nurrie-page nurrie-campaign nurrie-living">
         <main id="main">
           <LivingCover />
+          <EditorialTicker />
 
           <section className="product-diptych" id="the-stick" aria-labelledby="diptych-heading">
             <div className="diptych-heading">
@@ -287,6 +290,7 @@ export default function NurrieHome() {
           </div>
         </footer>
       </div>
+      <StickyMobileBar />
     </>
   );
 }

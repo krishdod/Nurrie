@@ -15,6 +15,7 @@ type Props = {
   paused: boolean;
   active: boolean;
   macro?: "none" | "bullet" | "brush";
+  uncapped?: boolean;
   onReady: () => void;
   onUnavailable: () => void;
 };
@@ -51,6 +52,7 @@ function Sculpture(props: Props) {
   const { viewport, size } = useThree();
   const phone = size.width < 768;
   const clock = useRef(0);
+  const effectiveOpening = useRef(props.progress.current);
 
   // Refined luxury cosmetic scale with breathing room to guarantee zero clipping
   const baseScale = Math.min(viewport.height / (phone ? 5.2 : 4.4), viewport.width / (phone ? 3.4 : 4.8));
@@ -64,6 +66,9 @@ function Sculpture(props: Props) {
     const clampedDelta = Math.min(delta, 0.032);
     const p = props.progress.current;
     if (!props.paused) clock.current += clampedDelta;
+
+    const targetOpening = props.uncapped ? 0.92 : p;
+    effectiveOpening.current = props.paused ? targetOpening : MathUtils.damp(effectiveOpening.current, targetOpening, 6, clampedDelta);
 
     const isMacro = props.macro && props.macro !== "none";
     const macroBullet = props.macro === "bullet";
@@ -94,7 +99,7 @@ function Sculpture(props: Props) {
 
   return (
     <group ref={group} scale={baseScale} position={[phone ? 0 : -viewport.width * 0.12, phone ? -0.12 : 0.03, 0.5]} rotation={[0.08, 0.12, -0.34]}>
-      <ProductBody opening={props.progress} capSeparation={0.9} />
+      <ProductBody opening={effectiveOpening} capSeparation={0.9} />
     </group>
   );
 }

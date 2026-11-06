@@ -1,7 +1,7 @@
 "use client";
 
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUpRight, Pause, Play, RotateCw, Volume2, VolumeX, ZoomIn } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Layers, Pause, Play, RotateCw, Volume2, VolumeX, ZoomIn } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PRODUCT } from "@/lib/product";
@@ -38,6 +38,7 @@ export default function LivingCover() {
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
   const [active, setActive] = useState(true);
+  const [uncapped, setUncapped] = useState(false);
 
   const update = useCallback((p: number) => {
     progress.current = p;
@@ -212,6 +213,7 @@ export default function LivingCover() {
                 phase={phase}
                 turn={turn}
                 macro={macro}
+                uncapped={uncapped}
                 paused={paused || reduced}
                 active={active}
                 onReady={onReady}
@@ -250,7 +252,28 @@ export default function LivingCover() {
         </div>
 
         <div className="cover-tools">
-          <span className="tools-hint">{ready ? (macro !== "none" ? "Macro inspection active" : "Drag stick to rotate") : "Double-ended stick"}</span>
+          <span className="tools-hint">
+            {ready
+              ? macro !== "none"
+                ? "Macro inspection active"
+                : uncapped
+                ? "Both ends revealed in 3D"
+                : "Drag stick to rotate"
+              : "Double-ended stick"}
+          </span>
+          <button
+            type="button"
+            className={`tools-uncap-toggle ${uncapped ? "is-active" : ""}`}
+            aria-label={uncapped ? "Snap magnetic cap closed" : "Uncap both ends in 3D"}
+            title={uncapped ? "Snap cap closed" : "Uncap both ends in 3D"}
+            disabled={!ready}
+            onClick={() => {
+              setUncapped(!uncapped);
+              sound.capClick();
+            }}
+          >
+            <Layers size={17} />
+          </button>
           <button
             type="button"
             className={`tools-macro-toggle ${macro !== "none" ? "is-active" : ""}`}

@@ -300,6 +300,43 @@ export default function MetamorphosisStudio() {
         </div>
 
         <div className="studio-spectrum-bar">
+          <div className="spectrum-bar-header">
+            <div className="spectrum-title-col">
+              <span className="spectrum-eyebrow">Adaptive Spectrum</span>
+              <h3 className="spectrum-title">Select your undertone</h3>
+            </div>
+            <div className="quick-match-tabs" role="group" aria-label="Filter tones by depth">
+              <button
+                type="button"
+                className={`quick-match-pill ${shade.id === "alabaster" ? "is-active" : ""}`}
+                onClick={() => handleShadeSelect(SHADES[0])}
+              >
+                Fair
+              </button>
+              <button
+                type="button"
+                className={`quick-match-pill ${shade.id === "ochre" ? "is-active" : ""}`}
+                onClick={() => handleShadeSelect(SHADES[1])}
+              >
+                Medium
+              </button>
+              <button
+                type="button"
+                className={`quick-match-pill ${shade.id === "sienna" ? "is-active" : ""}`}
+                onClick={() => handleShadeSelect(SHADES[2])}
+              >
+                Deep
+              </button>
+              <button
+                type="button"
+                className={`quick-match-pill ${shade.id === "espresso" ? "is-active" : ""}`}
+                onClick={() => handleShadeSelect(SHADES[3])}
+              >
+                Rich
+              </button>
+            </div>
+          </div>
+
           <div className="shade-swatch-strip" role="radiogroup" aria-label="Select tone">
             {SHADES.map((s) => (
               <button

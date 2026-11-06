@@ -2197,6 +2197,152 @@
   background: var(--ink);
 }
 
+/* ==========================================================================
+   MINIMALIST EDITORIAL MARQUEE TICKER
+   ========================================================================== */
+.editorial-ticker {
+  width: 100%;
+  overflow: hidden;
+  background: var(--cocoa);
+  color: var(--ivory);
+  border-top: 1px solid rgba(214, 177, 154, 0.25);
+  border-bottom: 1px solid rgba(214, 177, 154, 0.25);
+  padding: 14px 0;
+  position: relative;
+  z-index: 5;
+  user-select: none;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-slide 34s linear infinite;
+  will-change: transform;
+}
+
+.editorial-ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+.ticker-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.ticker-text {
+  font-family: var(--display);
+  font-size: 13.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #f7f1eb;
+}
+
+.ticker-bullet {
+  color: var(--rose);
+  font-size: 8px;
+  margin: 0 28px;
+  opacity: 0.75;
+}
+
+@keyframes ticker-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+    overflow-x: auto;
+  }
+}
+
+/* Tools Uncap Active State */
+.cover-tools button.is-active {
+  background: var(--cocoa);
+  color: var(--rose);
+  border-color: var(--rose);
+}
+
+.living-cover:not([data-phase="0"]) .cover-tools button.is-active {
+  background: var(--rose);
+  color: var(--ink);
+}
+
+/* Quick Undertone Matcher Header in Spectrum Bar */
+.spectrum-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 18px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.spectrum-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #925b3e;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.spectrum-title {
+  font-family: var(--display);
+  font-size: 18px;
+  line-height: 1.1;
+  color: var(--cocoa);
+  margin: 0;
+}
+
+.quick-match-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(52, 35, 28, 0.06);
+  padding: 4px;
+  border-radius: 20px;
+}
+
+.quick-match-pill {
+  border: 0;
+  background: transparent;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  touch-action: manipulation;
+}
+
+.quick-match-pill:hover {
+  color: var(--cocoa);
+}
+
+.quick-match-pill.is-active {
+  background: #ffffff;
+  color: var(--cocoa);
+  box-shadow: 0 2px 8px rgba(52, 35, 28, 0.12);
+  font-weight: 600;
+}
+
+/* Sticky Mobile Bar Hidden on Desktop */
+.sticky-mobile-bar {
+  display: none;
+}
+
 @media (max-width: 768px) {
   /* ==========================================================================
      THE METAMORPHOSIS STUDIO — RESPONSIVE MOBILE FIXES (CASCADE PRIORITY)
@@ -2397,5 +2543,127 @@
 
   .vip-link-box {
     flex-direction: column;
+  }
+
+  /* Editorial Ticker Mobile */
+  .editorial-ticker {
+    padding: 10px 0;
+  }
+  .ticker-text {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+  .ticker-bullet {
+    margin: 0 16px;
+  }
+
+  /* Quick Undertone Matcher Mobile */
+  .spectrum-bar-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .spectrum-title {
+    font-size: 15px;
+  }
+  .quick-match-tabs {
+    width: 100%;
+    justify-content: space-between;
+    padding: 3px;
+  }
+  .quick-match-pill {
+    flex: 1;
+    text-align: center;
+    padding: 6px 4px;
+    font-size: 10px;
+  }
+
+  /* Sticky Mobile Bar */
+  .sticky-mobile-bar {
+    display: block;
+    position: fixed;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    left: 14px;
+    right: 14px;
+    z-index: 95;
+    pointer-events: none;
+    animation: slide-up-bar 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .sticky-bar-inner {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px;
+    background: #241813;
+    border: 1px solid rgba(214, 177, 154, 0.4);
+    border-radius: 36px;
+    box-shadow: 0 10px 30px rgba(24, 15, 12, 0.45);
+  }
+
+  .sticky-meta {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .sticky-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e27d60;
+    box-shadow: 0 0 0 3px rgba(226, 125, 96, 0.35);
+    animation: pulse-ring 2s infinite;
+  }
+
+  .sticky-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+
+  .sticky-title {
+    font-family: var(--display);
+    font-size: 14px;
+    color: #f7f1eb;
+  }
+
+  .sticky-sub {
+    font-size: 10px;
+    color: var(--rose);
+    font-weight: 500;
+  }
+
+  .sticky-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--ivory);
+    color: var(--cocoa);
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+    touch-action: manipulation;
+  }
+
+  .sticky-action-btn:active {
+    transform: scale(0.96);
+  }
+
+  @keyframes slide-up-bar {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(226, 125, 96, 0.6); }
+    70% { box-shadow: 0 0 0 6px rgba(226, 125, 96, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(226, 125, 96, 0); }
   }
 }
