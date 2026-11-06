@@ -74,12 +74,12 @@ function Sculpture(props: Props) {
     const normalZ = -0.34 + Math.sin(p * Math.PI) * 0.10;
     const targetZ = isMacro ? (macroBullet ? -0.12 : 0.14) : normalZ;
 
-    // Beautifully balanced in the open visual field to complement the chapter copy on the left
-    const normalX = phone ? 0 : viewport.width * 0.08;
+    // Beautifully balanced on the left-center over the soft silk background, alongside the model portrait on the right
+    const normalX = phone ? 0 : -viewport.width * 0.12;
     const targetX = isMacro ? 0 : normalX;
     const targetY = isMacro
       ? (macroBullet ? -0.42 : 0.48)
-      : (phone ? 0.02 : 0.03) + (props.paused ? 0 : Math.sin(clock.current * 0.5) * 0.02);
+      : (phone ? -0.12 : 0.03) + (props.paused ? 0 : Math.sin(clock.current * 0.5) * 0.02);
 
     // Smooth continuous axial turn along the Y axis showcasing the double-ended design
     const autoTurn = props.rotation.current + 0.12 + p * Math.PI * 0.85;
@@ -93,7 +93,7 @@ function Sculpture(props: Props) {
   });
 
   return (
-    <group ref={group} scale={baseScale} position={[phone ? 0 : viewport.width * 0.08, phone ? 0.02 : 0.03, 0.5]} rotation={[0.08, 0.12, -0.34]}>
+    <group ref={group} scale={baseScale} position={[phone ? 0 : -viewport.width * 0.12, phone ? -0.12 : 0.03, 0.5]} rotation={[0.08, 0.12, -0.34]}>
       <ProductBody opening={props.progress} capSeparation={0.9} />
     </group>
   );

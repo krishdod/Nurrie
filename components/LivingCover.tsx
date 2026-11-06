@@ -44,6 +44,9 @@ export default function LivingCover() {
     refresh.current();
     if (section.current) {
       section.current.style.setProperty("--cover-progress", String(p));
+      // Cinematic crossfade: pure ivory ground at Chapter 1 -> warm emergence at Chapter 2 -> radiant model at Chapter 3
+      const portraitOpacity = p < 0.28 ? 0 : Math.min(1, Math.pow((p - 0.28) / 0.44, 1.3));
+      section.current.style.setProperty("--portrait-opacity", String(portraitOpacity));
     }
     setPhase(p < 0.33 ? 0 : p < 0.68 ? 1 : 2);
   }, []);
@@ -98,6 +101,19 @@ export default function LivingCover() {
   return (
     <section ref={section} className="living-cover" data-phase={phase} aria-label="White. Blend. You. The NURRIE foundation story">
       <div className="living-stage">
+        <div className="cover-portrait" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 768px)" srcSet="/images/editorial-portrait-cocoa.webp" />
+            <img
+              src="/images/campaign-portrait-wide-v5.webp"
+              width={1672}
+              height={941}
+              alt=""
+              decoding="async"
+            />
+          </picture>
+        </div>
+
         <header className="living-nav">
           <a className="living-logo" href="/" aria-label="NURRIE home">
             NURRIE
