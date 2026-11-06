@@ -11,7 +11,7 @@ async function request(method, body, requestOrigin = origin) {
   return { status: response.status, body: parsed };
 }
 try {
-  for (const path of ['/', '/privacy', '/fonts/gambarino.woff2', '/fonts/general-sans.woff2', '/fonts/optimer-regular.json', '/images/product-duo.png']) {
+  for (const path of ['/', '/privacy', '/fonts/gambarino.woff2', '/fonts/general-sans.woff2', '/fonts/optimer-regular.json', '/images/product-white-v7.png']) {
     assert.equal((await fetch(`${origin}${path}`)).status, 200, `Serves ${path}`);
   }
   assert.equal((await request('POST', { email, consent: false })).status, 400);

@@ -40,8 +40,7 @@
 @media(hover:hover) and (pointer:fine){.reveal-cursor{display:block}.reveal-stage canvas.is-ready{cursor:none}}
 .ritual-frame{position:absolute;inset:0;overflow:hidden;opacity:0;transition:opacity .6s var(--ease)}
 .ritual-frame.is-current{opacity:1}
-.ritual-macro img{position:absolute;width:290%;max-width:none;height:auto;object-fit:initial;top:-2%;bottom:auto;right:auto;transform:none!important}
-.ritual-formula img{left:-73%}.ritual-brush img{left:-121%}
+.ritual-frame img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .ritual-image-caption{position:absolute;left:var(--gutter);right:var(--gutter);bottom:32px;display:flex;justify-content:space-between;align-items:center;gap:20px;color:var(--cocoa);font-size:13px;z-index:1}
 .ritual-image-caption>span:last-child{font-variant-numeric:tabular-nums}
 .ritual-portrait[data-ritual="2"] .ritual-image-caption{color:var(--ivory)}
@@ -68,8 +67,6 @@
 .footer-bottom{border-top:1px solid rgb(242 238 231/.2)}
 @media(max-width:700px){
   .ritual-portrait{height:560px}
-  .ritual-macro img{width:360%;top:-2%}
-  .ritual-formula img{left:-102%}.ritual-brush img{left:-163%}
   .ritual-image-caption{bottom:25px}
   .ritual-tabs{max-width:none}
   .reveal-caption{font-size:12px}
@@ -84,8 +81,6 @@
   .ritual-copy h2{order:0;padding:60px var(--gutter) 0}
   .ritual-copy>p{order:1;max-width:none;margin:24px 0 0;padding:0 var(--gutter) 34px}
   .ritual-portrait{order:2;height:430px}
-  .ritual-macro img{width:330%}
-  .ritual-formula img{left:-89%}.ritual-brush img{left:-145%}
   .ritual-interaction{order:3;margin:0;padding:30px var(--gutter) 0}
   .ritual-description{min-height:140px}
   .ritual-copy>.text-link{order:4;align-self:flex-start;margin:0 var(--gutter) 40px;padding:10px 0}

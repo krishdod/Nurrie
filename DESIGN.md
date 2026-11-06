@@ -150,3 +150,18 @@ The cream reveal has a pointer-following Hold & brush affordance on fine pointer
 The approved colour correction replaces the warm-cast product in the reveal, ritual, graphics fallbacks, privacy header and social metadata. lib/product.ts is the single delivery authority. The formula material uses neutral #ffffff, neutral lighting and low environmental tint; the casing uses #fafafa. Natural brush bristles and rose-gold hardware keep their own colours. No unused foundation changes colour in the 3D story.
 
 The white-product scene is the default hero. The white formula / The face buttons manually switch the photograph with a restrained wipe, an accessible pressed state and a solid cocoa control background. Reduced motion removes the wipe. Phones and portrait tablets through 1100px use a 242px cocoa copy panel; portrait tablets have a 900px minimum hero, phones 760px. Scene controls sit above that panel, with wordmark clearance. Landscape desktops retain the left copy overlay. The retired warm-cast product files are archived outside public assets, and the unused colour-tint slider component is deleted.
+
+
+## V8 The Living Cover & Customer Experience — November 2026
+
+V8 unifies the hero and 3D story into a single, high-status Living Cover continuous scroll stage (`LivingCover.tsx`, `CoverScene.tsx`, and `living.css`). As the user scrolls, individual 3D letters for WHITE, BLEND, and YOU part and rotate around an oversized pearl-and-rose-gold double-ended stick. The lower cap slides laterally to expose the natural blending brush, while the warm editorial portrait is revealed at the climax.
+
+Interactive controls include inertial pointer drag rotation, quick 90-degree inspection, and reduced-motion suspension. A studio contact shadow grounds the 3D model. Typography preloads (`Gambarino` and `General Sans`) eliminate layout shift. Customer conversion is elevated through an exclusive Pre-Launch Edition tier highlighting early allocation, formulation insights, and private invitations, while preserving explicit GDPR consent and tokenized self-service removal.
+
+## V8.2 Luxury Refinement & Performance Overhaul - November 2026
+
+1. **3D Scene Purification & Performance**: Removed intrusive 3D extruded lettering that cluttered the viewport and bogged down framerates. Replaced with clean HTML/CSS Gambarino display typography. Corrected the vertical "NURRIE" logo rotation from upside-down to upright (-90deg). Refined rose-gold collar proportions and metalness/emissive shaders to eliminate muddy plastic tones, and tuned formula bullet to a pure, satin-matte white.
+2. **Atmospheric Crossfade Transition**: Replaced the harsh vertical clip-path (which split mobile viewports and cut faces in half) with a smooth, cinematic opacity crossfade and radial dark-vignette overlay, preserving natural portrait continuity behind the 3D stick.
+3. **Mobile Ergonomics & Collision Resolution**: Separated the header, chapter tabs, 3D object stage, copy, and interaction controls into a dedicated vertical hierarchy. Removed tool buttons from overlapping the portrait, and eliminated horizontal scroll overflow.
+4. **FAQ Architectural Redesign**: Replaced the previous single-column layout (with 36% left-margin void) with a balanced, luxury 2-column editorial architecture: sticky header, narrative intro, priority concierge card, and styled accordion cards with smooth rotating circular icon badges and clean typography.
+5. **Skill Integration**: Cloned and registered the Magic MCP (21st-dev/magic-mcp) server and 21st-ui skill for advanced component scaffolding.

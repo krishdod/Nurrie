@@ -67,3 +67,18 @@ Retains the v5 photographic opening and adds individual kinetic letters, direct 
 Opens with the approved white-formula product against cocoa light and a manual switch to the atmospheric portrait. Every active product image, graphics fallback, privacy image and share card now uses the neutral-white correction. The 3D formula and lighting are neutral white; natural bristles and rose-gold hardware are preserved. Phones and portrait tablets separate the copy from the large product composition. The obsolete tint-slider component is removed and warm-cast product files are archived outside public delivery.
 
 Exact image-edit prompts and asset paths are in source-assets/v7-white-first.md. Current checks and screenshots are in .impeccable/review/v7-review.md. The backend and subscriber schema are unchanged; prior verified registration/removal behavior remains in place. The parent publication and network-preview receipts identify the exact built/deployed revision and active local process.
+
+
+## V8 update — The Living Cover & Pre-Launch Conversion — November 2026
+
+V8 unifies the hero and 3D story into an interactive native-scroll stage (`LivingCover`). Features kinetic 3D typography (`WHITE`, `BLEND`, `YOU`), pointer-based stick inspection with studio contact shadows, and an uncoupling brush cap animation.
+
+Customer conversion enhancements include an exclusive Pre-Launch Edition invitation badge, value-focused early allocation perks, and full font preloading for `Gambarino` and `General Sans`. Tests, typechecking, and production builds pass with 100% success.
+
+## V8.2 Luxury Refinement & Performance Overhaul - November 2026
+
+1. **3D Scene Purification & Performance**: Removed intrusive 3D extruded lettering that cluttered the viewport and bogged down framerates. Replaced with clean HTML/CSS Gambarino display typography. Corrected the vertical "NURRIE" logo rotation from upside-down to upright (-90deg). Refined rose-gold collar proportions and metalness/emissive shaders to eliminate muddy plastic tones, and tuned formula bullet to a pure, satin-matte white.
+2. **Atmospheric Crossfade Transition**: Replaced the harsh vertical clip-path (which split mobile viewports and cut faces in half) with a smooth, cinematic opacity crossfade and radial dark-vignette overlay, preserving natural portrait continuity behind the 3D stick.
+3. **Mobile Ergonomics & Collision Resolution**: Separated the header, chapter tabs, 3D object stage, copy, and interaction controls into a dedicated vertical hierarchy. Removed tool buttons from overlapping the portrait, and eliminated horizontal scroll overflow.
+4. **FAQ Architectural Redesign**: Replaced the previous single-column layout (with 36% left-margin void) with a balanced, luxury 2-column editorial architecture: sticky header, narrative intro, priority concierge card, and styled accordion cards with smooth rotating circular icon badges and clean typography.
+5. **Skill Integration**: Cloned and registered the Magic MCP (21st-dev/magic-mcp) server and 21st-ui skill for advanced component scaffolding.

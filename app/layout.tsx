@@ -4,6 +4,7 @@ import { SITE_ORIGIN } from "@/lib/site";
 import "./globals.css";
 import "./immersive.css";
 import "./campaign.css";
+import "./living.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),
@@ -37,6 +38,13 @@ export default function RootLayout({
         <link
           rel="preload"
           href="/fonts/gambarino.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/general-sans.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

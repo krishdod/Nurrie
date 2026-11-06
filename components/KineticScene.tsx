@@ -67,11 +67,11 @@ function Lettering({ paused, scrollProgress }: { paused: boolean; scrollProgress
 }
 
 function RoseGold() {
-  return <meshPhysicalMaterial color="#d4a18c" metalness={0.96} roughness={0.14} clearcoat={0.7} clearcoatRoughness={0.16} />;
+  return <meshPhysicalMaterial color="#dfb19b" emissive="#4a2618" emissiveIntensity={0.08} metalness={0.94} roughness={0.16} clearcoat={0.8} clearcoatRoughness={0.12} />;
 }
 
 function Pearl() {
-  return <meshPhysicalMaterial color={PRODUCT.pearlWhite} metalness={0.06} roughness={0.3} clearcoat={0.52} clearcoatRoughness={0.27} />;
+  return <meshPhysicalMaterial color="#faf8f5" metalness={0.05} roughness={0.22} clearcoat={0.65} clearcoatRoughness={0.2} />;
 }
 
 function Brush() {
@@ -127,15 +127,20 @@ function Brush() {
   );
 }
 
-export function ProductBody({ brush = false, opening, hideCap = false }: { brush?: boolean; opening?: RefObject<number>; hideCap?: boolean }) {
+export function ProductBody({ brush = false, opening, hideCap = false, capSeparation = 0 }: { brush?: boolean; opening?: RefObject<number>; hideCap?: boolean; capSeparation?: number }) {
   const cap = useRef<Group>(null);
   const lowerBrush = useRef<Group>(null);
   useFrame(() => {
     if (!opening || !cap.current) return;
-    const amount = MathUtils.smoothstep(opening.current, 0.12, 0.58);
-    cap.current.position.set(amount * (0.35 + opening.current * 0.35), -1.54 + amount * 0.8, amount * 0.5);
-    cap.current.rotation.z = amount * 0.55;
-    if (lowerBrush.current) lowerBrush.current.visible = amount > 0.02;
+    const amount = MathUtils.smoothstep(opening.current, 0.18, 0.70);
+    // Smooth linear separation along the stick's natural axis; scales down to vanish cleanly
+    cap.current.position.set(0, -1.54 - amount * 1.8, 0);
+    cap.current.scale.setScalar(Math.max(0.001, 1 - amount * 1.25));
+    cap.current.visible = !hideCap && amount < 0.75;
+    if (lowerBrush.current) {
+      lowerBrush.current.visible = amount > 0.08;
+      lowerBrush.current.scale.setScalar(Math.min(1, amount * 1.4));
+    }
   });
   const { shell, upperTrim, lowerTrim, capProfile, bulletProfile } = useMemo(() => {
     const positions: number[] = [];
@@ -165,7 +170,7 @@ export function ProductBody({ brush = false, opening, hideCap = false }: { brush
       upperTrim: new CatmullRomCurve3(upperPoints),
       lowerTrim: new CatmullRomCurve3(lowerPoints),
       capProfile: [new Vector2(0, -1.96), new Vector2(0.34, -1.96), new Vector2(0.407, -1.94), new Vector2(0.434, -1.89), new Vector2(0.434, -1.12), new Vector2(0, -1.12)],
-      bulletProfile: [new Vector2(0, 1.07), new Vector2(0.315, 1.07), new Vector2(0.315, 1.43), new Vector2(0.31, 1.48), new Vector2(0.275, 1.52), new Vector2(0.17, 1.54), new Vector2(0, 1.55)],
+      bulletProfile: [new Vector2(0, 0.99), new Vector2(0.312, 0.99), new Vector2(0.312, 1.36), new Vector2(0.306, 1.42), new Vector2(0.27, 1.47), new Vector2(0.16, 1.50), new Vector2(0, 1.51)],
     };
   }, []);
   useEffect(() => () => shell.dispose(), [shell]);
@@ -182,14 +187,28 @@ export function ProductBody({ brush = false, opening, hideCap = false }: { brush
         <group position={[0, -0.17, 0]} rotation={[0, 0, Math.PI]}><Brush /></group>
       </group>}
       <mesh position={[0, -1.114, 0]}><cylinderGeometry args={[0.434, 0.434, 0.012, 80]} /><RoseGold /></mesh>
-      <mesh position={[0, 0.76, 0]}><cylinderGeometry args={[0.396, 0.414, 0.16, 80]} /><RoseGold /></mesh>
-      <mesh position={[0, 0.98, 0]}><cylinderGeometry args={[0.346, 0.346, 0.35, 80]} /><RoseGold /></mesh>
+      <mesh position={[0, 0.72, 0]}><cylinderGeometry args={[0.408, 0.428, 0.12, 80]} /><RoseGold /></mesh>
+      <mesh position={[0, 0.89, 0]}><cylinderGeometry args={[0.33, 0.33, 0.22, 80]} /><RoseGold /></mesh>
+      {/* Dark inner collar recess shadow to ground the white bullet */}
+      <mesh position={[0, 0.985, 0]}><cylinderGeometry args={[0.315, 0.315, 0.02, 64]} /><meshBasicMaterial color="#35241c" /></mesh>
       {brush ? <Brush /> : (
-        <mesh><latheGeometry args={[bulletProfile, 80]} /><meshPhysicalMaterial color={PRODUCT.formulaWhite} emissive={PRODUCT.formulaWhite} emissiveIntensity={0.16} envMapIntensity={0.08} roughness={0.48} clearcoat={0.12} metalness={0} /></mesh>
+        <mesh>
+          <latheGeometry args={[bulletProfile, 80]} />
+          <meshPhysicalMaterial
+            color="#fcfbfa"
+            emissive="#231c18"
+            emissiveIntensity={0.035}
+            envMapIntensity={0.32}
+            roughness={0.38}
+            clearcoat={0.32}
+            clearcoatRoughness={0.22}
+            metalness={0.02}
+          />
+        </mesh>
       )}
       <SceneBoundary fallback={null}>
         <Suspense fallback={null}>
-          <group position={[0.025, -0.2, 0.435]} rotation={[0, 0, Math.PI / 2]}>
+          <group position={[0.025, -0.2, 0.435]} rotation={[0, 0, -Math.PI / 2]}>
             <Center>
               <Text3D font={FONT} size={0.195} height={0.002} curveSegments={8} letterSpacing={0.012}>
                 NURRIE
