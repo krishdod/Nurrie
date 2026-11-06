@@ -26,6 +26,7 @@ export default function MetamorphosisStudio() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
+  const dragStartPos = useRef<{ x: number; y: number } | null>(null);
   const autoPlayAnim = useRef<number | null>(null);
   const lastSoundTick = useRef<number>(50);
 
@@ -50,19 +51,43 @@ export default function MetamorphosisStudio() {
 
   const handlePointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
     isDragging.current = true;
+    dragStartPos.current = { x: e.clientX, y: e.clientY };
     if (isAutoPlaying) stopAutoPlay();
-    e.currentTarget.setPointerCapture(e.pointerId);
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {
+      /* Optional capture */
+    }
     updateSplitFromPointer(e.clientX);
     sensoryAudio.capClick();
   };
 
   const handlePointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
     if (!isDragging.current) return;
+    if (dragStartPos.current) {
+      const dx = Math.abs(e.clientX - dragStartPos.current.x);
+      const dy = Math.abs(e.clientY - dragStartPos.current.y);
+      if (dy > dx && dy > 14) {
+        isDragging.current = false;
+        try {
+          e.currentTarget.releasePointerCapture(e.pointerId);
+        } catch {
+          /* Optional */
+        }
+        return;
+      }
+    }
     updateSplitFromPointer(e.clientX);
   };
 
-  const handlePointerUp = () => {
+  const handlePointerUp = (e: ReactPointerEvent<HTMLDivElement>) => {
     isDragging.current = false;
+    dragStartPos.current = null;
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {
+      /* Optional */
+    }
   };
 
   const startAutoPlay = () => {

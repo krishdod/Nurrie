@@ -28,7 +28,7 @@ export default function LivingCover() {
   const progress = useRef(0);
   const rotation = useRef(0);
   const refresh = useRef<() => void>(() => {});
-  const pointer = useRef<{ id: number; x: number; start: number } | null>(null);
+  const pointer = useRef<{ id: number; startX: number; startY: number; startRot: number; captured: boolean } | null>(null);
   const sound = useSensoryAudio();
   const [phase, setPhase] = useState(0);
   const [turn, setTurn] = useState(0);
@@ -83,15 +83,16 @@ export default function LivingCover() {
   const onUnavailable = useCallback(() => setReady(false), []);
 
   function choose(index: number) {
-    if (reduced || !section.current) {
-      update(index / 2);
-      return;
-    }
+    update(index / 2);
+    if (!section.current) return;
     const bounds = section.current.getBoundingClientRect();
-    window.scrollTo({
-      top: window.scrollY + bounds.top + (bounds.height - window.innerHeight) * (index / 2),
-      behavior: "smooth",
-    });
+    const maxScroll = bounds.height - window.innerHeight;
+    if (maxScroll > 0) {
+      window.scrollTo({
+        top: window.scrollY + bounds.top + maxScroll * (index / 2),
+        behavior: "smooth",
+      });
+    }
   }
 
   return (
@@ -138,15 +139,48 @@ export default function LivingCover() {
           className={`cover-object ${ready ? "is-ready" : ""}`}
           onPointerDown={(event) => {
             if (event.button !== 0) return;
-            pointer.current = { id: event.pointerId, x: event.clientX, start: rotation.current };
-            event.currentTarget.setPointerCapture(event.pointerId);
+            pointer.current = {
+              id: event.pointerId,
+              startX: event.clientX,
+              startY: event.clientY,
+              startRot: rotation.current,
+              captured: false,
+            };
           }}
           onPointerMove={(event) => {
-            if (pointer.current?.id !== event.pointerId) return;
-            rotation.current = pointer.current.start + (event.clientX - pointer.current.x) * 0.009;
-            setTurn(rotation.current);
+            const p = pointer.current;
+            if (!p || p.id !== event.pointerId) return;
+            const dx = event.clientX - p.startX;
+            const dy = event.clientY - p.startY;
+
+            if (!p.captured) {
+              if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 8) {
+                pointer.current = null;
+                return;
+              }
+              if (Math.abs(dx) > 8) {
+                p.captured = true;
+                try {
+                  event.currentTarget.setPointerCapture(event.pointerId);
+                } catch {
+                  /* Optional pointer capture */
+                }
+              }
+            }
+
+            if (p.captured) {
+              rotation.current = p.startRot + dx * 0.009;
+              setTurn(rotation.current);
+            }
           }}
-          onPointerUp={() => {
+          onPointerUp={(event) => {
+            if (pointer.current?.captured) {
+              try {
+                event.currentTarget.releasePointerCapture(event.pointerId);
+              } catch {
+                /* Optional release */
+              }
+            }
             pointer.current = null;
           }}
           onPointerCancel={() => {
