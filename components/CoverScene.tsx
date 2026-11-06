@@ -53,7 +53,7 @@ function Sculpture(props: Props) {
   const clock = useRef(0);
 
   // Refined luxury cosmetic scale with breathing room to guarantee zero clipping
-  const baseScale = Math.min(viewport.height / (phone ? 4.9 : 4.4), viewport.width / (phone ? 3.0 : 4.8));
+  const baseScale = Math.min(viewport.height / (phone ? 5.2 : 4.4), viewport.width / (phone ? 3.4 : 4.8));
 
   useEffect(() => {
     props.onReady();

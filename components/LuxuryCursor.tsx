@@ -34,14 +34,14 @@ export default function LuxuryCursor() {
       if (!target) return;
 
       const interactiveStick = target.closest(".cover-object");
-      const interactiveCanvas = target.closest(".lab-canvas-container, .swatch-canvas");
+      const interactiveLens = target.closest(".split-lens-viewport");
       const isClickable = target.closest("button, a, input, [role='button'], details");
 
       if (interactiveStick) {
         setBadgeText("DRAG TO TURN");
         setIsHovering(true);
-      } else if (interactiveCanvas) {
-        setBadgeText("SWIPE TO BLEND");
+      } else if (interactiveLens) {
+        setBadgeText("DRAG TO REVEAL");
         setIsHovering(true);
       } else if (isClickable) {
         setBadgeText(null);

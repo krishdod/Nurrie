@@ -7,7 +7,7 @@ import { ArrowUpRight, Minus, Plus } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LivingCover from "./LivingCover";
-import MetamorphosisLab from "./MetamorphosisLab";
+import MetamorphosisStudio from "./MetamorphosisStudio";
 import LuxuryCursor from "./LuxuryCursor";
 import WaitlistForm from "./WaitlistForm";
 import { sensoryAudio } from "./SensoryAudio";
@@ -132,7 +132,7 @@ export default function NurrieHome() {
             </div>
           </section>
 
-          <MetamorphosisLab />
+          <MetamorphosisStudio />
 
           <section className="ritual-editorial" id="the-ritual" aria-labelledby="ritual-heading">
             <div className="ritual-portrait" data-ritual={ritual}>
