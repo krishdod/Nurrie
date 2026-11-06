@@ -111,6 +111,8 @@ export default function LivingCover() {
           <nav aria-label="Main navigation">
             <a href="#the-stick">The stick</a>
             <a href="#the-metamorphosis">Metamorphosis</a>
+            <a href="#the-concierge">Concierge</a>
+            <a href="#the-skincare">Skincare</a>
             <a href="#the-ritual">The ritual</a>
             <a href="#the-faq">FAQ</a>
           </nav>
