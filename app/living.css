@@ -1113,142 +1113,7 @@
     margin-top: 18px;
   }
 
-  .studio-lens-card {
-    margin-bottom: 50px;
-    box-shadow: 0 12px 40px rgba(52, 35, 28, 0.1);
-  }
-
-  .lens-top-bar {
-    padding: 12px 14px;
-    gap: 8px;
-  }
-
-  .lens-status {
-    font-size: 12px;
-    gap: 8px;
-  }
-
-  .status-dot {
-    width: 12px;
-    height: 12px;
-  }
-
-  .lens-btn {
-    padding: 6px 12px;
-    font-size: 11px;
-    gap: 6px;
-  }
-
-  .lens-btn-icon {
-    width: 30px;
-    height: 30px;
-  }
-
-  .split-lens-viewport {
-    height: clamp(320px, 80vw, 440px);
-  }
-
-  .white-formula-streak {
-    width: 160px;
-    height: 55px;
-    top: 36%;
-    left: 28%;
-  }
-
-  .lens-watermark {
-    bottom: 12px;
-    padding: 6px 10px;
-    border-radius: 2px;
-  }
-
-  .lens-watermark-left {
-    left: 10px;
-  }
-
-  .lens-watermark-right {
-    right: 10px;
-  }
-
-  .watermark-tag {
-    font-size: 8px;
-    letter-spacing: 0.1em;
-  }
-
-  .watermark-title {
-    font-size: 12px;
-  }
-
-  .divider-handle {
-    padding: 6px 10px;
-    gap: 6px;
-  }
-
-  .handle-arrows {
-    width: 14px;
-    height: 14px;
-  }
-
-  .handle-label {
-    font-size: 11px;
-  }
-
-  .lens-instruction-pill {
-    top: 10px;
-    padding: 4px 10px;
-    font-size: 10px;
-    white-space: nowrap;
-    max-width: 90%;
-  }
-
-  .studio-spectrum-bar {
-    padding: 16px 14px;
-    gap: 12px;
-  }
-
-  /* 2x2 Clean Grid for Swatches on Mobile - Eliminates 4-col Squeeze */
-  .shade-swatch-strip {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-
-  .shade-swatch-card {
-    padding: 10px 12px;
-    gap: 10px;
-  }
-
-  .swatch-bullet {
-    width: 22px;
-    height: 22px;
-  }
-
-  .swatch-name {
-    font-size: 15px;
-  }
-
-  .swatch-tone {
-    font-size: 10px;
-  }
-
-  .studio-architecture {
-    margin-top: 30px;
-  }
-
-  .arch-header h3 {
-    font-size: clamp(28px, 7.5vw, 38px);
-    line-height: 1.05;
-  }
-
-  .arch-minimal-strip {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 24px 0;
-  }
-
-  .studio-foot-cta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
+  /* Metamorphosis Studio mobile styles are defined at the end of the stylesheet to guarantee cascade precedence */
 
   /* Ritual Section on Mobile */
   .nurrie-living .ritual-editorial {
@@ -2327,16 +2192,203 @@
 }
 
 @media (max-width: 768px) {
+  /* ==========================================================================
+     THE METAMORPHOSIS STUDIO — RESPONSIVE MOBILE FIXES (CASCADE PRIORITY)
+     ========================================================================== */
+  .metamorphosis-studio {
+    padding: 70px var(--gutter) 90px;
+  }
+
+  .studio-header {
+    margin-bottom: 28px;
+  }
+
+  .studio-header h2 {
+    font-size: clamp(34px, 8.5vw, 44px);
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    margin-bottom: 14px;
+  }
+
+  .studio-intro {
+    font-size: 14px;
+    line-height: 1.55;
+    margin-top: 14px;
+  }
+
+  .studio-lens-card {
+    margin-bottom: 36px;
+    box-shadow: 0 10px 30px rgba(52, 35, 28, 0.08);
+  }
+
+  .lens-top-bar {
+    padding: 10px 12px;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  .lens-status {
+    font-size: 11px;
+    gap: 6px;
+  }
+
+  .status-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .lens-btn {
+    padding: 5px 10px;
+    font-size: 10px;
+    gap: 4px;
+  }
+
+  .lens-btn-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .split-lens-viewport {
+    height: clamp(300px, 78vw, 420px);
+    touch-action: pan-y;
+  }
+
+  .white-formula-streak {
+    width: 140px;
+    height: 48px;
+    top: 36%;
+    left: 26%;
+  }
+
+  .lens-watermark {
+    bottom: 10px;
+    padding: 5px 9px;
+    border-radius: 2px;
+  }
+
+  .lens-watermark-left {
+    left: 8px;
+  }
+
+  .lens-watermark-right {
+    right: 8px;
+  }
+
+  .watermark-tag {
+    font-size: 7.5px;
+    letter-spacing: 0.1em;
+  }
+
+  .watermark-title {
+    font-size: 12px;
+    line-height: 1.1;
+  }
+
+  .watermark-desc {
+    font-size: 9.5px;
+  }
+
+  .divider-handle {
+    padding: 5px 8px;
+    gap: 4px;
+  }
+
+  .handle-arrows {
+    width: 12px;
+    height: 12px;
+  }
+
+  .handle-label {
+    font-size: 10px;
+  }
+
+  .lens-instruction-pill {
+    top: 8px;
+    padding: 3px 8px;
+    font-size: 9.5px;
+    white-space: nowrap;
+    max-width: 88%;
+  }
+
+  /* 2x2 Clean Touch Grid for Swatches on Mobile - Eliminates 4-col Squeeze */
+  .studio-spectrum-bar {
+    padding: 14px 12px 16px;
+    gap: 10px;
+  }
+
+  .shade-swatch-strip {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .shade-swatch-card {
+    padding: 10px 12px !important;
+    gap: 10px !important;
+    min-height: 52px !important;
+    border-radius: 4px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .swatch-bullet {
+    width: 22px !important;
+    height: 22px !important;
+    flex-shrink: 0;
+  }
+
+  .swatch-name {
+    font-size: 14px !important;
+    font-weight: 500;
+  }
+
+  .swatch-tone {
+    font-size: 10.5px !important;
+    opacity: 0.85;
+  }
+
+  /* Instrument Architecture */
+  .studio-architecture {
+    margin-top: 32px;
+  }
+
+  .arch-header h3 {
+    font-size: clamp(26px, 7vw, 36px);
+    line-height: 1.08;
+    margin: 10px 0 12px;
+  }
+
+  .arch-header p {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
   .arch-minimal-strip {
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 30px 0;
+    gap: 20px;
+    padding: 24px 0;
+    margin: 24px 0 30px;
   }
+
+  .pillar-num {
+    font-size: 18px;
+  }
+
+  .arch-pillar h4 {
+    font-size: 20px;
+  }
+
+  .arch-pillar p {
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
   .studio-foot-cta {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
+    font-size: 13px;
   }
+
   .vip-link-box {
     flex-direction: column;
   }

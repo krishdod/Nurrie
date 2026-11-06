@@ -11,13 +11,51 @@ type Shade = {
   tone: string;
   color: string;
   glow: string;
+  filter: string;
+  tintBg: string;
 };
 
 const SHADES: Shade[] = [
-  { id: "alabaster", num: "01", name: "Alabaster", tone: "Fair Neutral", color: "#e8d8cb", glow: "rgba(232, 216, 203, 0.4)" },
-  { id: "ochre", num: "02", name: "Ochre", tone: "Medium Honey", color: "#c69774", glow: "rgba(198, 151, 116, 0.45)" },
-  { id: "sienna", num: "03", name: "Sienna", tone: "Deep Amber", color: "#925b3e", glow: "rgba(146, 91, 62, 0.45)" },
-  { id: "espresso", num: "04", name: "Espresso", tone: "Rich Cocoa", color: "#4d2f21", glow: "rgba(77, 47, 33, 0.5)" },
+  {
+    id: "alabaster",
+    num: "01",
+    name: "Alabaster",
+    tone: "Fair Neutral",
+    color: "#f0dfd2",
+    glow: "rgba(245, 230, 218, 0.7)",
+    filter: "brightness(1.15) contrast(1.02) sepia(0.08) saturate(0.92)",
+    tintBg: "radial-gradient(circle at 45% 42%, rgba(248, 235, 224, 0.55) 0%, rgba(235, 212, 195, 0.3) 50%, rgba(52, 35, 28, 0.25) 100%)",
+  },
+  {
+    id: "ochre",
+    num: "02",
+    name: "Ochre",
+    tone: "Medium Honey",
+    color: "#c69774",
+    glow: "rgba(198, 151, 116, 0.7)",
+    filter: "brightness(1.02) contrast(1.05) sepia(0.18) saturate(1.14)",
+    tintBg: "radial-gradient(circle at 45% 42%, rgba(215, 168, 128, 0.5) 0%, rgba(185, 135, 95, 0.3) 50%, rgba(52, 35, 28, 0.35) 100%)",
+  },
+  {
+    id: "sienna",
+    num: "03",
+    name: "Sienna",
+    tone: "Deep Amber",
+    color: "#925b3e",
+    glow: "rgba(146, 91, 62, 0.75)",
+    filter: "brightness(0.92) contrast(1.09) sepia(0.26) saturate(1.24)",
+    tintBg: "radial-gradient(circle at 45% 42%, rgba(165, 98, 62, 0.55) 0%, rgba(125, 70, 42, 0.35) 50%, rgba(45, 25, 18, 0.45) 100%)",
+  },
+  {
+    id: "espresso",
+    num: "04",
+    name: "Espresso",
+    tone: "Rich Cocoa",
+    color: "#4d2f21",
+    glow: "rgba(77, 47, 33, 0.85)",
+    filter: "brightness(0.82) contrast(1.15) sepia(0.34) saturate(1.3)",
+    tintBg: "radial-gradient(circle at 45% 42%, rgba(98, 54, 36, 0.6) 0%, rgba(68, 35, 22, 0.4) 50%, rgba(35, 18, 12, 0.55) 100%)",
+  },
 ];
 
 export default function MetamorphosisStudio() {
@@ -129,6 +167,10 @@ export default function MetamorphosisStudio() {
   const handleShadeSelect = (s: Shade) => {
     setShade(s);
     sensoryAudio.tabChime();
+    // Reveal both the white formula and adapted finish if slider is pegged to either edge
+    if (split > 68 || split < 30) {
+      setSplit(50);
+    }
   };
 
   const handleReset = () => {
@@ -156,7 +198,7 @@ export default function MetamorphosisStudio() {
           <div className="lens-status">
             <span className="status-dot" style={{ backgroundColor: shade.color }} />
             <span className="status-text">
-              {split < 25 ? "01 White Formula" : split > 75 ? "02 Skin Adapted" : `Blending • ${split}%`}
+              {split < 20 ? "01 White Formula" : `${shade.num} ${shade.name} · ${shade.tone}`}
             </span>
           </div>
 
@@ -200,19 +242,27 @@ export default function MetamorphosisStudio() {
           <div className="lens-layer lens-layer-blended">
             <img
               src="/images/editorial-portrait-cocoa.webp"
-              alt="Model with blended finish"
+              alt={`Model with ${shade.name} adapted finish`}
               className="lens-image"
+              style={{
+                filter: shade.filter,
+                transition: "filter 0.45s cubic-bezier(0.2, 0.8, 0.2, 1)",
+              }}
               loading="lazy"
             />
             <div
               className="lens-tint-overlay"
               style={{
-                background: `radial-gradient(circle at 45% 42%, ${shade.glow} 0%, rgba(52, 35, 28, 0.4) 100%)`,
+                background: shade.tintBg,
+                mixBlendMode: "soft-light",
+                opacity: 0.9,
+                transition: "background 0.45s ease-out",
               }}
             />
             <div className="lens-watermark lens-watermark-right">
-              <span className="watermark-tag">Finish</span>
-              <span className="watermark-title">Skin-Adapted</span>
+              <span className="watermark-tag">Adapted Tone</span>
+              <span className="watermark-title">{shade.name}</span>
+              <span className="watermark-desc">{shade.tone}</span>
             </div>
           </div>
 
@@ -257,8 +307,10 @@ export default function MetamorphosisStudio() {
                 type="button"
                 role="radio"
                 aria-checked={shade.id === s.id}
+                aria-pressed={shade.id === s.id}
                 className={`shade-swatch-card ${shade.id === s.id ? "is-selected" : ""}`}
                 onClick={() => handleShadeSelect(s)}
+                style={{ touchAction: "manipulation" }}
               >
                 <span className="swatch-bullet" style={{ backgroundColor: s.color }}>
                   {shade.id === s.id && <Check size={12} className="swatch-check" />}
