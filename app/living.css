@@ -1127,6 +1127,12 @@
     display: contents;
   }
 
+  .nurrie-living .ritual-copy .section-eyebrow {
+    order: -1;
+    display: block;
+    margin-bottom: 8px;
+  }
+
   .nurrie-living .ritual-copy h2 {
     font-size: clamp(32px, 8.5vw, 46px);
     line-height: 1.02;

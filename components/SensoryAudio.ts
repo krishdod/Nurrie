@@ -86,6 +86,7 @@ class SensoryAudioEngine {
 
   /** Precision magnetic cosmetic cap click */
   public capClick() {
+    this.haptic(15);
     if (!this.enabled || !this.ctx) return;
     try {
       if (this.ctx.state === "suspended") this.ctx.resume();
@@ -127,6 +128,7 @@ class SensoryAudioEngine {
 
   /** Delicate high-harmonic tone for selection tabs */
   public tabChime() {
+    this.haptic(10);
     if (!this.enabled || !this.ctx) return;
     try {
       if (this.ctx.state === "suspended") this.ctx.resume();
@@ -147,6 +149,17 @@ class SensoryAudioEngine {
       osc.stop(now + 0.1);
     } catch {
       // Silent fail
+    }
+  }
+
+  /** Subtle microscopic mobile tactile haptic feedback (10-15ms) */
+  public haptic(ms = 12) {
+    if (typeof window !== "undefined" && "navigator" in window && typeof navigator.vibrate === "function") {
+      try {
+        navigator.vibrate(ms);
+      } catch {
+        // Haptics unsupported or disabled
+      }
     }
   }
 }
@@ -172,5 +185,6 @@ export function useSensoryAudio() {
     brushSweep: useCallback((intensity?: number) => sensoryAudio.brushSweep(intensity), []),
     capClick: useCallback(() => sensoryAudio.capClick(), []),
     tabChime: useCallback(() => sensoryAudio.tabChime(), []),
+    haptic: useCallback((ms?: number) => sensoryAudio.haptic(ms), []),
   };
 }
