@@ -208,7 +208,7 @@ export function ProductBody({ brush = false, opening, hideCap = false, capSepara
       )}
       <SceneBoundary fallback={null}>
         <Suspense fallback={null}>
-          <group position={[0.025, -0.2, 0.435]} rotation={[0, 0, -Math.PI / 2]}>
+          <group position={[0.025, -0.2, 0.435]} rotation={[0, 0, brush ? Math.PI / 2 : -Math.PI / 2]}>
             <Center>
               <Text3D font={FONT} size={0.195} height={0.002} curveSegments={8} letterSpacing={0.012}>
                 NURRIE

@@ -74,8 +74,8 @@ function Sculpture(props: Props) {
     const normalZ = -0.34 + Math.sin(p * Math.PI) * 0.10;
     const targetZ = isMacro ? (macroBullet ? -0.12 : 0.14) : normalZ;
 
-    // Positioned in center-left so it stays completely clear of the model's portrait and ear
-    const normalX = phone ? 0 : -viewport.width * 0.13;
+    // Beautifully balanced in the open visual field to complement the chapter copy on the left
+    const normalX = phone ? 0 : viewport.width * 0.08;
     const targetX = isMacro ? 0 : normalX;
     const targetY = isMacro
       ? (macroBullet ? -0.42 : 0.48)
@@ -93,7 +93,7 @@ function Sculpture(props: Props) {
   });
 
   return (
-    <group ref={group} scale={baseScale} position={[phone ? 0 : -viewport.width * 0.13, phone ? 0.02 : 0.03, 0.5]} rotation={[0.08, 0.12, -0.34]}>
+    <group ref={group} scale={baseScale} position={[phone ? 0 : viewport.width * 0.08, phone ? 0.02 : 0.03, 0.5]} rotation={[0.08, 0.12, -0.34]}>
       <ProductBody opening={props.progress} capSeparation={0.9} />
     </group>
   );

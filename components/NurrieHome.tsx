@@ -136,13 +136,13 @@ export default function NurrieHome() {
 
           <section className="ritual-editorial" id="the-ritual" aria-labelledby="ritual-heading">
             <div className="ritual-portrait" data-ritual={ritual}>
-              <div className={`ritual-frame ${ritual === 0 ? "is-current" : ""}`} aria-hidden={ritual !== 0}>
+              <div className={`ritual-frame ritual-formula ${ritual === 0 ? "is-current" : ""}`} aria-hidden={ritual !== 0}>
                 <img src="/images/ritual-swipe.webp" width={768} height={1024} alt="NURRIE white colour-changing foundation stick with rose-gold collar" loading="lazy" />
               </div>
-              <div className={`ritual-frame ${ritual === 1 ? "is-current" : ""}`} aria-hidden={ritual !== 1}>
-                <img src="/images/ritual-blend.webp" width={768} height={1024} alt="NURRIE built-in blending brush with rose-gold collar" loading="lazy" />
+              <div className={`ritual-frame ritual-brush ${ritual === 1 ? "is-current" : ""}`} aria-hidden={ritual !== 1}>
+                <img src="/images/ritual-blend.webp" width={768} height={1024} alt="NURRIE built-in blending brush with rose-gold collar and turned-down branding" loading="lazy" />
               </div>
-              <div className={`ritual-frame ${ritual === 2 ? "is-current" : ""}`} aria-hidden={ritual !== 2}>
+              <div className={`ritual-frame ritual-be ${ritual === 2 ? "is-current" : ""}`} aria-hidden={ritual !== 2}>
                 <img
                   src="/images/editorial-portrait-cocoa.webp"
                   srcSet="/images/editorial-portrait-cocoa-640.webp 640w, /images/editorial-portrait-cocoa.webp 1122w"

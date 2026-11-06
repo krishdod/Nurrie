@@ -44,9 +44,6 @@ export default function LivingCover() {
     refresh.current();
     if (section.current) {
       section.current.style.setProperty("--cover-progress", String(p));
-      // Smooth, natural photographic emergence instead of a harsh split-screen cut
-      const portraitOpacity = p < 0.32 ? 0 : Math.min(1, (p - 0.32) / 0.42);
-      section.current.style.setProperty("--portrait-opacity", String(portraitOpacity));
     }
     setPhase(p < 0.33 ? 0 : p < 0.68 ? 1 : 2);
   }, []);
@@ -100,10 +97,6 @@ export default function LivingCover() {
   return (
     <section ref={section} className="living-cover" data-phase={phase} aria-label="White. Blend. You. The NURRIE foundation story">
       <div className="living-stage">
-        <div className="cover-portrait" aria-hidden="true">
-          <img src="/images/campaign-portrait-wide-v5.webp" width={1672} height={941} alt="" decoding="async" />
-        </div>
-
         <header className="living-nav">
           <a className="living-logo" href="/" aria-label="NURRIE home">
             NURRIE
