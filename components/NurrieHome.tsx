@@ -8,9 +8,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LivingCover from "./LivingCover";
 import MetamorphosisStudio from "./MetamorphosisStudio";
-import EditorialPress from "./EditorialPress";
-import SkincareInfusion from "./SkincareInfusion";
-import ComplexionConcierge from "./ComplexionConcierge";
 import LuxuryCursor from "./LuxuryCursor";
 import WaitlistForm from "./WaitlistForm";
 import { sensoryAudio } from "./SensoryAudio";
@@ -77,8 +74,6 @@ export default function NurrieHome() {
         <main id="main">
           <LivingCover />
 
-          <EditorialPress />
-
           <section className="product-diptych" id="the-stick" aria-labelledby="diptych-heading">
             <div className="diptych-heading">
               <span className="section-eyebrow">The Architecture</span>
@@ -138,10 +133,6 @@ export default function NurrieHome() {
           </section>
 
           <MetamorphosisStudio />
-
-          <ComplexionConcierge />
-
-          <SkincareInfusion />
 
           <section className="ritual-editorial" id="the-ritual" aria-labelledby="ritual-heading">
             <div className="ritual-portrait" data-ritual={ritual}>
