@@ -41,6 +41,16 @@ test("rejects missing and cross-site origins", () => {
   assert.throws(() => requireSameOrigin(new Request("https://nurrie.example/api/waitlist")), /website/);
 });
 
+test("uses the public HTTP host when Next supplies an internal bind address", () => {
+  const lan = (origin, extra = {}) => new Request("http://0.0.0.0:4173/api/waitlist", {
+    headers: { host: "192.168.1.2:4173", origin, ...extra },
+  });
+  assert.doesNotThrow(() => requireSameOrigin(lan("http://192.168.1.2:4173")));
+  assert.throws(() => requireSameOrigin(lan("https://evil.example")), /website/);
+  assert.throws(() => requireSameOrigin(lan("https://evil.example", { "x-forwarded-host": "evil.example" })), /website/);
+  assert.throws(() => requireSameOrigin(lan("http://0.0.0.0:4173")), /website/);
+});
+
 test("valid JSON parses and unsupported content types are rejected", async () => {
   assert.deepEqual(await readWaitlistBody(request('{"email":"a@example.com"}')), { email: "a@example.com" });
   await assert.rejects(readWaitlistBody(request("{}", { "content-type": "text/plain" })), { status: 415 });

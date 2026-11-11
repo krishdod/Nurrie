@@ -187,7 +187,7 @@ export default function WaitlistForm() {
           <span className="batch-tag">
             <Sparkles size={12} /> Batch 01 Allocation
           </span>
-          <span className="batch-counter">84% Claimed (2,108 / 2,500)</span>
+          <span className="batch-counter">84% Claimed</span>
         </div>
         <div className="batch-progress-track">
           <div className="batch-progress-fill" style={{ width: "84%" }} />

@@ -13,7 +13,12 @@ export class WaitlistInputError extends Error {
 /** Public writes are only accepted from the site's own browser origin. */
 export function requireSameOrigin(request: Request) {
   const origin = request.headers.get("origin");
-  if (!origin || origin !== new URL(request.url).origin) {
+  const publicUrl = new URL(request.url);
+  // Next's Node server can build request.url with its internal bind address.
+  // Host is the HTTP destination selected by the browser; don't trust forwarded hosts.
+  const host = request.headers.get("host");
+  if (host) publicUrl.host = host;
+  if (!origin || origin !== publicUrl.origin) {
     throw new WaitlistInputError("Please register from the NURRIE website.", 403);
   }
 }

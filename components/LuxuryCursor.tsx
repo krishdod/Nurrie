@@ -1,105 +1,95 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function LuxuryCursor() {
+  const layer = useRef<HTMLDivElement>(null);
   const dot = useRef<HTMLDivElement>(null);
   const ring = useRef<HTMLDivElement>(null);
   const badge = useRef<HTMLDivElement>(null);
 
-  const [visible, setVisible] = useState(false);
-  const [badgeText, setBadgeText] = useState<string | null>(null);
-  const [isHovering, setIsHovering] = useState(false);
-
-  const mouse = useRef({ x: -100, y: -100 });
-  const ringPos = useRef({ x: -100, y: -100 });
-  const rafId = useRef<number>(0);
-
   useEffect(() => {
-    // Only enable on precise pointing devices (mouse / trackpad)
-    if (!window.matchMedia("(pointer: fine)").matches) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const root = layer.current;
+    if (!root) return;
+    const precise = matchMedia("(hover: hover) and (pointer: fine) and (min-width: 769px)");
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    const target = { x: 0, y: 0 };
+    const position = { x: 0, y: 0 };
+    let frame: number | null = null;
+    let lastTime = 0;
+    let visible = false;
 
-    setVisible(true);
-
-    const onMouseMove = (e: MouseEvent) => {
-      mouse.current = { x: e.clientX, y: e.clientY };
-
-      if (dot.current) {
-        dot.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-      }
-
-      // Check hovered element
-      const target = e.target as HTMLElement | null;
-      if (!target) return;
-
-      const interactiveStick = target.closest(".cover-object");
-      const interactiveLens = target.closest(".split-lens-viewport");
-      const isClickable = target.closest("button, a, input, [role='button'], details");
-
-      if (interactiveStick) {
-        setBadgeText("DRAG TO TURN");
-        setIsHovering(true);
-      } else if (interactiveLens) {
-        setBadgeText("DRAG TO REVEAL");
-        setIsHovering(true);
-      } else if (isClickable) {
-        setBadgeText(null);
-        setIsHovering(true);
-      } else {
-        setBadgeText(null);
-        setIsHovering(false);
-      }
+    const hide = () => {
+      root.style.opacity = "0";
+      visible = false;
+      if (frame !== null) cancelAnimationFrame(frame);
+      frame = null;
+      lastTime = 0;
     };
 
-    const onMouseLeave = () => {
-      setVisible(false);
+    const paint = (now: number) => {
+      frame = null;
+      const delta = lastTime ? Math.min(now - lastTime, 50) : 16;
+      lastTime = now;
+      const ease = 1 - Math.exp(-delta / 55);
+      position.x += (target.x - position.x) * ease;
+      position.y += (target.y - position.y) * ease;
+      if (dot.current) dot.current.style.transform = `translate3d(${target.x}px,${target.y}px,0)`;
+      const transform = `translate3d(${position.x}px,${position.y}px,0)`;
+      if (ring.current) ring.current.style.transform = transform;
+      if (badge.current) badge.current.style.transform = transform;
+      // Once settled, no animation work runs until the pointer moves again.
+      if (Math.hypot(target.x - position.x, target.y - position.y) > 0.1) {
+        frame = requestAnimationFrame(paint);
+      } else lastTime = 0;
     };
 
-    const onMouseEnter = () => {
-      setVisible(true);
-    };
-
-    // Smooth spring loop for the lagging ring / badge
-    const loop = () => {
-      const ease = 0.18;
-      ringPos.current.x += (mouse.current.x - ringPos.current.x) * ease;
-      ringPos.current.y += (mouse.current.y - ringPos.current.y) * ease;
-
-      if (ring.current) {
-        ring.current.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0)`;
+    const move = (event: PointerEvent) => {
+      const element = event.target instanceof Element ? event.target : null;
+      if (!precise.matches || reduced.matches || event.pointerType !== "mouse" || event.buttons ||
+          element?.closest(".split-lens-viewport")) {
+        hide();
+        return;
       }
-      if (badge.current) {
-        badge.current.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0)`;
+      target.x = event.clientX;
+      target.y = event.clientY;
+      if (!visible) {
+        position.x = target.x;
+        position.y = target.y;
+        visible = true;
+        root.style.opacity = "1";
       }
-
-      rafId.current = requestAnimationFrame(loop);
+      const overStick = !!element?.closest(".cover-object");
+      root.classList.toggle("has-badge", overStick);
+      root.classList.toggle("is-hovering", overStick || !!element?.closest("button, a, input, [role='button'], details"));
+      if (frame === null) frame = requestAnimationFrame(paint);
     };
 
-    window.addEventListener("mousemove", onMouseMove, { passive: true });
-    document.addEventListener("mouseleave", onMouseLeave);
-    document.addEventListener("mouseenter", onMouseEnter);
-    rafId.current = requestAnimationFrame(loop);
-
+    const visibility = () => { if (document.hidden) hide(); };
+    window.addEventListener("pointermove", move, { passive: true });
+    window.addEventListener("pointerdown", hide, { passive: true });
+    window.addEventListener("blur", hide);
+    document.addEventListener("pointerleave", hide);
+    document.addEventListener("visibilitychange", visibility);
+    precise.addEventListener("change", hide);
+    reduced.addEventListener("change", hide);
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseleave", onMouseLeave);
-      document.removeEventListener("mouseenter", onMouseEnter);
-      cancelAnimationFrame(rafId.current);
+      hide();
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerdown", hide);
+      window.removeEventListener("blur", hide);
+      document.removeEventListener("pointerleave", hide);
+      document.removeEventListener("visibilitychange", visibility);
+      precise.removeEventListener("change", hide);
+      reduced.removeEventListener("change", hide);
     };
   }, []);
 
-  if (!visible) return null;
-
   return (
-    <div className={`luxury-cursor-layer ${isHovering ? "is-hovering" : ""} ${badgeText ? "has-badge" : ""}`} aria-hidden="true">
+    <div ref={layer} className="luxury-cursor-layer" style={{ opacity: 0 }} aria-hidden="true">
       <div ref={dot} className="cursor-dot" />
       <div ref={ring} className="cursor-ring" />
-      {badgeText && (
-        <div ref={badge} className="cursor-badge">
-          <span>{badgeText}</span>
-        </div>
-      )}
+      <div ref={badge} className="cursor-badge"><span>DRAG TO TURN</span></div>
     </div>
   );
 }
