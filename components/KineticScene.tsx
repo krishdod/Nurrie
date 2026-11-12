@@ -22,6 +22,8 @@ export function ProductFallback() {
   return (
     <img
       src={PRODUCT.fallback}
+      srcSet={PRODUCT.srcSet}
+      sizes="(max-width: 768px) 100vw, 75vw"
       alt="Two views of NURRIE's pearl ivory and rose gold double-ended foundation stick: white foundation and blending brush"
       width={1024}
       height={683}
@@ -74,14 +76,15 @@ function Pearl() {
   return <meshPhysicalMaterial color="#faf8f5" metalness={0.05} roughness={0.22} clearcoat={0.65} clearcoatRoughness={0.2} />;
 }
 
-function Brush() {
+function Brush({ balanced = false }: { balanced?: boolean }) {
   const { bristles, core } = useMemo(() => {
     const positions: number[] = [];
     const colors: number[] = [];
     const root = new Color("#35271f");
     const tip = new Color("#e0cbb3");
     const color = new Color();
-    const count = 2800;
+    const count = balanced ? 900 : 2800;
+    const segments = balanced ? 3 : 5;
     // A golden-angle disk makes the bristle field dense and deterministic.
     for (let i = 0; i < count; i++) {
       const radius = Math.sqrt((i + 0.5) / count);
@@ -92,8 +95,8 @@ function Brush() {
         const bend = Math.sin(t * Math.PI) * 0.014 * Math.sin(i * 0.8);
         return [Math.cos(theta) * spread + bend, 1.02 + t * (0.89 - 0.29 * Math.pow(radius, 2.7) + variance), Math.sin(theta) * spread + bend * 0.5];
       };
-      for (let segment = 0; segment < 5; segment++) {
-        for (const t of [segment / 5, (segment + 1) / 5]) {
+      for (let segment = 0; segment < segments; segment++) {
+        for (const t of [segment / segments, (segment + 1) / segments]) {
           positions.push(...point(t));
           color.copy(root).lerp(tip, Math.pow(t, 2.1));
           colors.push(color.r, color.g, color.b);
@@ -107,7 +110,7 @@ function Brush() {
       new Vector2(0, 1.01), new Vector2(0.29, 1.01), new Vector2(0.37, 1.2),
       new Vector2(0.47, 1.43), new Vector2(0.53, 1.6), new Vector2(0.49, 1.7),
       new Vector2(0.4, 1.79), new Vector2(0.26, 1.86), new Vector2(0.12, 1.89), new Vector2(0, 1.9),
-    ], 64);
+    ], balanced ? 32 : 64);
     const vertexColors = [];
     const vertices = core.getAttribute("position");
     for (let i = 0; i < vertices.count; i++) {
@@ -117,7 +120,7 @@ function Brush() {
     }
     core.setAttribute("color", new Float32BufferAttribute(vertexColors, 3));
     return { bristles, core };
-  }, []);
+  }, [balanced]);
   useEffect(() => () => { bristles.dispose(); core.dispose(); }, [bristles, core]);
   return (
     <group>
@@ -127,7 +130,9 @@ function Brush() {
   );
 }
 
-export function ProductBody({ brush = false, opening, hideCap = false, capSeparation = 0 }: { brush?: boolean; opening?: RefObject<number>; hideCap?: boolean; capSeparation?: number }) {
+export function ProductBody({ brush = false, opening, hideCap = false, quality = "full" }: { brush?: boolean; opening?: RefObject<number>; hideCap?: boolean; quality?: "full" | "balanced" }) {
+  const balanced = quality === "balanced";
+  const radial = balanced ? 40 : 80;
   const cap = useRef<Group>(null);
   const lowerBrush = useRef<Group>(null);
   useFrame(() => {
@@ -147,7 +152,7 @@ export function ProductBody({ brush = false, opening, hideCap = false, capSepara
     const indices: number[] = [];
     const upperPoints: Vector3[] = [];
     const lowerPoints: Vector3[] = [];
-    const segments = 96;
+    const segments = balanced ? 48 : 96;
     for (let i = 0; i <= segments; i++) {
       const theta = (i / segments) * Math.PI * 2;
       const upper = 0.66 - 0.24 * (1 + Math.sin(theta));
@@ -172,30 +177,30 @@ export function ProductBody({ brush = false, opening, hideCap = false, capSepara
       capProfile: [new Vector2(0, -1.96), new Vector2(0.34, -1.96), new Vector2(0.407, -1.94), new Vector2(0.434, -1.89), new Vector2(0.434, -1.12), new Vector2(0, -1.12)],
       bulletProfile: [new Vector2(0, 0.99), new Vector2(0.312, 0.99), new Vector2(0.312, 1.36), new Vector2(0.306, 1.42), new Vector2(0.27, 1.47), new Vector2(0.16, 1.50), new Vector2(0, 1.51)],
     };
-  }, []);
+  }, [balanced]);
   useEffect(() => () => shell.dispose(), [shell]);
 
   return (
     <group>
-      <mesh position={[0, -0.2, 0]}><cylinderGeometry args={[0.428, 0.428, 1.83, 80]} /><RoseGold /></mesh>
+      <mesh position={[0, -0.2, 0]}><cylinderGeometry args={[0.428, 0.428, 1.83, radial]} /><RoseGold /></mesh>
       <mesh geometry={shell}><Pearl /></mesh>
-      <mesh><tubeGeometry args={[upperTrim, 96, 0.012, 6, true]} /><RoseGold /></mesh>
-      <mesh><tubeGeometry args={[lowerTrim, 96, 0.009, 6, true]} /><RoseGold /></mesh>
-      <group ref={cap} position={[0, -1.54, 0]} visible={!hideCap}><mesh position={[0, 1.54, 0]}><latheGeometry args={[capProfile, 80]} /><Pearl /></mesh></group>
+      <mesh><tubeGeometry args={[upperTrim, balanced ? 48 : 96, 0.012, balanced ? 4 : 6, true]} /><RoseGold /></mesh>
+      <mesh><tubeGeometry args={[lowerTrim, balanced ? 48 : 96, 0.009, balanced ? 4 : 6, true]} /><RoseGold /></mesh>
+      <group ref={cap} position={[0, -1.54, 0]} visible={!hideCap}><mesh position={[0, 1.54, 0]}><latheGeometry args={[capProfile, radial]} /><Pearl /></mesh></group>
       {opening && <group ref={lowerBrush} visible={false}>
-        <mesh position={[0, -1.16, 0]}><cylinderGeometry args={[0.34, 0.34, 0.2, 64]} /><RoseGold /></mesh>
-        <group position={[0, -0.17, 0]} rotation={[0, 0, Math.PI]}><Brush /></group>
+        <mesh position={[0, -1.16, 0]}><cylinderGeometry args={[0.34, 0.34, 0.2, radial]} /><RoseGold /></mesh>
+        <group position={[0, -0.17, 0]} rotation={[0, 0, Math.PI]}><Brush balanced={balanced} /></group>
       </group>}
-      <mesh position={[0, -1.114, 0]}><cylinderGeometry args={[0.434, 0.434, 0.012, 80]} /><RoseGold /></mesh>
-      <mesh position={[0, 0.72, 0]}><cylinderGeometry args={[0.408, 0.428, 0.12, 80]} /><RoseGold /></mesh>
-      <mesh position={[0, 0.89, 0]}><cylinderGeometry args={[0.33, 0.33, 0.22, 80]} /><RoseGold /></mesh>
+      <mesh position={[0, -1.114, 0]}><cylinderGeometry args={[0.434, 0.434, 0.012, radial]} /><RoseGold /></mesh>
+      <mesh position={[0, 0.72, 0]}><cylinderGeometry args={[0.408, 0.428, 0.12, radial]} /><RoseGold /></mesh>
+      <mesh position={[0, 0.89, 0]}><cylinderGeometry args={[0.33, 0.33, 0.22, radial]} /><RoseGold /></mesh>
       {/* Dark inner collar recess shadow to ground the white bullet */}
-      <mesh position={[0, 0.985, 0]}><cylinderGeometry args={[0.315, 0.315, 0.02, 64]} /><meshBasicMaterial color="#35241c" /></mesh>
-      {brush ? <Brush /> : (
+      <mesh position={[0, 0.985, 0]}><cylinderGeometry args={[0.315, 0.315, 0.02, radial]} /><meshBasicMaterial color="#35241c" /></mesh>
+      {brush ? <Brush balanced={balanced} /> : (
         <mesh>
-          <latheGeometry args={[bulletProfile, 80]} />
+          <latheGeometry args={[bulletProfile, radial]} />
           <meshPhysicalMaterial
-            color="#fcfbfa"
+            color={PRODUCT.formulaWhite}
             emissive="#231c18"
             emissiveIntensity={0.035}
             envMapIntensity={0.32}
@@ -210,7 +215,7 @@ export function ProductBody({ brush = false, opening, hideCap = false, capSepara
         <Suspense fallback={null}>
           <group position={[0.025, -0.2, 0.435]} rotation={[0, 0, brush ? Math.PI / 2 : -Math.PI / 2]}>
             <Center>
-              <Text3D font={FONT} size={0.195} height={0.002} curveSegments={8} letterSpacing={0.012}>
+              <Text3D font={FONT} size={0.195} height={0.002} curveSegments={balanced ? 4 : 8} letterSpacing={0.012}>
                 NURRIE
                 <meshPhysicalMaterial color="#70452f" metalness={0.5} roughness={0.35} />
               </Text3D>

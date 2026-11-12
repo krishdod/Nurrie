@@ -3,16 +3,16 @@
 const HIGHLIGHTS = [
   "Starts White · Finishes You",
   "One Double-Ended Instrument",
-  "48,000 Micro-Filament Buffer",
+  "White Formula · Built-In Brush",
   "Intuitive Skin Tone Adaptation",
   "Batch 01 Inaugural Allocation",
-  "White Squalane Bullet · Built-In Brush",
-  "Formulated in Paris · Engineered in Japan",
+  "Pearl White · Rose Gold",
+  "Swipe · Blend · Be",
 ];
 
 export default function EditorialTicker() {
   return (
-    <aside className="editorial-ticker" aria-label="NURRIE Product & Engineering Highlights">
+    <aside className="editorial-ticker" aria-label="NURRIE product highlights">
       <div className="ticker-track">
         <div className="ticker-group">
           {HIGHLIGHTS.map((item, idx) => (

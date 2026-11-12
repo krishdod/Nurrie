@@ -271,24 +271,24 @@ export default function MetamorphosisStudio() {
         <div className="arch-header">
           <span className="section-eyebrow">The Instrument</span>
           <h3>One design. Both sides.</h3>
-          <p>White colour-changing foundation on one end. A custom buffing brush on the other.</p>
+          <p>White colour-changing foundation on one end. A built-in blending brush on the other.</p>
         </div>
 
         <div className="arch-minimal-strip">
           <div className="arch-pillar">
             <span className="pillar-num">01</span>
             <h4>The Formula</h4>
-            <p>Pure white squalane wax holding micro-pigments until blended.</p>
+            <p>White in the stick. Colour-changing as you apply and blend.</p>
           </div>
           <div className="arch-pillar">
             <span className="pillar-num">02</span>
             <h4>The Axis</h4>
-            <p>Solid rose-gold collar with tactile magnetic closures.</p>
+            <p>A pearl-white casing with rose-gold detailing.</p>
           </div>
           <div className="arch-pillar">
             <span className="pillar-num">03</span>
             <h4>The Buffer</h4>
-            <p>48,000 micro-filaments angled to buff without absorbing.</p>
+            <p>A built-in brush at the other end, ready for the blending step.</p>
           </div>
         </div>
 

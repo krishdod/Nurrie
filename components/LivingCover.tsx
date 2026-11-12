@@ -1,7 +1,7 @@
 "use client";
 
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUpRight, Layers, Pause, Play, RotateCw, Volume2, VolumeX, ZoomIn } from "lucide-react";
+import { ArrowDown, ArrowUpRight, ImageIcon, Layers, Pause, Play, RotateCw, Volume2, VolumeX, ZoomIn } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PRODUCT } from "@/lib/product";
@@ -18,7 +18,7 @@ const chapters = [
 function PhotoFallback() {
   return (
     <div className="cover-fallback">
-      <img src={PRODUCT.fallback} alt={PRODUCT.alt} width={1024} height={683} />
+      <img src={PRODUCT.fallback} srcSet={PRODUCT.srcSet} sizes="(max-width: 768px) 100vw, 75vw" alt={PRODUCT.alt} width={1024} height={683} fetchPriority="high" />
     </div>
   );
 }
@@ -34,6 +34,8 @@ export default function LivingCover() {
   const [turn, setTurn] = useState(0);
   const [macro, setMacro] = useState<"none" | "bullet" | "brush">("none");
   const [mounted, setMounted] = useState(false);
+  const [balanced, setBalanced] = useState(true);
+  const [unavailable, setUnavailable] = useState(false);
   const [ready, setReady] = useState(false);
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
@@ -53,12 +55,16 @@ export default function LivingCover() {
   }, []);
 
   useEffect(() => {
-    setMounted(true);
     gsap.registerPlugin(ScrollTrigger);
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
     const preference = () => setReduced(query.matches);
     preference();
     query.addEventListener("change", preference);
+    // Keep the first paint light on phones, reduced-motion and data-saving visits.
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    const light = window.matchMedia("(max-width: 768px), (pointer: coarse)").matches || !!connection?.saveData;
+    setBalanced(light);
+    const start = !light && !query.matches ? window.setTimeout(() => setMounted(true), 800) : null;
 
     const media = gsap.matchMedia();
     media.add("(prefers-reduced-motion: no-preference)", () => {
@@ -80,11 +86,12 @@ export default function LivingCover() {
       media.revert();
       observer.disconnect();
       query.removeEventListener("change", preference);
+      if (start !== null) window.clearTimeout(start);
     };
   }, [update]);
 
   const onReady = useCallback(() => setReady(true), []);
-  const onUnavailable = useCallback(() => setReady(false), []);
+  const onUnavailable = useCallback(() => { setReady(false); setUnavailable(true); }, []);
 
   function choose(index: number) {
     update(index / 2);
@@ -94,7 +101,7 @@ export default function LivingCover() {
     if (maxScroll > 0) {
       window.scrollTo({
         top: window.scrollY + bounds.top + maxScroll * (index / 2),
-        behavior: "smooth",
+        behavior: reduced ? "instant" : "smooth",
       });
     }
   }
@@ -104,7 +111,7 @@ export default function LivingCover() {
       <div className="living-stage">
         <div className="cover-portrait" aria-hidden="true">
           <picture>
-            <source media="(max-width: 768px)" srcSet="/images/editorial-portrait-cocoa.webp" />
+            <source media="(max-width: 768px)" srcSet="/images/editorial-portrait-cocoa-640.webp" />
             <img
               src="/images/campaign-portrait-wide-v5.webp"
               width={1672}
@@ -155,7 +162,7 @@ export default function LivingCover() {
         <div
           className={`cover-object ${ready ? "is-ready" : ""}`}
           onPointerDown={(event) => {
-            if (event.button !== 0) return;
+            if (event.button !== 0 || !ready) return;
             pointer.current = {
               id: event.pointerId,
               startX: event.clientX,
@@ -187,7 +194,7 @@ export default function LivingCover() {
 
             if (p.captured) {
               rotation.current = p.startRot + dx * 0.009;
-              setTurn(rotation.current);
+              refresh.current();
             }
           }}
           onPointerUp={(event) => {
@@ -216,12 +223,21 @@ export default function LivingCover() {
                 uncapped={uncapped}
                 paused={paused || reduced}
                 active={active}
+                balanced={balanced}
                 onReady={onReady}
                 onUnavailable={onUnavailable}
               />
             </Suspense>
           ) : (
             <PhotoFallback />
+          )}
+          {!ready && (
+            <div className="cover-tools cover-tools-pending">
+              <button className="load-scene" type="button" disabled={mounted} onClick={() => setMounted(true)}>
+                <RotateCw size={16} aria-hidden="true" />
+                {unavailable ? "Product view" : mounted ? "Opening 3D…" : "Explore in 3D"}
+              </button>
+            </div>
           )}
         </div>
 
@@ -230,8 +246,8 @@ export default function LivingCover() {
             <span className="macro-tag">3D Detail Inspection</span>
             <p className="macro-text">
               {macro === "bullet"
-                ? "White Foundation Bullet • Pure satin wax, adapts intuitively upon blending"
-                : "Built-In Blending Brush • Ultra-dense microfibers engineered for seamless finish"}
+                ? "White foundation • Colour changes as you apply and blend"
+                : "Built-in blending brush • The other end of your everyday ritual"}
             </p>
             <button
               type="button"
@@ -251,7 +267,7 @@ export default function LivingCover() {
           <p>{chapters[phase].copy}</p>
         </div>
 
-        <div className="cover-tools">
+        {ready && <div className="cover-tools">
           <span className="tools-hint">
             {ready
               ? macro !== "none"
@@ -261,10 +277,17 @@ export default function LivingCover() {
                 : "Drag stick to rotate"
               : "Double-ended stick"}
           </span>
+          <button type="button" aria-label="Return to product image" title="Return to product image" onClick={() => {
+            setMounted(false);
+            setReady(false);
+            setMacro("none");
+            setUncapped(false);
+            window.dispatchEvent(new CustomEvent("nurrie:scene-stats", { detail: null }));
+          }}><ImageIcon size={17} /></button>
           <button
             type="button"
             className={`tools-uncap-toggle ${uncapped ? "is-active" : ""}`}
-            aria-label={uncapped ? "Snap magnetic cap closed" : "Uncap both ends in 3D"}
+            aria-label={uncapped ? "Close the cap in 3D" : "Uncap both ends in 3D"}
             title={uncapped ? "Snap cap closed" : "Uncap both ends in 3D"}
             disabled={!ready}
             onClick={() => {
@@ -312,10 +335,10 @@ export default function LivingCover() {
           >
             {paused || reduced ? <Play size={16} /> : <Pause size={16} />}
           </button>
-        </div>
+        </div>}
 
         <div className="cover-edge">
-          <span>Artistic 3D view. White formula. Rose gold. Built-in brush.</span>
+          <span>{ready ? "Artistic 3D view." : "Artistic product view."} White formula. Rose gold. Built-in brush.</span>
           <a href="#the-stick">
             {phase === 2 ? "Meet the stick" : "Scroll to unfold"}
             <ArrowDown size={18} />

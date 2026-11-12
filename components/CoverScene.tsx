@@ -5,6 +5,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { ContactShadows, Environment, Lightformer } from "@react-three/drei";
 import { Group, MathUtils } from "three";
 import { ProductBody, ProductFallback } from "./KineticScene";
+import SceneMetrics from "./SceneMetrics";
 
 type Props = {
   progress: RefObject<number>;
@@ -14,6 +15,7 @@ type Props = {
   turn: number;
   paused: boolean;
   active: boolean;
+  balanced?: boolean;
   macro?: "none" | "bullet" | "brush";
   uncapped?: boolean;
   onReady: () => void;
@@ -33,11 +35,11 @@ class Boundary extends Component<{ children: ReactNode; onError: () => void }, {
   }
 }
 
-function FrameUpdate({ phase, turn, paused, refresh }: { phase: number; turn: number; paused: boolean; refresh: RefObject<() => void> }) {
+function FrameUpdate({ phase, turn, paused, refresh, macro, uncapped }: Pick<Props, "phase" | "turn" | "paused" | "refresh" | "macro" | "uncapped">) {
   const invalidate = useThree((state) => state.invalidate);
   useEffect(() => {
-    invalidate();
-  }, [phase, turn, paused, invalidate]);
+    invalidate(2);
+  }, [phase, turn, paused, macro, uncapped, invalidate]);
   useEffect(() => {
     refresh.current = invalidate;
     return () => {
@@ -65,7 +67,7 @@ function Sculpture(props: Props) {
     if (!group.current) return;
     const clampedDelta = Math.min(delta, 0.032);
     const p = props.progress.current;
-    if (!props.paused) clock.current += clampedDelta;
+    if (!props.paused && !props.balanced) clock.current += clampedDelta;
 
     const targetOpening = props.uncapped ? 0.92 : p;
     effectiveOpening.current = props.paused ? targetOpening : MathUtils.damp(effectiveOpening.current, targetOpening, 6, clampedDelta);
@@ -88,18 +90,29 @@ function Sculpture(props: Props) {
 
     // Smooth continuous axial turn along the Y axis showcasing the double-ended design
     const autoTurn = props.rotation.current + 0.12 + p * Math.PI * 0.85;
+    const targetTurn = autoTurn + (props.balanced || props.paused ? 0 : state.pointer.x * 0.15);
+    const targetTilt = 0.08 + (props.balanced || props.paused ? 0 : state.pointer.y * 0.05);
 
     group.current.scale.setScalar(props.paused ? targetScale : MathUtils.damp(group.current.scale.x, targetScale, 4.5, clampedDelta));
     group.current.position.x = props.paused ? targetX : MathUtils.damp(group.current.position.x, targetX, 4, clampedDelta);
     group.current.position.y = props.paused ? targetY : MathUtils.damp(group.current.position.y, targetY, 4, clampedDelta);
     group.current.rotation.z = props.paused ? targetZ : MathUtils.damp(group.current.rotation.z, targetZ, 4, clampedDelta);
-    group.current.rotation.y = props.paused ? autoTurn : MathUtils.damp(group.current.rotation.y, autoTurn + state.pointer.x * 0.15, 3.5, clampedDelta);
-    group.current.rotation.x = props.paused ? 0.08 : MathUtils.damp(group.current.rotation.x, 0.08 + state.pointer.y * 0.05, 3.5, clampedDelta);
+    group.current.rotation.y = props.paused ? targetTurn : MathUtils.damp(group.current.rotation.y, targetTurn, 3.5, clampedDelta);
+    group.current.rotation.x = props.paused ? targetTilt : MathUtils.damp(group.current.rotation.x, targetTilt, 3.5, clampedDelta);
+
+    // Phone GPUs rest between gestures; keep damping only until this interaction settles.
+    if (props.balanced && !props.paused) {
+      const remaining = Math.abs(group.current.scale.x - targetScale)
+        + Math.abs(group.current.position.x - targetX) + Math.abs(group.current.position.y - targetY)
+        + Math.abs(group.current.rotation.y - targetTurn) + Math.abs(group.current.rotation.x - targetTilt)
+        + Math.abs(group.current.rotation.z - targetZ) + Math.abs(effectiveOpening.current - targetOpening);
+      if (remaining > 0.001) state.invalidate();
+    }
   });
 
   return (
     <group ref={group} scale={baseScale} position={[phone ? 0 : -viewport.width * 0.12, phone ? -0.12 : 0.03, 0.5]} rotation={[0.08, 0.12, -0.34]}>
-      <ProductBody opening={effectiveOpening} capSeparation={0.9} />
+      <ProductBody opening={effectiveOpening} quality={props.balanced ? "balanced" : "full"} />
     </group>
   );
 }
@@ -134,9 +147,9 @@ export default function CoverScene(props: Props) {
         <Boundary onError={props.onUnavailable}>
           <Canvas
             camera={{ position: [0, 0, 8.5], fov: 36 }}
-            dpr={[1, 1.5]}
-            frameloop={!props.active || !visible ? "never" : props.paused ? "demand" : "always"}
-            gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
+            dpr={props.balanced ? 1 : [1, 1.5]}
+            frameloop={!props.active || !visible ? "never" : props.paused || props.balanced ? "demand" : "always"}
+            gl={{ alpha: true, antialias: true, powerPreference: props.balanced ? "low-power" : "high-performance" }}
             onCreated={({ gl }) => gl.domElement.addEventListener("webglcontextlost", () => setSupported(false), { once: true })}
           >
             {/* High-definition studio lighting tailored for cosmetic product sculpture */}
@@ -147,14 +160,15 @@ export default function CoverScene(props: Props) {
             <directionalLight position={[-1.5, 4.0, -4.2]} intensity={2.2} color="#ffffff" />
             <directionalLight position={[2.5, -2.5, -3.0]} intensity={1.0} color="#f0dfd5" />
             <directionalLight position={[0, -3.2, 3.0]} intensity={0.9} color="#e5d5c8" />
-            <Environment resolution={256}>
+            <Environment resolution={props.balanced ? 128 : 256} frames={1}>
               <Lightformer intensity={4.5} position={[-3, 3, 4]} scale={[2, 8, 1]} rotation={[0, 0.4, 0]} color="#ffffff" />
               <Lightformer intensity={3.5} position={[4, 2, 2]} scale={[2, 6, 1]} rotation={[0, -Math.PI / 2, 0]} color="#fff5ee" />
               <Lightformer intensity={2.8} position={[0, 6, -1]} scale={[6, 4, 1]} rotation={[Math.PI / 2, 0, 0]} color="#ffffff" />
               <Lightformer intensity={2.0} position={[-2, -3, 2]} scale={[4, 2, 1]} color="#f7ece3" />
             </Environment>
-            <ContactShadows position={[0, -2.1, 0]} opacity={0.28} scale={8} blur={2.4} far={4} color="#34231c" />
-            <FrameUpdate phase={props.phase} turn={props.turn} paused={props.paused} refresh={props.refresh} />
+            {!props.balanced && <ContactShadows position={[0, -2.1, 0]} opacity={0.28} scale={8} blur={2.4} far={4} color="#34231c" />}
+            <FrameUpdate phase={props.phase} turn={props.turn} paused={props.paused} macro={props.macro} uncapped={props.uncapped} refresh={props.refresh} />
+            <SceneMetrics />
             <Suspense fallback={null}>
               <Sculpture {...props} />
             </Suspense>

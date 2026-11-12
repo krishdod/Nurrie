@@ -1,8 +1,11 @@
 "use client";
 
 import { PRODUCT } from "@/lib/product";
+import { TRANSFORMATION_FILM } from "@/lib/transformation-film";
+import TransformationFilm from "./TransformationFilm";
+import ProductDetails from "./ProductDetails";
 
-import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { lazy, Suspense, useEffect, useRef, useState, useSyncExternalStore, type KeyboardEvent } from "react";
 import { ArrowUpRight, Minus, Plus } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,6 +16,10 @@ import WaitlistForm from "./WaitlistForm";
 import EditorialTicker from "./EditorialTicker";
 import StickyMobileBar from "./StickyMobileBar";
 import { sensoryAudio } from "./SensoryAudio";
+
+const DeviceCheck = lazy(() => import("./DeviceCheck"));
+const subscribeCheck = () => () => {};
+const getCheck = () => new URLSearchParams(location.search).get("check") === "performance";
 
 const rituals = [
   { title: "Swipe", description: "Start with the white foundation. Apply the stick where you want coverage.", note: "An unexpected first touch." },
@@ -42,13 +49,14 @@ const questions = [
 export default function NurrieHome() {
   const root = useRef<HTMLDivElement>(null);
   const [ritual, setRitual] = useState(0);
+  const deviceCheck = useSyncExternalStore(subscribeCheck, getCheck, () => false);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia();
     media.add("(prefers-reduced-motion: no-preference)", () => {
       const context = gsap.context(() => {
-        gsap.from(".ritual-life img", { scale: 1.08, ease: "none", scrollTrigger: { trigger: ".ritual-editorial", start: "top bottom", end: "bottom top", scrub: 0.6 } });
+        gsap.from(".ritual-be img", { scale: 1.08, ease: "none", scrollTrigger: { trigger: ".ritual-editorial", start: "top bottom", end: "bottom top", scrub: 0.6 } });
       }, root);
       return () => context.revert();
     });
@@ -106,6 +114,8 @@ export default function NurrieHome() {
               <figure className="diptych-person">
                 <img
                   src="/images/editorial-portrait-cocoa.webp"
+                  srcSet="/images/editorial-portrait-cocoa-640.webp 640w, /images/editorial-portrait-cocoa.webp 1122w"
+                  sizes="(max-width: 700px) 100vw, 38vw"
                   width={1122}
                   height={1402}
                   alt="NURRIE editorial portrait in warm light"
@@ -135,6 +145,7 @@ export default function NurrieHome() {
             </div>
           </section>
 
+          {TRANSFORMATION_FILM && <TransformationFilm film={TRANSFORMATION_FILM} />}
           <MetamorphosisStudio />
 
           <section className="ritual-editorial" id="the-ritual" aria-labelledby="ritual-heading">
@@ -200,6 +211,8 @@ export default function NurrieHome() {
               </a>
             </div>
           </section>
+
+          <ProductDetails />
 
           <section className="faq" id="the-faq" aria-labelledby="faq-heading">
             <div className="faq-header">
@@ -276,11 +289,11 @@ export default function NurrieHome() {
               <br />
               you become yourself.
             </p>
-            <a className="text-link" href="/#top">
+            <a className="text-link" href="#top">
               Back to the beginning <ArrowUpRight size={20} />
             </a>
           </div>
-          <a className="footer-wordmark" href="/#top" aria-label="NURRIE back to top">
+          <a className="footer-wordmark" href="#top" aria-label="NURRIE back to top">
             NURRIE
           </a>
           <div className="footer-bottom">
@@ -291,6 +304,7 @@ export default function NurrieHome() {
         </footer>
       </div>
       <StickyMobileBar />
+      {deviceCheck && <Suspense fallback={null}><DeviceCheck /></Suspense>}
     </>
   );
 }
