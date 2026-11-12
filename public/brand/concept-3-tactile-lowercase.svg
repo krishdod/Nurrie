@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 120" width="620" height="120" fill="none">
+  <!-- Concept 3: Tactile Organic Lowercase "nurrie" (Rhode / Glossier / Merit Cult Luxury) -->
+  <defs>
+    <linearGradient id="c3Cocoa" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34231C" />
+      <stop offset="100%" stop-color="#1F1410" />
+    </linearGradient>
+  </defs>
+
+  <g fill="url(#c3Cocoa)">
+    <!-- n (Arch vessel) -->
+    <path d="M 40 45 H 55 V 55 C 60 48 70 43 83 43 C 103 43 113 54 113 74 V 105 H 98 V 76 C 98 64 92 57 80 57 C 68 57 55 65 55 78 V 105 H 40 Z" />
+
+    <!-- u (Inverted mirror of n) -->
+    <path d="M 135 45 H 150 V 74 C 150 86 156 93 168 93 C 180 93 193 85 193 72 V 45 H 208 V 105 H 193 V 95 C 188 102 178 107 165 107 C 145 107 135 96 135 76 Z" />
+
+    <!-- r (First soft curl) -->
+    <path d="M 230 45 H 245 V 58 C 251 49 261 44 274 44 V 60 C 260 60 245 68 245 82 V 105 H 230 Z" />
+
+    <!-- r (Second soft curl) -->
+    <path d="M 288 45 H 303 V 58 C 309 49 319 44 332 44 V 60 C 318 60 303 68 303 82 V 105 H 288 Z" />
+
+    <!-- i (Tactile column + Rose Gold dot) -->
+    <path d="M 348 45 H 363 V 105 H 348 Z" />
+    <circle cx="355.5" cy="28" r="8" fill="#D6B19A" />
+
+    <!-- e (Sculpted loop) -->
+    <path d="M 388 75 C 388 56 401 43 423 43 C 445 43 457 58 457 77 V 80 H 403 C 404 92 412 98 424 98 C 434 98 442 93 446 87 L 458 95 C 451 103 439 110 424 110 C 401 110 388 95 388 75 Z M 442 68 C 441 59 434 54 423 54 C 412 54 405 59 404 68 Z" />
+  </g>
+</svg>

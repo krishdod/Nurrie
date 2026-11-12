@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 140" width="700" height="140" fill="none">
+  <!-- Concept 1: The Interlocking Metamorphic Dual-R Ligature -->
+  <defs>
+    <linearGradient id="c1Blend" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#241712" />
+      <stop offset="42%" stop-color="#3C2820" />
+      <stop offset="58%" stop-color="#B28770" />
+      <stop offset="100%" stop-color="#D6B19A" />
+    </linearGradient>
+  </defs>
+
+  <g fill="url(#c1Blend)">
+    <!-- N -->
+    <path d="M 40 30 H 52 L 95 95 V 30 H 107 V 110 H 95 L 52 45 V 110 H 40 Z" />
+
+    <!-- U -->
+    <path d="M 135 30 H 147 V 80 C 147 98 160 110 180 110 C 200 110 213 98 213 80 V 30 H 225 V 80 C 225 105 206 120 180 120 C 154 120 135 105 135 80 Z" />
+
+    <!-- Interlocked Dual R Ligature (The Metamorphosis Axis) -->
+    <!-- First R (Formula side) -->
+    <path d="M 255 30 H 295 C 315 30 326 41 326 56 C 326 68 317 77 304 80 L 330 110 H 316 L 292 82 H 267 V 110 H 255 Z M 267 40 V 72 H 294 C 307 72 314 66 314 56 C 314 46 307 40 294 40 Z" />
+    <!-- Intertwining Bridge connecting both R's -->
+    <path d="M 318 64 C 328 64 336 70 342 78 L 332 84 C 328 78 323 74 316 74 Z" opacity="0.85" />
+    <!-- Second R (Brush side, flowing from the first) -->
+    <path d="M 345 30 H 385 C 405 30 416 41 416 56 C 416 68 407 77 394 80 L 420 110 H 406 L 382 82 H 357 V 110 H 345 Z M 357 40 V 72 H 384 C 397 72 404 66 404 56 C 404 46 397 40 384 40 Z" />
+
+    <!-- I (Central Column) -->
+    <path d="M 455 30 H 467 V 110 H 455 Z" />
+
+    <!-- E (Terminal Precision) -->
+    <path d="M 495 30 H 545 V 41 H 507 V 65 H 538 V 75 H 507 V 99 H 547 V 110 H 495 Z" />
+  </g>
+
+  <!-- High-Fashion Subtitle -->
+  <text x="350" y="132" font-family="'General Sans', sans-serif" font-size="9" font-weight="600" letter-spacing="0.36em" fill="#776257" text-anchor="middle">PARIS · THE ARCHITECTURAL DUAL STICK</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 120" width="840" height="120" fill="none">
+  <!-- Concept 2: The Architectural Modernist Sans (The Row / Céline / Gentle Monster) -->
+  <g fill="#241712">
+    <!-- N -->
+    <path d="M 40 35 H 48.5 L 94 92 V 35 H 102 V 105 H 93.5 L 48 48 V 105 H 40 Z" />
+
+    <!-- U -->
+    <path d="M 160 35 H 168.5 V 82 C 168.5 96 179 106 195 106 C 211 106 221.5 96 221.5 82 V 35 H 230 V 82 C 230 101 215 113 195 113 C 175 113 160 101 160 82 Z" />
+
+    <!-- R -->
+    <path d="M 290 35 H 325 C 342 35 352 44 352 57 C 352 68 344 76 332 78 L 354 105 H 343 L 322 79 H 298.5 V 105 H 290 Z M 298.5 43 V 72 H 324 C 336 72 343 66 343 57 C 343 48 336 43 324 43 Z" />
+
+    <!-- R -->
+    <path d="M 410 35 H 445 C 462 35 472 44 472 57 C 472 68 464 76 452 78 L 474 105 H 463 L 442 79 H 418.5 V 105 H 410 Z M 418.5 43 V 72 H 444 C 456 72 463 66 463 57 C 463 48 456 43 444 43 Z" />
+
+    <!-- I -->
+    <path d="M 535 35 H 543.5 V 105 H 535 Z" />
+
+    <!-- E -->
+    <path d="M 605 35 H 648 V 43 H 613.5 V 66 H 643 V 74 H 613.5 V 97 H 649 V 105 H 605 Z" />
+  </g>
+
+  <!-- Rose Gold Hairline Underline Accent -->
+  <line x1="40" y1="116" x2="649" y2="116" stroke="#D6B19A" stroke-width="0.8" stroke-dasharray="12 18" />
+</svg>
