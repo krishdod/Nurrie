@@ -87,24 +87,9 @@
 }
 
 .living-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font: 42px/1 var(--display);
-  letter-spacing: -0.035em;
-  transition: opacity 0.2s;
-}
-
-.living-logo .logo-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.living-logo .logo-mark svg {
-  width: 24px;
-  height: 24px;
-  color: currentColor;
+  font: 400 38px/1 var(--display);
+  letter-spacing: -0.025em;
+  transition: opacity 0.2s, transform 0.2s;
 }
 
 .living-logo:hover {
@@ -934,13 +919,7 @@
 
   .living-logo {
     font-size: 26px;
-    letter-spacing: -0.03em;
-    gap: 8px;
-  }
-
-  .living-logo .logo-mark svg {
-    width: 17px;
-    height: 17px;
+    letter-spacing: -0.025em;
   }
 
   .living-nav nav {
