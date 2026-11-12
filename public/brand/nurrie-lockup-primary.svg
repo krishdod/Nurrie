@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 90" width="620" height="90" fill="none">
+  <!-- NURRIE Primary Brand Lockup (Monogram + Wordmark) -->
+  <defs>
+    <linearGradient id="lockupRoseGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EAD3C4" />
+      <stop offset="45%" stop-color="#D6B19A" />
+      <stop offset="100%" stop-color="#B28770" />
+    </linearGradient>
+    <linearGradient id="lockupCocoa" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3C2820" />
+      <stop offset="100%" stop-color="#241712" />
+    </linearGradient>
+  </defs>
+
+  <!-- Monogram Mark on the Left -->
+  <g transform="translate(10, 5) scale(0.68)">
+    <rect x="25" y="24" width="7" height="72" rx="1" fill="url(#lockupCocoa)" />
+    <rect x="21" y="22" width="15" height="3.5" rx="0.5" fill="url(#lockupCocoa)" />
+    <rect x="21" y="94.5" width="15" height="3.5" rx="0.5" fill="url(#lockupCocoa)" />
+
+    <rect x="88" y="24" width="7" height="72" rx="1" fill="url(#lockupCocoa)" />
+    <rect x="84" y="22" width="15" height="3.5" rx="0.5" fill="url(#lockupCocoa)" />
+    <rect x="84" y="94.5" width="15" height="3.5" rx="0.5" fill="url(#lockupCocoa)" />
+
+    <path d="M31 24.5 L89 95.5 H96 L38 24.5 Z" fill="url(#lockupRoseGold)" />
+
+    <polygon points="60,49 70,60 60,71 50,60" fill="url(#lockupRoseGold)" />
+    <polygon points="60,53 66,60 60,67 54,60" fill="#FCFAF7" />
+    <circle cx="60" cy="60" r="1.5" fill="#3C2820" />
+  </g>
+
+  <!-- Vertical Divider Hairline -->
+  <line x1="102" y1="20" x2="102" y2="70" stroke="#D6B19A" stroke-width="1" stroke-opacity="0.6" />
+
+  <!-- Wordmark on the Right -->
+  <g fill="url(#lockupCocoa)" transform="translate(115, 12) scale(0.95)">
+    <!-- N -->
+    <path d="M12 10 H22 V14 H19 V46 H22 V50 H12 V46 H15 V14 H12 Z" />
+    <path d="M18 13 L60 48 H66 V14 H69 V10 H59 V14 H62 V43 L22 10 Z" />
+    <path d="M62 10 H72 V14 H69 V46 H72 V50 H62 V46 H65 V14 H62 Z" />
+
+    <!-- U -->
+    <path d="M102 10 H112 V14 H109 V36 C109 45 116 51 127 51 C138 51 145 45 145 36 V14 H142 V10 H152 V14 H149 V36 C149 48 139 56 127 56 C115 56 105 48 105 36 V14 H102 Z" />
+
+    <!-- First R -->
+    <path d="M182 10 H214 C225 10 232 16 232 25 C232 32 226 38 217 39 L234 49 V50 H225 L210 40 H193 V46 H196 V50 H182 V46 H185 V14 H182 Z M193 14 V36 H213 C220 36 224 32 224 25 C224 18 220 14 213 14 Z" />
+
+    <!-- Second R -->
+    <path d="M260 10 H292 C303 10 310 16 310 25 C310 32 304 38 295 39 L312 49 V50 H303 L288 40 H271 V46 H274 V50 H260 V46 H263 V14 H260 Z M271 14 V36 H291 C298 36 302 32 302 25 C302 18 298 14 291 14 Z" />
+
+    <!-- I -->
+    <path d="M344 10 H358 V14 H353 V46 H358 V50 H344 V46 H349 V14 H344 Z" />
+
+    <!-- E -->
+    <path d="M386 10 H422 V18 H418 V14 H397 V28 H412 V32 H397 V46 H419 V42 H423 V50 H386 V46 H389 V14 H386 Z" />
+  </g>
+
+  <!-- Descriptor Subtitle -->
+  <text x="132" y="73" font-family="'General Sans', sans-serif" font-size="8.5" font-weight="600" letter-spacing="0.28em" fill="#776257" text-transform="uppercase">BEAUTÉ · FORMULE MÉTAMORPHE</text>
+</svg>

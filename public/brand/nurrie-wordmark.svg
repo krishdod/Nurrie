@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 80" width="520" height="80" fill="none">
+  <!-- NURRIE Bespoke Haute-Couture Wordmark -->
+  <defs>
+    <linearGradient id="wordmarkCocoa" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3C2820" />
+      <stop offset="100%" stop-color="#241712" />
+    </linearGradient>
+  </defs>
+
+  <g fill="url(#wordmarkCocoa)" transform="translate(10, 10)">
+    <!-- N -->
+    <path d="M12 10 H22 V14 H19 V46 H22 V50 H12 V46 H15 V14 H12 Z" />
+    <path d="M18 13 L60 48 H66 V14 H69 V10 H59 V14 H62 V43 L22 10 Z" />
+    <path d="M62 10 H72 V14 H69 V46 H72 V50 H62 V46 H65 V14 H62 Z" />
+
+    <!-- U -->
+    <path d="M102 10 H112 V14 H109 V36 C109 45 116 51 127 51 C138 51 145 45 145 36 V14 H142 V10 H152 V14 H149 V36 C149 48 139 56 127 56 C115 56 105 48 105 36 V14 H102 Z" />
+
+    <!-- First R -->
+    <path d="M182 10 H214 C225 10 232 16 232 25 C232 32 226 38 217 39 L234 49 V50 H225 L210 40 H193 V46 H196 V50 H182 V46 H185 V14 H182 Z M193 14 V36 H213 C220 36 224 32 224 25 C224 18 220 14 213 14 Z" />
+
+    <!-- Second R -->
+    <path d="M260 10 H292 C303 10 310 16 310 25 C310 32 304 38 295 39 L312 49 V50 H303 L288 40 H271 V46 H274 V50 H260 V46 H263 V14 H260 Z M271 14 V36 H291 C298 36 302 32 302 25 C302 18 298 14 291 14 Z" />
+
+    <!-- I -->
+    <path d="M344 10 H358 V14 H353 V46 H358 V50 H344 V46 H349 V14 H344 Z" />
+
+    <!-- E -->
+    <path d="M386 10 H422 V18 H418 V14 H397 V28 H412 V32 H397 V46 H419 V42 H423 V50 H386 V46 H389 V14 H386 Z" />
+  </g>
+</svg>

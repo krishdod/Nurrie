@@ -124,7 +124,20 @@ export default function LivingCover() {
 
         <header className="living-nav">
           <a className="living-logo" href="/" aria-label="NURRIE home">
-            NURRIE
+            <span className="logo-mark" aria-hidden="true">
+              <svg viewBox="0 0 120 120" width="24" height="24" fill="none">
+                <rect x="25" y="24" width="8" height="72" rx="1" fill="currentColor" />
+                <rect x="21" y="22" width="16" height="3.5" rx="0.5" fill="currentColor" />
+                <rect x="21" y="94.5" width="16" height="3.5" rx="0.5" fill="currentColor" />
+                <rect x="88" y="24" width="8" height="72" rx="1" fill="currentColor" />
+                <rect x="84" y="22" width="16" height="3.5" rx="0.5" fill="currentColor" />
+                <rect x="84" y="94.5" width="16" height="3.5" rx="0.5" fill="currentColor" />
+                <path d="M31 24.5 L89 95.5 H96 L38 24.5 Z" fill="var(--rose)" />
+                <polygon points="60,49 70,60 60,71 50,60" fill="var(--rose)" />
+                <polygon points="60,53 66,60 60,67 54,60" fill="currentColor" />
+              </svg>
+            </span>
+            <span className="logo-wordmark">NURRIE</span>
           </a>
           <nav aria-label="Main navigation">
             <a href="#the-stick">The stick</a>

@@ -1,1 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#34231c"/><text x="32" y="47" text-anchor="middle" font-family="Georgia,serif" font-size="47" fill="#f2eee7">N</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <!-- NURRIE High-Definition Luxury Favicon -->
+  <defs>
+    <linearGradient id="favGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EED6C7" />
+      <stop offset="100%" stop-color="#CFA48D" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#241712" />
+  
+  <g transform="translate(6.5, 6.5) scale(0.425)">
+    <!-- Left Pillar -->
+    <rect x="25" y="24" width="7" height="72" rx="1" fill="#FFFFFF" />
+    <rect x="21" y="22" width="15" height="4" fill="#FFFFFF" />
+    <rect x="21" y="94" width="15" height="4" fill="#FFFFFF" />
+
+    <!-- Right Pillar -->
+    <rect x="88" y="24" width="7" height="72" rx="1" fill="#FFFFFF" />
+    <rect x="84" y="22" width="15" height="4" fill="#FFFFFF" />
+    <rect x="84" y="94" width="15" height="4" fill="#FFFFFF" />
+
+    <!-- Metamorphic Diagonal -->
+    <path d="M31 24.5 L89 95.5 H96 L38 24.5 Z" fill="url(#favGold)" />
+
+    <!-- Diamond Node -->
+    <polygon points="60,48 71,60 60,72 49,60" fill="url(#favGold)" />
+    <polygon points="60,53 66,60 60,67 54,60" fill="#241712" />
+  </g>
+</svg>
