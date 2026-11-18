@@ -88,6 +88,39 @@ export default function MetamorphosisStudio() {
         <p className="studio-intro">
           White on first contact. As you blend with the built-in brush, the formula intuitively adapts to your natural tone.
         </p>
+        <div className="studio-spectrum-bar">
+          <div className="spectrum-bar-header">
+            <div className="spectrum-title-col">
+
+              <h3 className="spectrum-title">Explore the tones</h3>
+            </div>
+          </div>
+
+          <div className="shade-swatch-strip" role="radiogroup" aria-label="Select tone">
+            {SHADES.map((s, index) => (
+              <button
+                key={s.id}
+                type="button"
+                role="radio"
+                aria-checked={shade.id === s.id}
+                tabIndex={shade.id === s.id ? 0 : -1}
+                ref={(element) => { swatches.current[index] = element; }}
+                onKeyDown={(event) => handleShadeKey(event, index)}
+                className={`shade-swatch-card ${shade.id === s.id ? "is-selected" : ""}`}
+                onClick={() => handleShadeSelect(s)}
+                style={{ touchAction: "manipulation" }}
+              >
+                <span className="swatch-bullet" style={{ backgroundColor: s.color }}>
+                  {shade.id === s.id && <Check size={12} className="swatch-check" />}
+                </span>
+                <div className="swatch-meta">
+                  <span className="swatch-name">{s.name}</span>
+                  <span className="swatch-tone">{s.tone}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="studio-lens-card">
@@ -198,100 +231,26 @@ export default function MetamorphosisStudio() {
         <span className="sr-only" id="reveal-keyboard-help">Use arrow keys to adjust, Home or End for either view, and Space to play or pause.</span>
         <p className="reveal-caption" id="reveal-caption">An illustration of the colour-changing concept. Not a shade match or product result.</p>
 
-        <div className="studio-spectrum-bar">
-          <div className="spectrum-bar-header">
-            <div className="spectrum-title-col">
-              <span className="spectrum-eyebrow">Adaptive Spectrum</span>
-              <h3 className="spectrum-title">Explore the tones</h3>
-            </div>
-            <div className="quick-match-tabs" role="group" aria-label="Choose a tone depth">
-              <button
-                type="button"
-                className={`quick-match-pill ${shade.id === "alabaster" ? "is-active" : ""}`}
-                onClick={() => handleShadeSelect(SHADES[0])}
-                aria-pressed={shade.id === "alabaster"}
-              >
-                Fair
-              </button>
-              <button
-                type="button"
-                className={`quick-match-pill ${shade.id === "ochre" ? "is-active" : ""}`}
-                onClick={() => handleShadeSelect(SHADES[1])}
-                aria-pressed={shade.id === "ochre"}
-              >
-                Medium
-              </button>
-              <button
-                type="button"
-                className={`quick-match-pill ${shade.id === "sienna" ? "is-active" : ""}`}
-                onClick={() => handleShadeSelect(SHADES[2])}
-                aria-pressed={shade.id === "sienna"}
-              >
-                Deep
-              </button>
-              <button
-                type="button"
-                className={`quick-match-pill ${shade.id === "espresso" ? "is-active" : ""}`}
-                onClick={() => handleShadeSelect(SHADES[3])}
-                aria-pressed={shade.id === "espresso"}
-              >
-                Rich
-              </button>
-            </div>
-          </div>
-
-          <div className="shade-swatch-strip" role="radiogroup" aria-label="Select tone">
-            {SHADES.map((s, index) => (
-              <button
-                key={s.id}
-                type="button"
-                role="radio"
-                aria-checked={shade.id === s.id}
-                tabIndex={shade.id === s.id ? 0 : -1}
-                ref={(element) => { swatches.current[index] = element; }}
-                onKeyDown={(event) => handleShadeKey(event, index)}
-                className={`shade-swatch-card ${shade.id === s.id ? "is-selected" : ""}`}
-                onClick={() => handleShadeSelect(s)}
-                style={{ touchAction: "manipulation" }}
-              >
-                <span className="swatch-bullet" style={{ backgroundColor: s.color }}>
-                  {shade.id === s.id && <Check size={12} className="swatch-check" />}
-                </span>
-                <div className="swatch-meta">
-                  <span className="swatch-name">{s.name}</span>
-                  <span className="swatch-tone">{s.tone}</span>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
 
       <div className="studio-architecture">
         <div className="arch-header">
-          <span className="section-eyebrow">The Instrument</span>
-          <h3>One design. Both sides.</h3>
+
+          <h3>One design.<br />Both sides.</h3>
           <p>White colour-changing foundation on one end. A built-in blending brush on the other.</p>
         </div>
 
-        <div className="arch-minimal-strip">
-          <div className="arch-pillar">
-            <span className="pillar-num">01</span>
-            <h4>The Formula</h4>
-            <p>White in the stick. Colour-changing as you apply and blend.</p>
-          </div>
-          <div className="arch-pillar">
-            <span className="pillar-num">02</span>
-            <h4>The Axis</h4>
-            <p>A pearl-white casing with rose-gold detailing.</p>
-          </div>
-          <div className="arch-pillar">
-            <span className="pillar-num">03</span>
-            <h4>The Buffer</h4>
-            <p>A built-in brush at the other end, ready for the blending step.</p>
-          </div>
+        <div className="instrument-study">
+          <figure className="instrument-formula">
+            <div className="instrument-crop"><img src="/images/ritual-swipe.webp" alt="Close view of the white NURRIE formula and rose-gold collar" width={768} height={1024} loading="lazy" decoding="async" /></div>
+            <figcaption><h4>The Formula</h4><p>White in the stick. Colour-changing as you apply and blend.</p></figcaption>
+          </figure>
+          <div className="instrument-material"><span>Pearl white.</span><span>Rose gold.</span><p>A pearl-white casing with rose-gold detailing.</p></div>
+          <figure className="instrument-brush">
+            <div className="instrument-crop"><img src="/images/ritual-blend.webp" alt="Close view of NURRIE’s built-in blending brush and rose-gold collar" width={768} height={1024} loading="lazy" decoding="async" /></div>
+            <figcaption><h4>The Buffer</h4><p>A built-in brush at the other end, ready for the blending step.</p></figcaption>
+          </figure>
         </div>
-
         <div className="studio-foot-cta">
           <span>First allocation releasing soon.</span>
           <a href="#first-access" className="text-link">

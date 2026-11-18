@@ -5,6 +5,7 @@ import "./globals.css";
 import "./immersive.css";
 import "./campaign.css";
 import "./living.css";
+import "./editorial.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),

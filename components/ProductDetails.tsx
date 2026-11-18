@@ -2,7 +2,6 @@ export default function ProductDetails() {
   return (
     <section className="product-notes" id="product-details" aria-labelledby="product-notes-heading">
       <div className="product-notes-intro">
-        <span className="section-eyebrow">The product, in detail</span>
         <h2 id="product-notes-heading">A little closer.<br /><em>Every detail matters.</em></h2>
         <p>Meet the design now. Get to know the full formula before launch.</p>
         <a className="text-link" href="#the-ritual">Explore the application ritual <span aria-hidden="true">↗</span></a>

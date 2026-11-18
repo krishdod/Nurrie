@@ -80,14 +80,13 @@ export default function NurrieHome() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <div ref={root} id="top" className="nurrie-page nurrie-campaign nurrie-living">
+      <div ref={root} id="top" className="nurrie-page nurrie-campaign nurrie-living nurrie-editorial">
         <main id="main">
           <LivingCover />
           <EditorialTicker />
 
           <section className="product-diptych" id="the-stick" aria-labelledby="diptych-heading">
             <div className="diptych-heading">
-              <span className="section-eyebrow">The Architecture</span>
               <h2 id="diptych-heading">
                 A different
                 <br />
@@ -173,7 +172,6 @@ export default function NurrieHome() {
               </div>
             </div>
             <div className="ritual-copy">
-              <span className="section-eyebrow">The Ritual</span>
               <h2 id="ritual-heading">
                 Your ritual.
                 <br />
@@ -216,7 +214,6 @@ export default function NurrieHome() {
 
           <section className="faq" id="the-faq" aria-labelledby="faq-heading">
             <div className="faq-header">
-              <span className="section-eyebrow">Transparency</span>
               <h2 id="faq-heading">
                 Good questions.
                 <br />
@@ -256,7 +253,6 @@ export default function NurrieHome() {
               <img src="/images/invitation-duo-centered.webp" width={1136} height={1024} alt="Both views of the NURRIE double-ended foundation stick standing side by side" loading="lazy" />
             </div>
             <div className="signup-copy">
-              <span className="invitation-pill">Pre-Launch Edition</span>
               <h2 id="access-heading">
                 Be here for
                 <br />

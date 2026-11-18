@@ -10,15 +10,15 @@ import { useSensoryAudio } from "./SensoryAudio";
 const CoverScene = lazy(() => import("./CoverScene"));
 
 const chapters = [
-  { name: "White", title: <>White.<br />Until you.</>, copy: "Meet the colour-changing foundation stick. White at first. Your skin tone as you blend." },
-  { name: "Blend", title: <>One stick.<br />Both sides.</>, copy: "Swipe the white formula. Turn to the built-in brush. The change is in your hands." },
-  { name: "You", title: <>Becomes<br />you.</>, copy: "As you apply and blend, the white foundation changes colour, adapting to your skin tone." },
+  { name: "White", title: <><span>White.</span>{" "}<span>Until you.</span></>, copy: "Meet the colour-changing foundation stick. White at first. Your skin tone as you blend." },
+  { name: "Blend", title: <><span>One stick.</span>{" "}<span>Both sides.</span></>, copy: "Swipe the white formula. Turn to the built-in brush. The change is in your hands." },
+  { name: "You", title: <><span>Becomes</span>{" "}<span>you.</span></>, copy: "As you apply and blend, the white foundation changes colour, adapting to your skin tone." },
 ];
 
 function PhotoFallback() {
   return (
     <div className="cover-fallback">
-      <img src={PRODUCT.fallback} srcSet={PRODUCT.srcSet} sizes="(max-width: 768px) 100vw, 75vw" alt={PRODUCT.alt} width={1024} height={683} fetchPriority="high" />
+      <img src={PRODUCT.fallback} srcSet={PRODUCT.srcSet} sizes="(max-width: 768px) 100vw, 50vw" alt={PRODUCT.alt} width={1024} height={683} fetchPriority="high" />
     </div>
   );
 }
@@ -152,7 +152,6 @@ export default function LivingCover() {
         <div className="cover-chapters" role="group" aria-label="Choose a chapter">
           {chapters.map((chapter, index) => (
             <button key={chapter.name} type="button" aria-pressed={phase === index} onClick={() => choose(index)}>
-              <span className="chapter-num">0{index + 1}</span>
               <span className="chapter-name">{chapter.name}</span>
               <ArrowUpRight size={18} aria-hidden="true" />
             </button>
@@ -265,6 +264,7 @@ export default function LivingCover() {
         <div className="cover-copy" aria-live="polite">
           <h1>{chapters[phase].title}</h1>
           <p>{chapters[phase].copy}</p>
+          <a className="cover-discover" href="#the-stick">Discover the stick <ArrowUpRight size={20} aria-hidden="true" /></a>
         </div>
 
         {ready && <div className="cover-tools">
