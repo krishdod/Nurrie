@@ -11,27 +11,39 @@
   .nurrie-editorial .studio-spectrum-bar { grid-column: 1; grid-row: 2; align-self: start; padding-top: 0; }
 }
 
-/* A phone gets a complete opening, rather than the desktop's pinned chapter. */
+.cover-fallback picture { display: block; width: 100%; height: 100%; }
+/* A continuous cocoa campaign cover gives the phone its own composition. */
 @media (max-width: 768px) {
-  .nurrie-editorial .living-cover { height: auto; }
-  .nurrie-editorial .living-stage { position: relative; height: auto; min-height: 0; overflow: hidden; }
-  .nurrie-editorial .living-nav { order: 0; padding: max(16px, env(safe-area-inset-top)) 20px 12px; }
-  .nurrie-editorial .cover-copy { order: 1; padding: 24px 24px 12px; }
-  .nurrie-editorial .cover-copy h1 { display: block; font-size: clamp(54px, 15vw, 78px); line-height: .98; }
+  .nurrie-editorial .living-cover { height: auto; background: var(--cocoa); color: var(--ivory); }
+  .nurrie-editorial .living-stage { position: relative; height: auto; min-height: 0; overflow: hidden; background: var(--cocoa); color: var(--ivory); }
+  .nurrie-editorial .cover-portrait { display: none; }
+  .nurrie-editorial .living-nav { order: 0; padding: max(16px, env(safe-area-inset-top)) 24px 12px; }
+  .nurrie-editorial .living-logo { font-size: 35px; color: var(--ivory); }
+  .nurrie-editorial .living-access { color: var(--ivory); background: transparent; border: 1px solid #ad9482; padding: 10px 12px; }
+  .nurrie-editorial .nav-audio-btn { color: var(--ivory); background: transparent; }
+  .nurrie-editorial .cover-copy { order: 2; position: relative; z-index: 4; margin-top: -64px; padding: 0 24px 8px; }
+  .nurrie-editorial .cover-copy h1 { display: block; font-size: clamp(86px, 26vw, 148px); line-height: .85; color: var(--ivory); text-shadow: none; }
+  .nurrie-editorial .living-cover[data-phase="1"] .cover-copy h1 { font-size: clamp(64px, 18vw, 112px); }
+  .nurrie-editorial .living-cover[data-phase="2"] .cover-copy h1 { font-size: clamp(72px, 20vw, 124px); }
   .nurrie-editorial .cover-copy h1 span { display: block; white-space: normal; }
-  .nurrie-editorial .cover-copy h1 span + span { font-size: .82em; margin-top: 3px; }
-  .nurrie-editorial .cover-copy p { margin-top: 20px; font-size: 16px; line-height: 1.55; max-width: 36ch; }
-  .nurrie-editorial .cover-discover { min-height: 44px; font-size: 14px; margin-top: 6px; }
-  .nurrie-editorial .cover-chapters { order: 2; margin: 6px 24px 14px; padding: 0; gap: 0; justify-content: stretch; border-bottom: 1px solid #bba99c; }
-  .nurrie-editorial .cover-chapters button { flex: 1; justify-content: center; min-height: 48px; opacity: .75; font-size: 14px; }
-  .nurrie-editorial .cover-chapters button[aria-pressed="true"] { opacity: 1; box-shadow: inset 0 -2px currentColor; }
-  .nurrie-editorial .cover-object { order: 3; flex: none; min-height: 0; height: clamp(320px, 100vw, 470px); width: 100%; }
+  .nurrie-editorial .cover-copy h1 span + span { font-size: .6em; margin-top: 10px; }
+  .nurrie-editorial .cover-copy p { margin-top: 24px; font-size: 15px; line-height: 1.6; max-width: 34ch; color: #e6dbcf; text-shadow: none; }
+  .nurrie-editorial .cover-discover { min-height: 48px; font-size: 14px; margin-top: 10px; color: var(--ivory); }
+  .nurrie-editorial .cover-chapters { order: 3; margin: 14px 174px 24px 24px; padding: 0; gap: 16px; justify-content: flex-start; border: 0; }
+  .nurrie-editorial .cover-chapters button { flex: none; justify-content: flex-start; min-height: 44px; opacity: .72; font-size: 13px; color: var(--ivory); }
+  .nurrie-editorial .cover-chapters button svg { display: none; }
+  .nurrie-editorial .cover-chapters button[aria-pressed="true"] { opacity: 1; box-shadow: none; text-decoration: underline; text-underline-offset: 8px; }
+  .nurrie-editorial .cover-object { order: 1; flex: none; min-height: 0; height: clamp(340px, 102vw, 500px); width: 100%; }
+  .nurrie-editorial .cover-fallback { position: relative; }
+  .nurrie-editorial .cover-fallback img { object-position: 100% center; }
+  .nurrie-editorial .cover-fallback::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to bottom, var(--cocoa) 0%, transparent 12%, transparent 62%, var(--cocoa) 100%); }
   .nurrie-editorial .cover-object.is-ready .cover-canvas { width: 100%; }
-  .nurrie-editorial .living-stage > .cover-tools { order: 4; position: relative; inset: auto; display: flex; justify-content: center; width: auto; margin: 0 20px 20px; padding: 8px 0; gap: 2px; border-top: 1px solid #bba99c; }
+  .nurrie-editorial .living-cover[data-view="3d"] .cover-copy { margin-top: 0; }
+  .nurrie-editorial .living-stage > .cover-tools { order: 4; position: relative; inset: auto; display: flex; justify-content: flex-start; width: auto; margin: 0 24px 24px; padding: 12px 0 0; gap: 2px; border-top: 1px solid #80695c; background: transparent; }
   .nurrie-editorial .cover-tools .tools-hint { display: none; }
-  .nurrie-editorial .cover-tools button { flex: 0 0 44px; }
-  .nurrie-editorial .cover-tools-pending { top: auto; bottom: 16px; right: 16px; }
-  .nurrie-editorial .cover-tools .load-scene { min-height: 48px; min-width: 156px; font-size: 14px; }
+  .nurrie-editorial .cover-tools button { flex: 0 0 44px; background: transparent; color: var(--ivory); }
+  .nurrie-editorial .living-stage > .cover-tools-pending { position: absolute; top: auto; bottom: 24px; left: auto; right: 24px; width: 140px; margin: 0; padding: 0; border: 0; background: transparent; }
+  .nurrie-editorial .cover-tools .load-scene { min-height: 44px; min-width: 140px; font-size: 12px; border: 1px solid #ad9482; background: transparent; color: var(--ivory); }
   .cover-reveal-caption { top: 12px; bottom: auto; left: 16px; right: 16px; }
   .cover-reveal-caption p { display: block; font-size: 20px; }
   .cover-reveal-caption button { min-width: 84px; }
@@ -46,12 +58,26 @@
   .nurrie-editorial .diptych-heading > p,
   .nurrie-editorial .studio-intro,
   .nurrie-editorial .arch-header p { font-size: 16px; line-height: 1.6; }
-  .nurrie-editorial .diptych-person { margin-left: 10%; }
-  .nurrie-editorial .diptych-foot .text-link { min-height: 48px; }
+  .nurrie-editorial .product-diptych { padding-top: 64px; padding-bottom: 56px; }
+  .nurrie-editorial .diptych-heading h2 { font-size: clamp(44px, 12vw, 72px); }
+  .nurrie-editorial .diptych-fields { grid-template-columns: 1.15fr 1fr; gap: 16px; }
+  .nurrie-editorial .diptych-product img { aspect-ratio: .7; }
+  .nurrie-editorial .diptych-product figcaption { display: block; font-size: 12px; line-height: 1.6; }
+  .nurrie-editorial .diptych-product figcaption span { display: block; }
+  .nurrie-editorial .diptych-person { margin: 64px 0 0; }
+  .nurrie-editorial .diptych-person img { aspect-ratio: .72; }
+  .nurrie-editorial .diptych-person figcaption { font-size: clamp(22px, 5.8vw, 32px); line-height: 1.1; }
+  .nurrie-editorial .diptych-foot { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 12px; margin-top: 36px; }
+  .nurrie-editorial .diptych-foot > p { grid-column: 1; grid-row: 1; font-size: 20px; }
+  .nurrie-editorial .diptych-foot > span { grid-column: 2; grid-row: 1; text-align: right; font-size: 12px; }
+  .nurrie-editorial .diptych-foot .text-link { grid-column: 1 / -1; grid-row: 2; min-height: 48px; justify-content: space-between; border-bottom: 1px solid #80695c; }
   .nurrie-editorial .split-lens-viewport { height: clamp(340px, 105vw, 460px); }
   .nurrie-editorial .lens-btn, .nurrie-editorial .lens-btn-icon { min-width: 44px; min-height: 44px; }
   .nurrie-editorial .lens-top-bar { flex-wrap: nowrap; }
   .nurrie-editorial .lens-status { font-size: 11px; }
+  .nurrie-editorial .lens-watermark { border: 0; border-radius: 0; padding: 8px 10px; background: #34231ce6; backdrop-filter: none; }
+  .nurrie-editorial .watermark-title { font-size: 24px; }
+  .nurrie-editorial .watermark-tag, .nurrie-editorial .watermark-desc { display: none; }
   .thumb-blend-control { display: block; margin: 24px 24px 0; }
   .thumb-blend-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; color: var(--cocoa); font-size: 14px; }
   .thumb-blend-label output { font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -62,21 +88,23 @@
   .thumb-blend-control input::-moz-range-progress { height: 4px; background: var(--cocoa); }
   .thumb-blend-control input::-moz-range-thumb { width: 24px; height: 24px; border: 3px solid var(--ivory); border-radius: 50%; background: var(--cocoa); }
   .thumb-blend-control input:focus-visible { outline: 2px solid var(--cocoa); outline-offset: 4px; }
-  .thumb-blend-ends { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); }
-  .nurrie-editorial .reveal-presets { gap: 20px; padding-top: 12px; }
-  .nurrie-editorial .reveal-presets button { font-size: 13px; }
+  .thumb-blend-ends { display: flex; justify-content: space-between; gap: 16px; color: var(--cocoa); }
+  .thumb-blend-ends button { min-height: 44px; padding: 0; background: none; border: 0; color: inherit; font: 13px var(--body); text-decoration: underline; text-underline-offset: 6px; cursor: pointer; }
+  .nurrie-editorial .reveal-presets { display: none; }
   .nurrie-editorial .reveal-caption { font-size: 12px; margin-top: 16px; }
   .nurrie-editorial .shade-swatch-card { min-height: 68px; }
   .nurrie-editorial .swatch-name { font-size: 17px; }
   .nurrie-editorial .swatch-tone { font-size: 12px; }
   .nurrie-editorial .ritual-tabs button { min-height: 52px; }
+  .instrument-study figcaption p { font-size: 14px; }
+  .instrument-study h4 { font-size: 28px; }
 
   .nurrie-editorial .first-access { padding: 60px 24px 50px; }
   .nurrie-editorial .signup-copy { order: 0; }
   .nurrie-editorial .signup-copy h2 { font-size: clamp(43px, 11vw, 66px); }
   .nurrie-editorial .signup-copy > p { font-size: 16px; line-height: 1.6; margin-top: 22px; }
-  .nurrie-editorial .signup-panel { order: 1; padding: 28px 20px; margin-top: 24px; }
-  .nurrie-editorial .invitation-object { order: 2; height: 190px; margin: 20px 0 0; }
+  .nurrie-editorial .signup-panel { order: 1; padding: 28px 0 0; margin-top: 24px; background: transparent; border-top: 1px solid #bba99c; }
+  .nurrie-editorial .invitation-object { display: none; }
   .nurrie-editorial .signup-bottom { order: 3; }
   .nurrie-editorial .waitlist-form > label[for="email"] { display: block; font-size: 16px; margin-bottom: 12px; }
   .nurrie-editorial .email-row input { font-size: 18px; min-height: 56px; }
@@ -88,9 +116,10 @@
 }
 @media (max-width: 360px) {
   .nurrie-editorial .living-nav { padding-left: 16px; padding-right: 16px; }
-  .nurrie-editorial .cover-copy { padding-top: 16px; }
-  .nurrie-editorial .cover-copy h1 { font-size: 54px; }
+  .nurrie-editorial .cover-copy h1 { font-size: 86px; }
+  .nurrie-editorial .living-cover[data-phase="1"] .cover-copy h1 { font-size: 64px; }
   .nurrie-editorial .cover-chapters { margin-left: 20px; margin-right: 20px; }
+  .nurrie-editorial .living-stage > .cover-tools-pending { position: relative; inset: auto; width: auto; margin: 0 24px 24px; }
   .mobile-journey { left: 8px; right: 8px; }
   .mobile-journey a { font-size: 12px; gap: 5px; }
   .thumb-blend-label { font-size: 13px; gap: 8px; }

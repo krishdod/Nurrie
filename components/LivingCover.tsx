@@ -20,7 +20,10 @@ const chapters = [
 function PhotoFallback() {
   return (
     <div className="cover-fallback">
-      <img src={PRODUCT.fallback} srcSet={PRODUCT.srcSet} sizes="(max-width: 768px) 100vw, 50vw" alt={PRODUCT.alt} width={1024} height={683} fetchPriority="high" />
+      <picture>
+        <source media="(max-width: 768px)" srcSet={PRODUCT.campaignSrcSet} sizes="100vw" />
+        <img src={PRODUCT.fallback} srcSet={PRODUCT.srcSet} sizes="(max-width: 768px) 100vw, 50vw" alt={PRODUCT.alt} width={1024} height={683} fetchPriority="high" />
+      </picture>
     </div>
   );
 }
@@ -120,7 +123,7 @@ export default function LivingCover() {
   }
 
   return (
-    <section ref={section} className="living-cover" data-phase={phase} aria-label="White. Blend. You. The NURRIE foundation story">
+    <section ref={section} className="living-cover" data-phase={phase} data-view={ready ? "3d" : "image"} aria-label="White. Blend. You. The NURRIE foundation story">
       <div className="living-stage">
         <div className="cover-portrait" aria-hidden="true">
           <picture>
@@ -260,19 +263,20 @@ export default function LivingCover() {
               <button type="button" onPointerDown={(event) => event.stopPropagation()} onClick={finishReveal}>Skip reveal</button>
             </div>
           )}
-          {!ready && (
-            <div className="cover-tools cover-tools-pending">
-              <button className="load-scene" type="button" disabled={mounted} onClick={() => {
-                setRevealing(true);
-                setRevealStep("formula");
-                setMounted(true);
-              }}>
-                <RotateCw size={16} aria-hidden="true" />
-                {unavailable ? "Product view" : mounted ? "Opening 3D…" : "Explore in 3D"}
-              </button>
-            </div>
-          )}
         </div>
+
+        {!ready && (
+          <div className="cover-tools cover-tools-pending">
+            <button className="load-scene" type="button" disabled={mounted} onClick={() => {
+              setRevealing(true);
+              setRevealStep("formula");
+              setMounted(true);
+            }}>
+              <RotateCw size={16} aria-hidden="true" />
+              {unavailable ? "Product view" : mounted ? "Opening 3D…" : "Explore in 3D"}
+            </button>
+          </div>
+        )}
 
         {macro !== "none" && (
           <div className="cover-macro-banner" aria-live="polite">

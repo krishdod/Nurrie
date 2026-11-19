@@ -198,7 +198,7 @@ export default function MetamorphosisStudio() {
         <div className="thumb-blend-control">
           <div className="thumb-blend-label"><label htmlFor="thumb-blend">Blend with your thumb</label><output ref={thumbReadoutRef} htmlFor="thumb-blend">65% white</output></div>
           <input ref={rangeRef} id="thumb-blend" type="range" min="0" max="100" step="1" defaultValue="65" aria-label="White formula visibility" aria-describedby="reveal-caption" onInput={(event) => seek(Number(event.currentTarget.value))} />
-          <div className="thumb-blend-ends" aria-hidden="true"><span>Blended view</span><span>White formula</span></div>
+          <div className="thumb-blend-ends" role="group" aria-label="Set formula view"><button type="button" onClick={() => moveTo(0)}>Blended view</button><button type="button" onClick={() => moveTo(100)}>White formula</button></div>
         </div>
         <div className="reveal-presets" role="group" aria-label="Compare formula views">
           <button type="button" onClick={() => moveTo(100)}>See white formula</button>
