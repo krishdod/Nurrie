@@ -1,7 +1,8 @@
 "use client";
 
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUpRight, ImageIcon, Layers, Pause, Play, RotateCw, Volume2, VolumeX, ZoomIn } from "lucide-react";
+import Link from "next/link";
+import { ArrowDown, ArrowUpRight, ImageIcon, Layers, Pause, Play, RotateCcw, RotateCw, Volume2, VolumeX, ZoomIn } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PRODUCT } from "@/lib/product";
@@ -41,6 +42,14 @@ export default function LivingCover() {
   const [reduced, setReduced] = useState(false);
   const [active, setActive] = useState(true);
   const [uncapped, setUncapped] = useState(false);
+  const [revealing, setRevealing] = useState(true);
+  const [revealKey, setRevealKey] = useState(0);
+  const [revealStep, setRevealStep] = useState<"formula" | "brush">("formula");
+
+  const finishReveal = useCallback(() => {
+    setRevealing(false);
+    setUncapped(true);
+  }, []);
 
   const update = useCallback((p: number) => {
     progress.current = p;
@@ -63,6 +72,8 @@ export default function LivingCover() {
     // Keep the first paint light on phones, reduced-motion and data-saving visits.
     const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
     const light = window.matchMedia("(max-width: 768px), (pointer: coarse)").matches || !!connection?.saveData;
+    // Keep SSR photo-first; choose the graphics budget only after browser hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setBalanced(light);
     const start = !light && !query.matches ? window.setTimeout(() => setMounted(true), 800) : null;
 
@@ -94,6 +105,7 @@ export default function LivingCover() {
   const onUnavailable = useCallback(() => { setReady(false); setUnavailable(true); }, []);
 
   function choose(index: number) {
+    if (ready && revealing) finishReveal();
     update(index / 2);
     if (!section.current) return;
     const bounds = section.current.getBoundingClientRect();
@@ -123,9 +135,9 @@ export default function LivingCover() {
         </div>
 
         <header className="living-nav">
-          <a className="living-logo" href="/" aria-label="NURRIE home">
+          <Link className="living-logo" href="/" aria-label="NURRIE home">
             NURRIE
-          </a>
+          </Link>
           <nav aria-label="Main navigation">
             <a href="#the-stick">The stick</a>
             <a href="#the-metamorphosis">Metamorphosis</a>
@@ -162,6 +174,7 @@ export default function LivingCover() {
           className={`cover-object ${ready ? "is-ready" : ""}`}
           onPointerDown={(event) => {
             if (event.button !== 0 || !ready) return;
+            if (revealing) finishReveal();
             pointer.current = {
               id: event.pointerId,
               startX: event.clientX,
@@ -223,6 +236,10 @@ export default function LivingCover() {
                 paused={paused || reduced}
                 active={active}
                 balanced={balanced}
+                revealing={revealing && !reduced}
+                revealKey={revealKey}
+                onRevealStep={setRevealStep}
+                onRevealComplete={finishReveal}
                 onReady={onReady}
                 onUnavailable={onUnavailable}
               />
@@ -230,9 +247,19 @@ export default function LivingCover() {
           ) : (
             <PhotoFallback />
           )}
+          {ready && revealing && !reduced && (
+            <div className="cover-reveal-caption">
+              <p aria-live="polite"><span key={revealStep}>{revealStep === "formula" ? "The white formula." : "The built-in brush."}</span></p>
+              <button type="button" onPointerDown={(event) => event.stopPropagation()} onClick={finishReveal}>Skip reveal</button>
+            </div>
+          )}
           {!ready && (
             <div className="cover-tools cover-tools-pending">
-              <button className="load-scene" type="button" disabled={mounted} onClick={() => setMounted(true)}>
+              <button className="load-scene" type="button" disabled={mounted} onClick={() => {
+                setRevealing(true);
+                setRevealStep("formula");
+                setMounted(true);
+              }}>
                 <RotateCw size={16} aria-hidden="true" />
                 {unavailable ? "Product view" : mounted ? "Opening 3D…" : "Explore in 3D"}
               </button>
@@ -270,13 +297,23 @@ export default function LivingCover() {
         {ready && <div className="cover-tools">
           <span className="tools-hint">
             {ready
-              ? macro !== "none"
+              ? revealing && !reduced
+                ? "Formula. Brush. NURRIE."
+                : macro !== "none"
                 ? "Macro inspection active"
                 : uncapped
                 ? "Both ends revealed in 3D"
                 : "Drag stick to rotate"
               : "Double-ended stick"}
           </span>
+          <button type="button" className="tools-replay" aria-label="Replay product reveal" title="Replay product reveal" disabled={reduced} onClick={() => {
+            setMacro("none");
+            setUncapped(false);
+            setPaused(false);
+            setRevealStep("formula");
+            setRevealKey((key) => key + 1);
+            setRevealing(true);
+          }}><RotateCcw size={17} /></button>
           <button type="button" aria-label="Return to product image" title="Return to product image" onClick={() => {
             setMounted(false);
             setReady(false);
@@ -291,6 +328,7 @@ export default function LivingCover() {
             title={uncapped ? "Snap cap closed" : "Uncap both ends in 3D"}
             disabled={!ready}
             onClick={() => {
+              if (revealing) finishReveal();
               setUncapped(!uncapped);
               sound.capClick();
             }}
@@ -304,6 +342,7 @@ export default function LivingCover() {
             title="Inspect 3D details"
             disabled={!ready}
             onClick={() => {
+              if (revealing) finishReveal();
               const next = macro === "none" ? "bullet" : macro === "bullet" ? "brush" : "none";
               setMacro(next);
               sound.capClick();
@@ -316,6 +355,7 @@ export default function LivingCover() {
             aria-label="Turn the stick"
             disabled={!ready}
             onClick={() => {
+              if (revealing) finishReveal();
               rotation.current += Math.PI / 2;
               setTurn(rotation.current);
               sound.capClick();

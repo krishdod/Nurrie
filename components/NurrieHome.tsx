@@ -10,6 +10,7 @@ import { ArrowUpRight, Minus, Plus } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LivingCover from "./LivingCover";
+import CreamRibbon from "./CreamRibbon";
 import MetamorphosisStudio from "./MetamorphosisStudio";
 import LuxuryCursor from "./LuxuryCursor";
 import WaitlistForm from "./WaitlistForm";
@@ -144,6 +145,7 @@ export default function NurrieHome() {
             </div>
           </section>
 
+          <CreamRibbon />
           {TRANSFORMATION_FILM && <TransformationFilm film={TRANSFORMATION_FILM} />}
           <MetamorphosisStudio />
 

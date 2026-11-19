@@ -18,6 +18,10 @@ type Props = {
   balanced?: boolean;
   macro?: "none" | "bullet" | "brush";
   uncapped?: boolean;
+  revealing: boolean;
+  revealKey: number;
+  onRevealStep: (step: "formula" | "brush") => void;
+  onRevealComplete: () => void;
   onReady: () => void;
   onUnavailable: () => void;
 };
@@ -35,63 +39,96 @@ class Boundary extends Component<{ children: ReactNode; onError: () => void }, {
   }
 }
 
-function FrameUpdate({ phase, turn, paused, refresh, macro, uncapped }: Pick<Props, "phase" | "turn" | "paused" | "refresh" | "macro" | "uncapped">) {
+function FrameUpdate({ phase, turn, paused, refresh: refreshRef, macro, uncapped, active, revealing, revealKey }: Props) {
   const invalidate = useThree((state) => state.invalidate);
   useEffect(() => {
     invalidate(2);
-  }, [phase, turn, paused, macro, uncapped, invalidate]);
+  }, [phase, turn, paused, macro, uncapped, active, revealing, revealKey, invalidate]);
   useEffect(() => {
-    refresh.current = invalidate;
+    refreshRef.current = invalidate;
     return () => {
-      refresh.current = () => {};
+      refreshRef.current = () => {};
     };
-  }, [refresh, invalidate]);
+  }, [refreshRef, invalidate]);
   return null;
 }
 
 function Sculpture(props: Props) {
+  const { onReady } = props;
   const group = useRef<Group>(null);
   const { viewport, size } = useThree();
   const phone = size.width < 768;
-  const clock = useRef(0);
+  const revealTime = useRef(0);
+  const lastRevealFrame = useRef<number | null>(null);
+  const announcedBrush = useRef(false);
+  const completed = useRef(false);
   const effectiveOpening = useRef(props.progress.current);
 
   // Refined luxury cosmetic scale with breathing room to guarantee zero clipping
   const baseScale = Math.min(viewport.height / (phone ? 5.2 : 4.4), viewport.width / (phone ? 3.4 : 4.8));
 
   useEffect(() => {
-    props.onReady();
-  }, [props.onReady]);
+    onReady();
+  }, [onReady]);
+
+  useEffect(() => {
+    revealTime.current = 0;
+    announcedBrush.current = false;
+    completed.current = false;
+  }, [props.revealKey]);
+
+  useEffect(() => {
+    lastRevealFrame.current = null;
+  }, [props.active, props.paused, props.revealKey]);
 
   useFrame((state, delta) => {
     if (!group.current) return;
     const clampedDelta = Math.min(delta, 0.032);
     const p = props.progress.current;
-    if (!props.paused && !props.balanced) clock.current += clampedDelta;
+    const introducing = props.revealing && !completed.current;
+    if (introducing && !props.paused) {
+      const now = performance.now();
+      if (lastRevealFrame.current !== null) revealTime.current += (now - lastRevealFrame.current) / 1000;
+      lastRevealFrame.current = now;
+    }
+    const t = revealTime.current;
+    // One 4.2-second camera study: formula, opposite-end brush, then the whole stick.
+    const brushFocus = MathUtils.smootherstep(t, .8, 1.9);
+    const settle = MathUtils.smootherstep(t, 2.65, 4.2);
+    const closeFocus = introducing ? 1 - settle : 0;
+    if (introducing && t >= 1.4 && !announcedBrush.current) {
+      announcedBrush.current = true;
+      props.onRevealStep("brush");
+    }
+    if (introducing && t >= 4.2) {
+      completed.current = true;
+      props.onRevealComplete();
+    }
 
-    const targetOpening = props.uncapped ? 0.92 : p;
+    const targetOpening = introducing ? .92 * MathUtils.smootherstep(t, .7, 1.65) : props.uncapped ? .92 : p;
     effectiveOpening.current = props.paused ? targetOpening : MathUtils.damp(effectiveOpening.current, targetOpening, 6, clampedDelta);
 
     const isMacro = props.macro && props.macro !== "none";
     const macroBullet = props.macro === "bullet";
 
-    const targetScale = isMacro ? baseScale * 1.75 : baseScale;
+    const targetScale = isMacro ? baseScale * 1.75 : baseScale * (1 + closeFocus * .35);
 
     // Elegant presentation tilt
     const normalZ = -0.34 + Math.sin(p * Math.PI) * 0.10;
-    const targetZ = isMacro ? (macroBullet ? -0.12 : 0.14) : normalZ;
+    const targetZ = isMacro ? (macroBullet ? -0.12 : 0.14) : MathUtils.lerp(normalZ, MathUtils.lerp(-.12, .18, brushFocus), closeFocus);
 
     // Beautifully balanced on the left-center over the soft silk background, alongside the model portrait on the right
     const normalX = phone ? 0 : -viewport.width * 0.12;
     const targetX = isMacro ? 0 : normalX;
+    const normalY = phone ? -.12 : .03;
     const targetY = isMacro
       ? (macroBullet ? -0.42 : 0.48)
-      : (phone ? -0.12 : 0.03) + (props.paused ? 0 : Math.sin(clock.current * 0.5) * 0.02);
+      : MathUtils.lerp(normalY, baseScale * MathUtils.lerp(-.48, .4, brushFocus), closeFocus);
 
     // Smooth continuous axial turn along the Y axis showcasing the double-ended design
     const autoTurn = props.rotation.current + 0.12 + p * Math.PI * 0.85;
-    const targetTurn = autoTurn + (props.balanced || props.paused ? 0 : state.pointer.x * 0.15);
-    const targetTilt = 0.08 + (props.balanced || props.paused ? 0 : state.pointer.y * 0.05);
+    const targetTurn = MathUtils.lerp(autoTurn, -.18 + brushFocus * .6, closeFocus);
+    const targetTilt = 0.08;
 
     group.current.scale.setScalar(props.paused ? targetScale : MathUtils.damp(group.current.scale.x, targetScale, 4.5, clampedDelta));
     group.current.position.x = props.paused ? targetX : MathUtils.damp(group.current.position.x, targetX, 4, clampedDelta);
@@ -100,13 +137,13 @@ function Sculpture(props: Props) {
     group.current.rotation.y = props.paused ? targetTurn : MathUtils.damp(group.current.rotation.y, targetTurn, 3.5, clampedDelta);
     group.current.rotation.x = props.paused ? targetTilt : MathUtils.damp(group.current.rotation.x, targetTilt, 3.5, clampedDelta);
 
-    // Phone GPUs rest between gestures; keep damping only until this interaction settles.
-    if (props.balanced && !props.paused) {
+    // Every device rests after the reveal. Only scrolling and controls request more frames.
+    if (!props.paused) {
       const remaining = Math.abs(group.current.scale.x - targetScale)
         + Math.abs(group.current.position.x - targetX) + Math.abs(group.current.position.y - targetY)
         + Math.abs(group.current.rotation.y - targetTurn) + Math.abs(group.current.rotation.x - targetTilt)
         + Math.abs(group.current.rotation.z - targetZ) + Math.abs(effectiveOpening.current - targetOpening);
-      if (remaining > 0.001) state.invalidate();
+      if (introducing || remaining > 0.001) state.invalidate();
     }
   });
 
@@ -118,6 +155,7 @@ function Sculpture(props: Props) {
 }
 
 export default function CoverScene(props: Props) {
+  const { onUnavailable } = props;
   const [supported, setSupported] = useState<boolean | null>(null);
   const [visible, setVisible] = useState(true);
 
@@ -125,6 +163,8 @@ export default function CoverScene(props: Props) {
     const canvas = document.createElement("canvas");
     try {
       const context = canvas.getContext("webgl2");
+      // This browser-only capability probe must run after hydration, outside render.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSupported(!!context);
       context?.getExtension("WEBGL_lose_context")?.loseContext();
     } catch {
@@ -136,8 +176,8 @@ export default function CoverScene(props: Props) {
   }, []);
 
   useEffect(() => {
-    if (supported === false) props.onUnavailable();
-  }, [supported, props.onUnavailable]);
+    if (supported === false) onUnavailable();
+  }, [supported, onUnavailable]);
 
   return (
     <div className="cover-canvas" role="img" aria-label="Artistic 3D view of NURRIE: white formula, pearl-white casing, rose-gold trim and natural blending brush">
@@ -148,7 +188,7 @@ export default function CoverScene(props: Props) {
           <Canvas
             camera={{ position: [0, 0, 8.5], fov: 36 }}
             dpr={props.balanced ? 1 : [1, 1.5]}
-            frameloop={!props.active || !visible ? "never" : props.paused || props.balanced ? "demand" : "always"}
+            frameloop={!props.active || !visible ? "never" : "demand"}
             gl={{ alpha: true, antialias: true, powerPreference: props.balanced ? "low-power" : "high-performance" }}
             onCreated={({ gl }) => gl.domElement.addEventListener("webglcontextlost", () => setSupported(false), { once: true })}
           >
@@ -167,10 +207,10 @@ export default function CoverScene(props: Props) {
               <Lightformer intensity={2.0} position={[-2, -3, 2]} scale={[4, 2, 1]} color="#f7ece3" />
             </Environment>
             {!props.balanced && <ContactShadows position={[0, -2.1, 0]} opacity={0.28} scale={8} blur={2.4} far={4} color="#34231c" />}
-            <FrameUpdate phase={props.phase} turn={props.turn} paused={props.paused} macro={props.macro} uncapped={props.uncapped} refresh={props.refresh} />
+            <FrameUpdate {...props} active={props.active && visible} />
             <SceneMetrics />
             <Suspense fallback={null}>
-              <Sculpture {...props} />
+              <Sculpture {...props} active={props.active && visible} />
             </Suspense>
           </Canvas>
         </Boundary>
