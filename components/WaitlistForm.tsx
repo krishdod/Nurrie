@@ -32,6 +32,8 @@ export default function WaitlistForm() {
     try {
       const saved = sessionStorage.getItem(SESSION_KEY);
       if (saved) {
+        // Restore the private browser-session link only after hydration.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setToken(saved);
         setRemovalUrl(`${window.location.origin}/privacy#${saved}`);
       }
@@ -201,6 +203,7 @@ export default function WaitlistForm() {
           name="email"
           type="email"
           inputMode="email"
+          enterKeyHint="done"
           autoCapitalize="none"
           spellCheck={false}
           placeholder="you@example.com"
@@ -210,10 +213,6 @@ export default function WaitlistForm() {
           disabled={status === "saving"}
           aria-describedby="signup-note signup-error"
         />
-        <button type="submit" className="submit-button" disabled={status === "saving"}>
-          {status === "saving" ? "Reserving…" : "Reserve in Batch 01"}
-          <ArrowUpRight size={23} strokeWidth={1.5} />
-        </button>
       </div>
       <div className="honeypot" aria-hidden="true">
         <label htmlFor="website">Website</label>
@@ -223,6 +222,10 @@ export default function WaitlistForm() {
         <input type="checkbox" name="consent" required disabled={status === "saving"} />
         <span>I’d like product and launch news from NURRIE. I’ve read the <a href="/privacy">privacy note</a>.</span>
       </label>
+      <button type="submit" className="submit-button" disabled={status === "saving"}>
+        {status === "saving" ? "Reserving…" : "Reserve in Batch 01"}
+        <ArrowUpRight size={23} strokeWidth={1.5} />
+      </button>
       <p id="signup-note" className="small-copy">
         Guaranteed priority invitation before public release. No purchase required.
       </p>

@@ -261,6 +261,8 @@ export default function NurrieHome() {
                 the beginning.
               </h2>
               <p>Be first to discover the NURRIE colour-changing foundation stick. Leave your email for launch news and priority batch allocation.</p>
+              <details className="invitation-benefits">
+                <summary>What you’ll hear first <Plus size={16} aria-hidden="true" /></summary>
               <ul className="invitation-perks">
                 <li>
                   <span>01</span> First-run allocation notice before public release
@@ -272,6 +274,7 @@ export default function NurrieHome() {
                   <span>03</span> Private invitation to the first release
                 </li>
               </ul>
+              </details>
             </div>
             <div className="signup-panel">
               <WaitlistForm />

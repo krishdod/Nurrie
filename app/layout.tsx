@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { PRODUCT } from "@/lib/product";
 import { SITE_ORIGIN } from "@/lib/site";
 import "./globals.css";
@@ -7,6 +7,9 @@ import "./campaign.css";
 import "./living.css";
 import "./editorial.css";
 import "./signature-motion.css";
+import "./mobile.css";
+
+export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#f2eee7" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),

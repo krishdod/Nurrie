@@ -9,6 +9,7 @@ import { PRODUCT } from "@/lib/product";
 import { useSensoryAudio } from "./SensoryAudio";
 
 const CoverScene = lazy(() => import("./CoverScene"));
+const COMPACT_COVER = "(max-width: 768px), (max-width: 900px) and (max-height: 500px)";
 
 const chapters = [
   { name: "White", title: <><span>White.</span>{" "}<span>Until you.</span></>, copy: "Meet the colour-changing foundation stick. White at first. Your skin tone as you blend." },
@@ -71,14 +72,14 @@ export default function LivingCover() {
     query.addEventListener("change", preference);
     // Keep the first paint light on phones, reduced-motion and data-saving visits.
     const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-    const light = window.matchMedia("(max-width: 768px), (pointer: coarse)").matches || !!connection?.saveData;
+    const light = window.matchMedia(`${COMPACT_COVER}, (pointer: coarse)`).matches || !!connection?.saveData;
     // Keep SSR photo-first; choose the graphics budget only after browser hydration.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setBalanced(light);
     const start = !light && !query.matches ? window.setTimeout(() => setMounted(true), 800) : null;
 
     const media = gsap.matchMedia();
-    media.add("(prefers-reduced-motion: no-preference)", () => {
+    media.add("(min-width: 901px) and (prefers-reduced-motion: no-preference), (min-width: 769px) and (min-height: 501px) and (prefers-reduced-motion: no-preference)", () => {
       const context = gsap.context(() => {
         ScrollTrigger.create({
           trigger: section.current,
@@ -107,7 +108,7 @@ export default function LivingCover() {
   function choose(index: number) {
     if (ready && revealing) finishReveal();
     update(index / 2);
-    if (!section.current) return;
+    if (!section.current || window.matchMedia(COMPACT_COVER).matches) return;
     const bounds = section.current.getBoundingClientRect();
     const maxScroll = bounds.height - window.innerHeight;
     if (maxScroll > 0) {
@@ -160,6 +161,12 @@ export default function LivingCover() {
             </a>
           </div>
         </header>
+
+        <div className="cover-copy" aria-live="polite">
+          <h1>{chapters[phase].title}</h1>
+          <p>{chapters[phase].copy}</p>
+          <a className="cover-discover" href="#the-stick">Discover the stick <ArrowUpRight size={20} aria-hidden="true" /></a>
+        </div>
 
         <div className="cover-chapters" role="group" aria-label="Choose a chapter">
           {chapters.map((chapter, index) => (
@@ -287,12 +294,6 @@ export default function LivingCover() {
             </button>
           </div>
         )}
-
-        <div className="cover-copy" aria-live="polite">
-          <h1>{chapters[phase].title}</h1>
-          <p>{chapters[phase].copy}</p>
-          <a className="cover-discover" href="#the-stick">Discover the stick <ArrowUpRight size={20} aria-hidden="true" /></a>
-        </div>
 
         {ready && <div className="cover-tools">
           <span className="tools-hint">

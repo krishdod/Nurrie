@@ -15,6 +15,8 @@ export function useRevealSlider() {
   const dividerRef = useRef<HTMLDivElement>(null);
   const handleRef = useRef<HTMLDivElement>(null);
   const readoutRef = useRef<HTMLSpanElement>(null);
+  const rangeRef = useRef<HTMLInputElement>(null);
+  const thumbReadoutRef = useRef<HTMLOutputElement>(null);
   const position = useRef(INITIAL);
   const target = useRef(INITIAL);
   const frame = useRef<number | null>(null);
@@ -36,6 +38,12 @@ export function useRevealSlider() {
     const offset = Math.max(inset, Math.min(width.current - inset, x)) - x;
     handleRef.current?.style.setProperty("--handle-offset", `${offset}px`);
     const rounded = Math.round(next);
+    if (rangeRef.current) {
+      rangeRef.current.value = String(rounded);
+      rangeRef.current.style.setProperty("--reveal-percent", `${next}%`);
+      rangeRef.current.setAttribute("aria-valuetext", `${rounded}% white formula, ${100 - rounded}% blended view`);
+    }
+    if (thumbReadoutRef.current) thumbReadoutRef.current.textContent = `${rounded}% white`;
     if (viewportRef.current?.getAttribute("aria-valuenow") !== String(rounded)) {
       viewportRef.current?.setAttribute("aria-valuenow", String(rounded));
       viewportRef.current?.setAttribute("aria-valuetext", `${rounded}% white formula, ${100 - rounded}% blended view`);
@@ -81,6 +89,12 @@ export function useRevealSlider() {
     motion.current = { from: position.current, to: target.current, start: performance.now(), duration: 320, repeat: false };
     frame.current = requestAnimationFrame(tick);
   }, [paint, stop, tick]);
+
+  const seek = useCallback((value: number) => {
+    stop();
+    target.current = clamp(value);
+    paint(target.current);
+  }, [paint, stop]);
 
   const togglePlay = useCallback(() => {
     const wasPlaying = motion.current?.repeat;
@@ -204,6 +218,6 @@ export function useRevealSlider() {
     };
   }, [paint, stop]);
 
-  return { viewportRef, whiteRef, whiteContentRef, dividerRef, handleRef, readoutRef, isPlaying, togglePlay, moveTo, stop,
+  return { viewportRef, whiteRef, whiteContentRef, dividerRef, handleRef, readoutRef, rangeRef, thumbReadoutRef, isPlaying, togglePlay, moveTo, seek, stop,
     sliderEvents: { onPointerDown, onPointerMove, onPointerUp: endPointer, onPointerCancel: endPointer, onLostPointerCapture: endPointer, onKeyDown } };
 }

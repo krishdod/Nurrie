@@ -57,7 +57,7 @@ const SHADES: Shade[] = [
 export default function MetamorphosisStudio() {
   const [shade, setShade] = useState<Shade>(SHADES[1]);
   const swatches = useRef<(HTMLButtonElement | null)[]>([]);
-  const { viewportRef, whiteRef, whiteContentRef, dividerRef, handleRef, readoutRef, isPlaying, togglePlay, moveTo, stop, sliderEvents } = useRevealSlider();
+  const { viewportRef, whiteRef, whiteContentRef, dividerRef, handleRef, readoutRef, rangeRef, thumbReadoutRef, isPlaying, togglePlay, moveTo, seek, stop, sliderEvents } = useRevealSlider();
 
   const handleShadeSelect = (next: Shade) => {
     stop();
@@ -88,39 +88,6 @@ export default function MetamorphosisStudio() {
         <p className="studio-intro">
           White on first contact. As you blend with the built-in brush, the formula intuitively adapts to your natural tone.
         </p>
-        <div className="studio-spectrum-bar">
-          <div className="spectrum-bar-header">
-            <div className="spectrum-title-col">
-
-              <h3 className="spectrum-title">Explore the tones</h3>
-            </div>
-          </div>
-
-          <div className="shade-swatch-strip" role="radiogroup" aria-label="Select tone">
-            {SHADES.map((s, index) => (
-              <button
-                key={s.id}
-                type="button"
-                role="radio"
-                aria-checked={shade.id === s.id}
-                tabIndex={shade.id === s.id ? 0 : -1}
-                ref={(element) => { swatches.current[index] = element; }}
-                onKeyDown={(event) => handleShadeKey(event, index)}
-                className={`shade-swatch-card ${shade.id === s.id ? "is-selected" : ""}`}
-                onClick={() => handleShadeSelect(s)}
-                style={{ touchAction: "manipulation" }}
-              >
-                <span className="swatch-bullet" style={{ backgroundColor: s.color }}>
-                  {shade.id === s.id && <Check size={12} className="swatch-check" />}
-                </span>
-                <div className="swatch-meta">
-                  <span className="swatch-name">{s.name}</span>
-                  <span className="swatch-tone">{s.tone}</span>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
 
       <div className="studio-lens-card">
@@ -177,6 +144,8 @@ export default function MetamorphosisStudio() {
             >
               <img
                 src="/images/editorial-portrait-cocoa.webp"
+                srcSet="/images/editorial-portrait-cocoa-640.webp 640w, /images/editorial-portrait-cocoa.webp 1122w"
+                sizes="(max-width: 768px) 100vw, 55vw"
                 alt=""
                 className="lens-image"
                 style={{ filter: tone.filter }}
@@ -197,6 +166,8 @@ export default function MetamorphosisStudio() {
             <div ref={whiteContentRef} className="lens-white-content">
               <img
                 src="/images/editorial-portrait-cocoa.webp"
+                srcSet="/images/editorial-portrait-cocoa-640.webp 640w, /images/editorial-portrait-cocoa.webp 1122w"
+                sizes="(max-width: 768px) 100vw, 55vw"
                 alt=""
                 className="lens-image"
                 loading="lazy"
@@ -224,6 +195,11 @@ export default function MetamorphosisStudio() {
           </div>
         </div>
 
+        <div className="thumb-blend-control">
+          <div className="thumb-blend-label"><label htmlFor="thumb-blend">Blend with your thumb</label><output ref={thumbReadoutRef} htmlFor="thumb-blend">65% white</output></div>
+          <input ref={rangeRef} id="thumb-blend" type="range" min="0" max="100" step="1" defaultValue="65" aria-label="White formula visibility" aria-describedby="reveal-caption" onInput={(event) => seek(Number(event.currentTarget.value))} />
+          <div className="thumb-blend-ends" aria-hidden="true"><span>Blended view</span><span>White formula</span></div>
+        </div>
         <div className="reveal-presets" role="group" aria-label="Compare formula views">
           <button type="button" onClick={() => moveTo(100)}>See white formula</button>
           <button type="button" onClick={() => moveTo(0)}>See blended view</button>
@@ -231,6 +207,40 @@ export default function MetamorphosisStudio() {
         <span className="sr-only" id="reveal-keyboard-help">Use arrow keys to adjust, Home or End for either view, and Space to play or pause.</span>
         <p className="reveal-caption" id="reveal-caption">An illustration of the colour-changing concept. Not a shade match or product result.</p>
 
+      </div>
+
+      <div className="studio-spectrum-bar">
+        <div className="spectrum-bar-header">
+          <div className="spectrum-title-col">
+
+            <h3 className="spectrum-title">Explore the tones</h3>
+          </div>
+        </div>
+
+        <div className="shade-swatch-strip" role="radiogroup" aria-label="Select tone">
+          {SHADES.map((s, index) => (
+            <button
+              key={s.id}
+              type="button"
+              role="radio"
+              aria-checked={shade.id === s.id}
+              tabIndex={shade.id === s.id ? 0 : -1}
+              ref={(element) => { swatches.current[index] = element; }}
+              onKeyDown={(event) => handleShadeKey(event, index)}
+              className={`shade-swatch-card ${shade.id === s.id ? "is-selected" : ""}`}
+              onClick={() => handleShadeSelect(s)}
+              style={{ touchAction: "manipulation" }}
+            >
+              <span className="swatch-bullet" style={{ backgroundColor: s.color }}>
+                {shade.id === s.id && <Check size={12} className="swatch-check" />}
+              </span>
+              <div className="swatch-meta">
+                <span className="swatch-name">{s.name}</span>
+                <span className="swatch-tone">{s.tone}</span>
+              </div>
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="studio-architecture">
