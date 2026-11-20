@@ -17,17 +17,17 @@
   .nurrie-editorial .living-cover { height: auto; background: var(--cocoa); color: var(--ivory); }
   .nurrie-editorial .living-stage { position: relative; height: auto; min-height: 0; overflow: hidden; background: var(--cocoa); color: var(--ivory); }
   .nurrie-editorial .cover-portrait { display: none; }
-  .nurrie-editorial .living-nav { order: 0; padding: max(16px, env(safe-area-inset-top)) 24px 12px; }
-  .nurrie-editorial .living-logo { font-size: 35px; color: var(--ivory); }
-  .nurrie-editorial .living-access { color: var(--ivory); background: transparent; border: 1px solid #ad9482; padding: 10px 12px; }
+  .nurrie-editorial .living-nav { order: 0; padding: max(22px, env(safe-area-inset-top)) 24px 16px; }
+  .nurrie-editorial .living-logo { font-size: 32px; color: var(--ivory); }
+  .nurrie-editorial .living-access { color: var(--ivory); background: transparent; border: 0; padding: 10px 0 10px 8px; }
   .nurrie-editorial .nav-audio-btn { color: var(--ivory); background: transparent; }
-  .nurrie-editorial .cover-copy { order: 2; position: relative; z-index: 4; margin-top: -64px; padding: 0 24px 8px; }
-  .nurrie-editorial .cover-copy h1 { display: block; font-size: clamp(86px, 26vw, 148px); line-height: .85; color: var(--ivory); text-shadow: none; }
+  .nurrie-editorial .cover-copy { order: 2; position: relative; z-index: 4; margin-top: -44px; padding: 0 24px 12px; }
+  .nurrie-editorial .cover-copy h1 { display: block; font-size: clamp(72px, 22vw, 128px); line-height: .96; letter-spacing: -.025em; color: var(--ivory); text-shadow: none; }
   .nurrie-editorial .living-cover[data-phase="1"] .cover-copy h1 { font-size: clamp(64px, 18vw, 112px); }
   .nurrie-editorial .living-cover[data-phase="2"] .cover-copy h1 { font-size: clamp(72px, 20vw, 124px); }
   .nurrie-editorial .cover-copy h1 span { display: block; white-space: normal; }
-  .nurrie-editorial .cover-copy h1 span + span { font-size: .6em; margin-top: 10px; }
-  .nurrie-editorial .cover-copy p { margin-top: 24px; font-size: 15px; line-height: 1.6; max-width: 34ch; color: #e6dbcf; text-shadow: none; }
+  .nurrie-editorial .cover-copy h1 span + span { font-size: .72em; margin-top: 4px; }
+  .nurrie-editorial .cover-copy p { margin-top: 26px; font-size: 15px; line-height: 1.7; max-width: 34ch; color: #e6dbcf; text-shadow: none; }
   .nurrie-editorial .cover-discover { min-height: 48px; font-size: 14px; margin-top: 10px; color: var(--ivory); }
   .nurrie-editorial .cover-chapters { order: 3; margin: 14px 174px 24px 24px; padding: 0; gap: 16px; justify-content: flex-start; border: 0; }
   .nurrie-editorial .cover-chapters button { flex: none; justify-content: flex-start; min-height: 44px; opacity: .72; font-size: 13px; color: var(--ivory); }
@@ -43,22 +43,24 @@
   .nurrie-editorial .cover-tools .tools-hint { display: none; }
   .nurrie-editorial .cover-tools button { flex: 0 0 44px; background: transparent; color: var(--ivory); }
   .nurrie-editorial .living-stage > .cover-tools-pending { position: absolute; top: auto; bottom: 24px; left: auto; right: 24px; width: 140px; margin: 0; padding: 0; border: 0; background: transparent; }
-  .nurrie-editorial .cover-tools .load-scene { min-height: 44px; min-width: 140px; font-size: 12px; border: 1px solid #ad9482; background: transparent; color: var(--ivory); }
+  .nurrie-editorial .cover-tools .load-scene { min-height: 44px; min-width: 140px; font-size: 12px; border: 0; background: transparent; color: var(--ivory); text-decoration: underline; text-underline-offset: 7px; }
+  .product-signature { gap: 32px; padding: 26px 24px; font-size: 13px; }
+  .product-signature span:last-child { display: none; }
   .cover-reveal-caption { top: 12px; bottom: auto; left: 16px; right: 16px; }
   .cover-reveal-caption p { display: block; font-size: 20px; }
   .cover-reveal-caption button { min-width: 84px; }
   .nurrie-editorial .cover-edge { display: none; }
 
-  .mobile-journey { position: fixed; z-index: 90; left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); display: grid; grid-template-columns: 1fr 1fr 1.35fr; gap: 4px; padding: 6px; background: var(--ivory); color: var(--cocoa); box-shadow: 0 5px 22px #2c1c1729; border-radius: 4px; }
+  .mobile-journey { position: fixed; z-index: 90; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 1fr 1fr 1.35fr; gap: 4px; padding: 5px max(12px, env(safe-area-inset-right)) max(5px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); background: var(--ivory); color: var(--cocoa); border-top: 1px solid #c9b8aa; }
   .mobile-journey a { min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; text-decoration: none; }
   .mobile-journey a[aria-current="location"] { text-decoration: underline; text-underline-offset: 7px; }
-  .mobile-journey .mobile-journey-join { background: var(--cocoa); color: var(--ivory); }
+  .mobile-journey .mobile-journey-join { font-weight: 500; color: var(--cocoa); }
   .mobile-journey a:active { opacity: .72; }
 
   .nurrie-editorial .diptych-heading > p,
   .nurrie-editorial .studio-intro,
   .nurrie-editorial .arch-header p { font-size: 16px; line-height: 1.6; }
-  .nurrie-editorial .product-diptych { padding-top: 64px; padding-bottom: 56px; }
+  .nurrie-editorial .product-diptych { padding-top: 80px; padding-bottom: 72px; }
   .nurrie-editorial .diptych-heading h2 { font-size: clamp(44px, 12vw, 72px); }
   .nurrie-editorial .diptych-fields { grid-template-columns: 1.15fr 1fr; gap: 16px; }
   .nurrie-editorial .diptych-product img { aspect-ratio: .7; }
@@ -73,11 +75,9 @@
   .nurrie-editorial .diptych-foot .text-link { grid-column: 1 / -1; grid-row: 2; min-height: 48px; justify-content: space-between; border-bottom: 1px solid #80695c; }
   .nurrie-editorial .split-lens-viewport { height: clamp(340px, 105vw, 460px); }
   .nurrie-editorial .lens-btn, .nurrie-editorial .lens-btn-icon { min-width: 44px; min-height: 44px; }
-  .nurrie-editorial .lens-top-bar { flex-wrap: nowrap; }
-  .nurrie-editorial .lens-status { font-size: 11px; }
-  .nurrie-editorial .lens-watermark { border: 0; border-radius: 0; padding: 8px 10px; background: #34231ce6; backdrop-filter: none; }
-  .nurrie-editorial .watermark-title { font-size: 24px; }
-  .nurrie-editorial .watermark-tag, .nurrie-editorial .watermark-desc { display: none; }
+  .nurrie-editorial .lens-top-bar { flex-wrap: nowrap; inset: auto; padding: 0 24px 14px; gap: 8px; }
+  .nurrie-editorial .lens-status { font-size: 12px; }
+  .nurrie-editorial .lens-btn { padding: 8px; }
   .thumb-blend-control { display: block; margin: 24px 24px 0; }
   .thumb-blend-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; color: var(--cocoa); font-size: 14px; }
   .thumb-blend-label output { font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -99,7 +99,7 @@
   .instrument-study figcaption p { font-size: 14px; }
   .instrument-study h4 { font-size: 28px; }
 
-  .nurrie-editorial .first-access { padding: 60px 24px 50px; }
+  .nurrie-editorial .first-access { padding: 76px 24px 60px; }
   .nurrie-editorial .signup-copy { order: 0; }
   .nurrie-editorial .signup-copy h2 { font-size: clamp(43px, 11vw, 66px); }
   .nurrie-editorial .signup-copy > p { font-size: 16px; line-height: 1.6; margin-top: 22px; }
@@ -116,14 +116,13 @@
 }
 @media (max-width: 360px) {
   .nurrie-editorial .living-nav { padding-left: 16px; padding-right: 16px; }
-  .nurrie-editorial .cover-copy h1 { font-size: 86px; }
+  .nurrie-editorial .cover-copy h1 { font-size: 72px; }
   .nurrie-editorial .living-cover[data-phase="1"] .cover-copy h1 { font-size: 64px; }
   .nurrie-editorial .cover-chapters { margin-left: 20px; margin-right: 20px; }
   .nurrie-editorial .living-stage > .cover-tools-pending { position: relative; inset: auto; width: auto; margin: 0 24px 24px; }
-  .mobile-journey { left: 8px; right: 8px; }
   .mobile-journey a { font-size: 12px; gap: 5px; }
   .thumb-blend-label { font-size: 13px; gap: 8px; }
-  .nurrie-editorial .lens-status { font-size: 10px; }
+  .nurrie-editorial .lens-status { font-size: 11px; }
 }
 /* Landscape phones use the width, without a stage taller than their viewport. */
 @media (min-width: 769px) and (max-width: 900px) and (max-height: 500px) {

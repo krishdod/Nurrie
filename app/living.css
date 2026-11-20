@@ -1689,8 +1689,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .metamorphosis-studio .lens-layer-blended,
-  .metamorphosis-studio button,
-  .metamorphosis-studio .lens-instruction-pill {
+  .metamorphosis-studio button {
     transition: none;
   }
 }
@@ -1785,50 +1784,6 @@
   border-radius: 50% 40% 60% 30% / 40% 50% 50% 60%;
 }
 
-.lens-watermark {
-  position: absolute;
-  bottom: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 12px 18px;
-  background: var(--cocoa);
-  border: 1px solid rgba(214, 177, 154, 0.25);
-  box-shadow: 0 8px 24px rgba(44, 28, 23, 0.35);
-  color: var(--ivory);
-  border-radius: 2px;
-  pointer-events: none;
-}
-
-.lens-watermark-left {
-  left: 24px;
-}
-
-.lens-watermark-right {
-  right: 24px;
-  align-items: flex-end;
-  text-align: right;
-}
-
-.watermark-tag {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--rose);
-}
-
-.watermark-title {
-  font-family: var(--display);
-  font-size: 18px;
-  line-height: 1.1;
-}
-
-.watermark-desc {
-  font-size: 12px;
-  color: #d9cabd;
-}
-
 /* Hairline Divider & Handle */
 .split-divider-line {
   position: absolute;
@@ -1881,10 +1836,6 @@
   text-align: center;
 }
 
-.split-lens-viewport[data-dragging="true"] .lens-instruction-pill {
-  opacity: 0;
-}
-
 .reveal-caption {
   margin: 0;
   padding: 14px 28px;
@@ -1922,27 +1873,6 @@
 
 .reveal-presets button:focus-visible {
   outline-offset: -4px;
-}
-
-.lens-instruction-pill {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--cocoa);
-  border: 1px solid rgba(214, 177, 154, 0.3);
-  box-shadow: 0 4px 16px rgba(44, 28, 23, 0.35);
-  color: var(--ivory);
-  padding: 7px 16px;
-  border-radius: 20px;
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  pointer-events: none;
-  opacity: 0.95;
-  transition: opacity 0.3s;
 }
 
 /* Tone Spectrum Selector */
@@ -2309,72 +2239,6 @@
   background: var(--ink);
 }
 
-/* ==========================================================================
-   MINIMALIST EDITORIAL MARQUEE TICKER
-   ========================================================================== */
-.editorial-ticker {
-  width: 100%;
-  overflow: hidden;
-  background: var(--cocoa);
-  color: var(--ivory);
-  border-top: 1px solid rgba(214, 177, 154, 0.25);
-  border-bottom: 1px solid rgba(214, 177, 154, 0.25);
-  padding: 14px 0;
-  position: relative;
-  z-index: 5;
-  user-select: none;
-}
-
-.ticker-track {
-  display: flex;
-  width: max-content;
-  animation: ticker-slide 34s linear infinite;
-  will-change: transform;
-}
-
-.editorial-ticker:hover .ticker-track {
-  animation-play-state: paused;
-}
-
-.ticker-group {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.ticker-item {
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-}
-
-.ticker-text {
-  font-family: var(--display);
-  font-size: 13.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #f7f1eb;
-}
-
-.ticker-bullet {
-  color: var(--rose);
-  font-size: 8px;
-  margin: 0 28px;
-  opacity: 0.75;
-}
-
-@keyframes ticker-slide {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ticker-track {
-    animation: none;
-    overflow-x: auto;
-  }
-}
-
 /* Tools Uncap Active State */
 .cover-tools button.is-active {
   background: var(--cocoa);
@@ -2524,34 +2388,6 @@
     height: 6cqw;
   }
 
-  .lens-watermark {
-    bottom: 10px;
-    padding: 5px 9px;
-    border-radius: 2px;
-  }
-
-  .lens-watermark-left {
-    left: 8px;
-  }
-
-  .lens-watermark-right {
-    right: 8px;
-  }
-
-  .watermark-tag {
-    font-size: 7.5px;
-    letter-spacing: 0.1em;
-  }
-
-  .watermark-title {
-    font-size: 12px;
-    line-height: 1.1;
-  }
-
-  .watermark-desc {
-    font-size: 9.5px;
-  }
-
   .divider-handle {
     padding: 5px 8px;
     gap: 4px;
@@ -2565,14 +2401,6 @@
 
   .handle-label {
     font-size: 10px;
-  }
-
-  .lens-instruction-pill {
-    top: 8px;
-    padding: 3px 8px;
-    font-size: 9.5px;
-    white-space: nowrap;
-    max-width: 88%;
   }
 
   /* 2x2 Clean Touch Grid for Swatches on Mobile - Eliminates 4-col Squeeze */
@@ -2665,18 +2493,6 @@
 
   .vip-link-box {
     flex-direction: column;
-  }
-
-  /* Editorial Ticker Mobile */
-  .editorial-ticker {
-    padding: 10px 0;
-  }
-  .ticker-text {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-  }
-  .ticker-bullet {
-    margin: 0 16px;
   }
 
   /* Quick Undertone Matcher Mobile */

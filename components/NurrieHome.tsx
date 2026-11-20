@@ -14,7 +14,7 @@ import CreamRibbon from "./CreamRibbon";
 import MetamorphosisStudio from "./MetamorphosisStudio";
 import LuxuryCursor from "./LuxuryCursor";
 import WaitlistForm from "./WaitlistForm";
-import EditorialTicker from "./EditorialTicker";
+import ProductSignature from "./ProductSignature";
 import StickyMobileBar from "./StickyMobileBar";
 import { sensoryAudio } from "./SensoryAudio";
 
@@ -84,7 +84,7 @@ export default function NurrieHome() {
       <div ref={root} id="top" className="nurrie-page nurrie-campaign nurrie-living nurrie-editorial">
         <main id="main">
           <LivingCover />
-          <EditorialTicker />
+          <ProductSignature />
 
           <section className="product-diptych" id="the-stick" aria-labelledby="diptych-heading">
             <div className="diptych-heading">

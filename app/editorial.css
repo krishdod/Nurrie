@@ -3,7 +3,7 @@
 .nurrie-editorial .living-stage { background: var(--ivory); }
 .nurrie-editorial .living-nav { padding-top: 28px; padding-bottom: 20px; }
 .nurrie-editorial .living-logo { font-size: 48px; }
-.nurrie-editorial .living-access { box-shadow: none; border-radius: 2px; }
+.nurrie-editorial .living-access { box-shadow: none; border-radius: 0; background: transparent; color: var(--cocoa); border: 0; text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 1px; }
 .nurrie-editorial .nav-audio-btn { border: 0; box-shadow: none; background: transparent; }
 .nurrie-editorial .cover-chapters { top: 150px; flex-direction: row; gap: 24px; }
 .nurrie-editorial .cover-chapters button { font-family: var(--body); font-size: 14px; gap: 8px; min-height: 44px; }
@@ -13,7 +13,7 @@
 .nurrie-editorial .cover-object { inset: 110px 2vw 94px 48%; }
 .nurrie-editorial .cover-fallback img { object-fit: cover; object-position: 52% center; mix-blend-mode: normal; }
 .nurrie-editorial .cover-copy { top: 29%; bottom: auto; left: var(--gutter); right: auto; width: 48%; display: block; pointer-events: none; }
-.nurrie-editorial .cover-copy h1 { max-width: none; font-size: clamp(104px, 13.1vw, 196px); line-height: .91; letter-spacing: -.035em; }
+.nurrie-editorial .cover-copy h1 { max-width: none; font-size: clamp(96px, 11.5vw, 174px); line-height: .96; letter-spacing: -.025em; }
 .nurrie-editorial .cover-copy h1 span { display: block; }
 .nurrie-editorial .cover-copy h1 span + span { margin-top: 14px; font-size: .67em; }
 .nurrie-editorial .cover-copy p { max-width: 310px; margin-top: 32px; font-size: 16px; line-height: 1.65; }
@@ -27,8 +27,8 @@
 .nurrie-editorial .cover-tools .load-scene { width: auto; min-width: 140px; border-radius: 2px; }
 .nurrie-editorial .cover-edge { bottom: 28px; font-size: 11px; }
 .nurrie-editorial .cover-macro-banner { top: 110px; left: 52%; right: 4vw; width: auto; max-width: none; transform: none; border-radius: 2px; }
-.nurrie-editorial .editorial-ticker { padding-top: 22px; padding-bottom: 22px; border: 0; }
-.nurrie-editorial .ticker-text { font-size: 12px; letter-spacing: .04em; }
+.product-signature { display: flex; justify-content: center; align-items: center; gap: clamp(40px, 8vw, 120px); padding: 30px var(--gutter); background: var(--cocoa); color: #e6dbcf; font-size: 14px; line-height: 1.5; }
+.product-signature span { white-space: nowrap; }
 
 /* Product introduction: a large image, with the portrait sitting lower in the spread. */
 .nurrie-editorial .product-diptych { padding-top: var(--editorial-space); }
@@ -49,18 +49,18 @@
 .nurrie-editorial .studio-header h2 { font-size: clamp(42px, 3.8vw, 61px); line-height: 1.04; margin-bottom: 26px; }
 .nurrie-editorial .studio-intro { font-size: 15px; max-width: 34ch; }
 .nurrie-editorial .studio-lens-card { position: relative; background: transparent; border: 0; box-shadow: none; border-radius: 0; margin: 0; overflow: visible; min-width: 0; }
-.nurrie-editorial .lens-top-bar { position: absolute; z-index: 6; top: 16px; left: 16px; right: 16px; padding: 10px 12px; background: var(--cocoa); border: 0; color: var(--ivory); }
-.nurrie-editorial .lens-status { color: var(--ivory); font-size: 11px; gap: 8px; }
-.nurrie-editorial .lens-btn { min-height: 40px; background: var(--ivory); color: var(--cocoa); border: 0; box-shadow: none; }
-.nurrie-editorial .lens-btn-icon { min-height: 40px; min-width: 40px; background: var(--soft); border: 0; }
+.nurrie-editorial .lens-top-bar { position: relative; z-index: 6; inset: auto; padding: 0 0 14px; background: transparent; border: 0; color: var(--cocoa); }
+.nurrie-editorial .lens-status { color: var(--cocoa); font-size: 12px; font-weight: 400; gap: 10px; }
+.nurrie-editorial .status-dot { width: 10px; height: 10px; border: 0; box-shadow: none; }
+.nurrie-editorial .lens-btn, .nurrie-editorial .lens-btn-icon { min-height: 44px; min-width: 44px; background: transparent; color: var(--cocoa); border: 0; box-shadow: none; border-radius: 0; }
+.nurrie-editorial .lens-btn:hover, .nurrie-editorial .lens-btn-icon:hover, .nurrie-editorial .lens-btn.is-active { background: var(--soft); color: var(--cocoa); transform: none; }
 .nurrie-editorial .split-lens-viewport { height: clamp(490px, 47vw, 680px); }
-.nurrie-editorial .lens-instruction-pill { top: auto; bottom: 24px; }
-.nurrie-editorial .lens-watermark { bottom: 76px; }
-.nurrie-editorial .watermark-title { font-size: clamp(25px, 3vw, 42px); }
+.nurrie-editorial .divider-handle { padding: 10px 12px; gap: 6px; border: 1px solid var(--ivory); box-shadow: none; }
+.nurrie-editorial .handle-label { font-weight: 400; letter-spacing: 0; }
 .nurrie-editorial .reveal-presets { padding: 18px 0 8px; background: transparent; justify-content: space-between; }
 .nurrie-editorial .reveal-presets button { min-height: 44px; padding: 6px 0; border: 0; border-radius: 0; background: transparent; color: var(--cocoa); box-shadow: none; text-decoration: underline; text-underline-offset: 6px; }
 .nurrie-editorial .reveal-presets button:hover { background: transparent; color: #776257; }
-.nurrie-editorial .reveal-caption { padding: 0; text-align: left; line-height: 1.6; font-size: 12px; color: var(--muted); }
+.nurrie-editorial .reveal-caption { padding: 0; text-align: left; line-height: 1.6; font-size: 12px; color: var(--muted); background: transparent; }
 .nurrie-editorial .studio-spectrum-bar { padding: 58px 0 0; gap: 16px; background: transparent; border: 0; }
 .nurrie-editorial .spectrum-title { font: 24px/1.2 var(--display); text-transform: none; letter-spacing: -.02em; }
 .nurrie-editorial .shade-swatch-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
@@ -106,6 +106,11 @@
 .nurrie-editorial .signup-panel { border: 0; box-shadow: none; }
 .nurrie-editorial .invitation-perks li > span { display: none; }
 .nurrie-editorial .batch-scarcity-badge { border: 0; border-radius: 0; background: transparent; padding: 0 0 12px; }
+.nurrie-editorial .batch-tag { font-weight: 400; letter-spacing: 0; text-transform: none; }
+.nurrie-editorial .batch-tag svg { display: none; }
+.nurrie-editorial .batch-counter { font-weight: 400; color: var(--cocoa); }
+.nurrie-editorial .batch-progress-track { height: 2px; border-radius: 0; }
+.nurrie-editorial .batch-progress-fill { border-radius: 0; background: var(--cocoa); }
 
 @media (max-width: 1100px) and (min-width: 769px) {
   .nurrie-editorial .living-nav nav { gap: 18px; }
@@ -116,7 +121,7 @@
   .nurrie-editorial .metamorphosis-studio { grid-template-columns: 1fr 1.4fr; column-gap: 30px; }
   .nurrie-editorial .studio-header h2 { font-size: 39px; }
   .nurrie-editorial .lens-status .status-dot { display: none; }
-  .nurrie-editorial .lens-top-bar { left: 10px; right: 10px; padding: 8px; gap: 4px; }
+  .nurrie-editorial .lens-top-bar { padding: 0 0 14px; gap: 4px; }
   .nurrie-editorial .lens-btn span { display: none; }
 }
 @media (max-width: 768px) {
@@ -156,12 +161,10 @@
   .nurrie-editorial .studio-intro { font-size: 14px; margin-bottom: 32px; }
   .nurrie-editorial .studio-lens-card { order: 1; margin: 0 -24px; }
   .nurrie-editorial .split-lens-viewport { height: 520px; }
-  .nurrie-editorial .lens-top-bar { left: 12px; right: 12px; top: 12px; padding: 8px; gap: 6px; }
+  .nurrie-editorial .lens-top-bar { padding: 0 24px 14px; gap: 6px; }
   .nurrie-editorial .lens-status { font-size: 10px; }
   .nurrie-editorial .lens-quick-actions { gap: 4px; }
   .nurrie-editorial .lens-btn span { display: none; }
-  .nurrie-editorial .lens-watermark { bottom: 70px; }
-  .nurrie-editorial .watermark-title { font-size: 26px; }
   .nurrie-editorial .reveal-presets { margin: 0 24px; }
   .nurrie-editorial .reveal-caption { margin: 10px 24px 0; }
   .nurrie-editorial .studio-spectrum-bar { order: 2; margin: 0; padding-top: 28px; }

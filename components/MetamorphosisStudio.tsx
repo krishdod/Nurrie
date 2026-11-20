@@ -95,7 +95,7 @@ export default function MetamorphosisStudio() {
           <div className="lens-status">
             <span className="status-dot" style={{ backgroundColor: shade.color }} />
             <span className="status-text">
-              {`${shade.num} ${shade.name} · ${shade.tone}`}
+              {`${shade.name} · ${shade.tone}`}
             </span>
           </div>
 
@@ -154,11 +154,6 @@ export default function MetamorphosisStudio() {
                 draggable={false}
               />
               <div className="lens-tint-overlay" style={{ background: tone.tintBg }} />
-              <div className="lens-watermark lens-watermark-right">
-                <span className="watermark-tag">Blended view</span>
-                <span className="watermark-title">{tone.name}</span>
-                <span className="watermark-desc">{tone.tone}</span>
-              </div>
             </div>
           ))}
 
@@ -175,10 +170,6 @@ export default function MetamorphosisStudio() {
                 draggable={false}
               />
               <div className="white-formula-streak" />
-              <div className="lens-watermark lens-watermark-left">
-                <span className="watermark-tag">First touch</span>
-                <span className="watermark-title">White Formula</span>
-              </div>
             </div>
           </div>
 
@@ -189,11 +180,8 @@ export default function MetamorphosisStudio() {
             </div>
           </div>
 
-          <div className="lens-instruction-pill" id="reveal-help">
-            <MoveHorizontal size={14} />
-            <span>Slide to blend. Scroll to explore.</span>
-          </div>
         </div>
+        <span className="sr-only" id="reveal-help">Slide to blend. Scroll to explore.</span>
 
         <div className="thumb-blend-control">
           <div className="thumb-blend-label"><label htmlFor="thumb-blend">Blend with your thumb</label><output ref={thumbReadoutRef} htmlFor="thumb-blend">65% white</output></div>
